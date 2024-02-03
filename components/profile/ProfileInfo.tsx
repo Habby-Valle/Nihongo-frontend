@@ -4,7 +4,6 @@ import format from "date-fns/format"
 import { Box, Button, Column, Row, Text, useToast } from "native-base"
 import Image from "next/image"
 
-import Default from "../public/images/default.jpg"
 import { WhoIam, updateProfileAvatar, useProfile } from "../../utils/api/user"
 import { applyPhoneMask } from "../../utils/validation"
 import Error from "../Error"
@@ -104,23 +103,13 @@ export default function ProfileInfo() {
             borderWidth={"3px"}
             style={{ width: 100, height: 100, borderRadius: 50, overflow: "hidden" }}
           >
-            {profile?.avatar ? (
-              <Image
-                src={`http://127.0.0.1:8000${profile.avatar}`}
-                alt="Avatar"
-                width={100}
-                height={100}
-                objectFit="cover"
-              />
-            ) : (
-              <Image
-                src={Default}
-                alt="Avatar"
-                width={100}
-                height={100}
-                objectFit="cover"
-              />
-            )}
+            <Image
+              src={`/${profile?.avatar}`}
+              alt="Avatar"
+              width={100}
+              height={100}
+              objectFit="cover"
+            />
           </Box>
           <Column
             space={"12px"}

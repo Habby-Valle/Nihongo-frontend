@@ -4,8 +4,6 @@ import { Box, HStack, Icon, IconButton, Pressable, Text, useColorMode } from "na
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { MdArrowBack, MdDarkMode, MdLightMode } from "react-icons/md"
-
-import Default from "../../public/images/default.jpg"
 import { WhoIam, useProfile } from "../../utils/api/user"
 
 interface IHeadingProps {
@@ -77,23 +75,14 @@ export function Heading({ title }: IHeadingProps) {
             }}
           >
             <Box style={{ borderRadius: 50, overflow: "hidden" }}>
-              {profile?.avatar ? (
-                <Image
-                  src={`http://127.0.0.1:8000${profile.avatar}`}
+              <Image
+                  loading={"eager"}
+                  src={`/${profile?.avatar}`}
                   alt="Avatar"
                   width={30}
                   height={30}
                   objectFit="cover"
                 />
-              ) : (
-                <Image
-                  src={Default}
-                  alt="Avatar"
-                  width={30}
-                  height={30}
-                  objectFit="cover"
-                />
-              )}
             </Box>
             <Text
               color="white"
