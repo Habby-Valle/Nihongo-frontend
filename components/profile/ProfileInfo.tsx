@@ -104,7 +104,7 @@ export default function ProfileInfo() {
             style={{ width: 100, height: 100, borderRadius: 50, overflow: "hidden" }}
           >
             <Image
-              src={`/${profile?.avatar}`}
+              src={`https://nihongo-gaido-4ec2db96e424.herokuapp.com/${profile?.avatar}`}
               alt="Avatar"
               width={100}
               height={100}

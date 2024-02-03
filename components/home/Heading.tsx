@@ -77,7 +77,7 @@ export function Heading({ title }: IHeadingProps) {
             <Box style={{ borderRadius: 50, overflow: "hidden" }}>
               <Image
                   loading={"eager"}
-                  src={`/${profile?.avatar}`}
+                  src={`https://nihongo-gaido-4ec2db96e424.herokuapp.com/${profile?.avatar}`}
                   alt="Avatar"
                   width={30}
                   height={30}
