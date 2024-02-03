@@ -67,19 +67,19 @@ export default function ExampleList(props: IExampleListProps) {
               justifyContent={"space-between"}
               alignItems={"center"}
             >
-              <Pressable onPress={() => handleUpdateExample(item.id)}>
+              <Pressable onPress={() => {handleUpdateExample(item.id)}}>
                 <MdEdit
                   size={25}
                   color="#D02C23"
                 />
               </Pressable>
-              <Pressable onPress={() => handleDeleteExample(item.id)}>
+              <Pressable onPress={() => {handleDeleteExample(item.id)}}>
                 <MdDelete
                   size={25}
                   color="#D02C23"
                 />
               </Pressable>
-              <Pressable onPress={() => toggleExpand(index)}>
+              <Pressable onPress={() => {toggleExpand(index)}}>
                 {isExpanded[index] ? (
                   <MdArrowDropUp
                     size={25}
@@ -139,14 +139,14 @@ export default function ExampleList(props: IExampleListProps) {
 
       <ModalUpdatExample
         isOpen={modalUpdateVisible}
-        onClose={() => setModalUpdateVisible(false)}
+        onClose={() => {setModalUpdateVisible(false)}}
         exampleId={exampleId}
         wordId={props.wordId}
       />
 
       <ModalDeleteExample
         isOpen={modalDeleteVisible}
-        onClose={() => setModalDeleteVisible(false)}
+        onClose={() => {setModalDeleteVisible(false)}}
         exampleId={exampleId}
         wordId={props.wordId}
       />

@@ -125,7 +125,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="present"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -135,7 +135,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="past"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -145,7 +145,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="negative"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -155,7 +155,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="teForm"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -165,7 +165,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="potential"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -175,7 +175,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="passive"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -185,7 +185,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="causative"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -195,7 +195,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="imperative"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -205,7 +205,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="volitional"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -215,7 +215,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="conditional"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -225,7 +225,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
               name="causativePassive"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}

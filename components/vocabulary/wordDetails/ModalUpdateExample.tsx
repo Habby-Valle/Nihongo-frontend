@@ -110,7 +110,7 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
               name="example"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
               patternError="Structure must be in Japanese"
               pattern={japaneseRegex}
@@ -121,7 +121,7 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
               name="meaning"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
             />
 

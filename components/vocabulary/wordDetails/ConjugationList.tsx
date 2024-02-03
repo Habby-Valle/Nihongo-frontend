@@ -46,13 +46,13 @@ export default function ConjugationList(props: IConjugationListProps) {
         alignItems={"center"}
         space={6}
       >
-        <Pressable onPress={() => handleUpdateConjugation(conjugation.id)}>
+        <Pressable onPress={() => {handleUpdateConjugation(conjugation.id)}}>
           <MdEdit
             size={25}
             color="#D02C23"
           />
         </Pressable>
-        <Pressable onPress={() => handleDeleteConjugation(conjugation.id)}>
+        <Pressable onPress={() => {handleDeleteConjugation(conjugation.id)}}>
           <MdDelete
             size={25}
             color="#D02C23"
@@ -84,14 +84,14 @@ export default function ConjugationList(props: IConjugationListProps) {
 
       <ModalDeleteConjugation
         isOpen={modalDeleteVisible}
-        onClose={() => setModalDeleteVisible(false)}
+        onClose={() => {setModalDeleteVisible(false)}}
         conjugationId={conjugation.id}
         wordId={props.wordId}
       />
 
       <ModalUpdateConjugation
         isOpen={modalUpdateVisible}
-        onClose={() => setModalUpdateVisible(false)}
+        onClose={() => {setModalUpdateVisible(false)}}
         conjugationId={conjugation.id}
         wordId={props.wordId}
       />

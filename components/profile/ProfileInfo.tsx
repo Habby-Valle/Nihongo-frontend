@@ -4,7 +4,7 @@ import format from "date-fns/format"
 import { Box, Button, Column, Row, Text, useToast } from "native-base"
 import Image from "next/image"
 
-import Default from "../../public/images/default.jpg"
+import Default from "../public/images/default.jpg"
 import { WhoIam, updateProfileAvatar, useProfile } from "../../utils/api/user"
 import { applyPhoneMask } from "../../utils/validation"
 import Error from "../Error"

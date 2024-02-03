@@ -114,8 +114,8 @@ function Header({ word }: IHeaderProps) {
               color="white"
             />
           }
-          onPress={() => setIsOpen(true)}
-          disabled={["Verb - Group 1", "Verb - Group 2", "Verb - Group 3"].includes(word.type) ? false : true}
+          onPress={() => {setIsOpen(true)}}
+          disabled={!["Verb - Group 1", "Verb - Group 2", "Verb - Group 3"].includes(word.type)}
           opacity={["Verb - Group 1", "Verb - Group 2", "Verb - Group 3"].includes(word.type) ? 1 : 0.5}
         >
           <Text color={"white"}>Conjugation</Text>
@@ -123,7 +123,7 @@ function Header({ word }: IHeaderProps) {
 
         <Button
           bg={"#D02C23"}
-          onPress={() => setIsModalOpen(true)}
+          onPress={() => {setIsModalOpen(true)}}
           _hover={{ bg: "#ae251e" }}
           _pressed={{ bg: "#ae251e" }}
           size={"md"}
@@ -141,14 +141,14 @@ function Header({ word }: IHeaderProps) {
 
       <ModalAddConjugation
         isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
+        onClose={() => {setIsOpen(false)}}
         wordId={word.id}
       />
 
       <ModalAddExample
         isOpen={isModalOpen}
         wordId={word.id}
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {setIsModalOpen(false)}}
       />
     </Row>
   )

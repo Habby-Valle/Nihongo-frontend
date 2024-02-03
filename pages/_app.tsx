@@ -8,11 +8,11 @@ import "../styles/globals.css"
 
 const colorModeManager: StorageManager = {
   get: async () => {
-    let val = localStorage.getItem("@color-mode")
+    const val = localStorage.getItem("@color-mode")
     return val === "dark" ? "dark" : "light"
   },
   set: async (value: ColorMode) => {
-    let strValue = value ? value.toString() : ""
+    const strValue = value ? value.toString() : ""
     localStorage.setItem("@color-mode", strValue)
   },
 }

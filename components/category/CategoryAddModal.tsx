@@ -77,7 +77,7 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
               name="category"
               type="text"
               register={register}
-              // @ts-ignore
+              // @ts-expect-error: patternError is not a valid prop
               errors={errors}
             />
           </Column>
