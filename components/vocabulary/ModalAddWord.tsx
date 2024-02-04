@@ -33,11 +33,21 @@ export default function ModalAddWord(props: IModalAddWordProps) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<IVocabularyFormInput>()
 
   const toast = useToast()
   const [saving, setSaving] = useState(false)
   const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
+
+  const clearInputs = () => {
+    setValue("word", "")
+    setValue("reading", "")
+    setValue("meaning", "")
+    setValue("type", "Unknown")
+    setValue("level", "Unknown")
+    setValue("category", "")
+  }
 
   const onSubmit = async (data: IVocabularyFormInput) => {
     console.log(data)
@@ -63,6 +73,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
       }
       categoriesRevalidate()
       wordsRevalidate()
+      clearInputs()
       props.onClose()
     } catch (error) {
       alert(error)
@@ -158,6 +169,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
               variant="ghost"
               colorScheme="blueGray"
               onPress={() => {
+                clearInputs()
                 props.onClose()
               }}
             >

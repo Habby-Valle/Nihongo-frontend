@@ -26,6 +26,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<IGrammarFormInput>()
 
   const { mutate: grammarsRevalidate } = useGrammars()
@@ -35,6 +36,12 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
 
   const toast = useToast()
 
+  const clearInputs = () => {
+    setValue("grammar", "")
+    setValue("structure", "")
+    setValue("level", "")
+    setValue("explain", "")
+  }
   const onSubmit = async (data: IGrammarFormInput) => {
     setSaving(true)
 
@@ -55,6 +62,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
         })
       }
       grammarsRevalidate()
+      clearInputs()
       props.onClose()
     } catch (error) {
       alert(error)
@@ -120,6 +128,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
               variant="ghost"
               colorScheme="blueGray"
               onPress={() => {
+                clearInputs()
                 props.onClose()
               }}
             >

@@ -24,6 +24,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<ISentenceFormInput>()
 
   const toast = useToast()
@@ -33,6 +34,11 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
   const [saving, setSaving] = useState(false)
   const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
 
+  const clearInputs = () => {
+    setValue("sentence", "")
+    setValue("translate", "")
+    setValue("annotation", "")
+  }
   const onSubmit = async (data: ISentenceFormInput) => {
     setSaving(true)
 
@@ -55,6 +61,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
         })
       }
       sentenceRevalidate()
+      clearInputs()
       props.onClose()
     } catch (error) {
       alert(error)
@@ -113,6 +120,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
               variant="ghost"
               colorScheme="blueGray"
               onPress={() => {
+                clearInputs()
                 props.onClose()
               }}
             >
