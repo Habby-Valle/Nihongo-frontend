@@ -26,7 +26,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm<IGrammarFormInput>()
 
   const { mutate: grammarsRevalidate } = useGrammars()

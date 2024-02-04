@@ -26,7 +26,7 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm<IExampleFormInput>()
 
   const [saving, setSaving] = useState(false)

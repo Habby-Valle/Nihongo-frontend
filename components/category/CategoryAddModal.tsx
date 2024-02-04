@@ -20,7 +20,7 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm<IFormInput>()
 
   const { mutate: categoriesRevalidate } = useCategories()

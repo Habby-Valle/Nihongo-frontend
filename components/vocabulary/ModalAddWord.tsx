@@ -33,7 +33,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm<IVocabularyFormInput>()
 
   const toast = useToast()
@@ -44,7 +44,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
     setValue("word", "")
     setValue("reading", "")
     setValue("meaning", "")
-    setValue("type", "Unknown" )
+    setValue("type", "Unknown")
     setValue("level", "Unknown")
     setValue("category", "")
   }

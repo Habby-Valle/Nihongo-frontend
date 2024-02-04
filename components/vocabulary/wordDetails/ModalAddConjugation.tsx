@@ -33,7 +33,7 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm<IConjugationFormInput>()
 
   const [saving, setSaving] = useState(false)

@@ -24,7 +24,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
     register,
     handleSubmit,
     formState: { errors },
-    setValue
+    setValue,
   } = useForm<ISentenceFormInput>()
 
   const toast = useToast()
