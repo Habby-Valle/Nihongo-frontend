@@ -31,7 +31,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
   const { mutate: sentenceRevalidate } = useSentences(props.grammarId || undefined)
 
   const [saving, setSaving] = useState(false)
-  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F]+$/
+  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/;
 
   const onSubmit = async (data: ISentenceFormInput) => {
     setSaving(true)

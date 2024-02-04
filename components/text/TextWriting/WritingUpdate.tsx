@@ -28,8 +28,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
   const { data: originalText } = useTextWriting(props.textId)
 
   const [AddAnnotation, setAddAnnotation] = useState<boolean>(!!originalText?.annotation)
-  const japaneseRegex =
-    /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u3000-\u303F\u002F<>a-zA-Z0-9!@#$%^&*(),.?":{}|_]+$/
+  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/;
 
   const router = useRouter()
 

@@ -21,7 +21,7 @@ export default function Textarea({ label, name, register }: ITextareaProps) {
       <textarea
         className="textarea"
         placeholder={label.toLowerCase()}
-        {...register(name, { required: true })}
+        {...register(name, { required: false })}
         rows={5}
       />
     </Column>

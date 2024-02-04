@@ -20,7 +20,7 @@ interface IModalUpdateGrammarProps {
 export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
   const { mutate: grammarsRevalidate } = useGrammars()
 
-  const { data: originalGrammar, error: origialGrammarError } = useGrammar(props.grammarId || 0)
+  const { data: originalGrammar } = useGrammar(props.grammarId || 0)
 
   const {
     register,
@@ -30,7 +30,7 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
   } = useForm<IGrammarFormInput>()
 
   const [saving, setSaving] = useState(false)
-  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F]+$/
+  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/;
 
   const toast = useToast()
 
@@ -76,10 +76,6 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
     } finally {
       setSaving(false)
     }
-  }
-
-  if (origialGrammarError) {
-    return <Error message={origialGrammarError.message} />
   }
 
   return (
