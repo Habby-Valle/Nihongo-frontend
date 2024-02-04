@@ -7,6 +7,7 @@ import { MdAdd, MdList } from "react-icons/md"
 import { IWordList, useWords } from "../../utils/api/vocabulary"
 import DataEmpty from "../DataEmpty"
 import Error from "../Error"
+import CategoryAddModal from "../category/CategoryAddModal"
 import { IVocabularyFilters } from "./SearchVocabulary"
 
 const ModalAddWord = lazy(async () => await import("./ModalAddWord"))
@@ -18,6 +19,7 @@ interface IWordListProps {
 
 export default function WordList(props: IWordListProps) {
   const [isModalAddWordOpen, setIsModalAddWordOpen] = useState(false)
+  const [isModalAddCategoryOpen, setIsModalAddCategoryOpen] = useState(false)
   const [wordId, setWordId] = useState<number | null>(null)
   const [isModalVocabularyOpen, setIsModalVocabularyOpen] = useState(false)
   const router = useRouter()
@@ -85,23 +87,45 @@ export default function WordList(props: IWordListProps) {
         >
           Words({words?.length})
         </Text>
-        <Button
-          onPress={() => {
-            setIsModalAddWordOpen(true)
-          }}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
-          size={"md"}
-          startIcon={
-            <MdAdd
-              size={25}
-              color="white"
-            />
-          }
+        <Row
+          justifyContent={"space-between"}
+          w={"30%"}
         >
-          Add
-        </Button>
+          <Button
+            onPress={() => {
+              setIsModalAddWordOpen(true)
+            }}
+            bg={"#D02C23"}
+            _hover={{ bg: "#ae251e" }}
+            _pressed={{ bg: "#ae251e" }}
+            size={"md"}
+            startIcon={
+              <MdAdd
+                size={25}
+                color="white"
+              />
+            }
+          >
+            Add Word
+          </Button>
+          <Button
+            onPress={() => {
+              setIsModalAddCategoryOpen(true)
+            }}
+            bg={"#D02C23"}
+            _hover={{ bg: "#ae251e" }}
+            _pressed={{ bg: "#ae251e" }}
+            size={"md"}
+            startIcon={
+              <MdAdd
+                size={25}
+                color="white"
+              />
+            }
+          >
+            Add Category
+          </Button>
+        </Row>
       </Row>
     )
   }
@@ -187,6 +211,14 @@ export default function WordList(props: IWordListProps) {
             setIsModalVocabularyOpen(false)
           }}
           wordId={wordId}
+        />
+      </Suspense>
+      <Suspense fallback={<Spinner />}>
+        <CategoryAddModal
+          isOpen={isModalAddCategoryOpen}
+          onClose={() => {
+            setIsModalAddCategoryOpen(false)
+          }}
         />
       </Suspense>
     </Box>
