@@ -24,7 +24,7 @@ export default function Translate() {
   const [AddAnnotation, setAddAnnotation] = useState<boolean>(false)
 
   const annotationRef = useRef(null)
-  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/;
+  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
 
   const { mutate: textsRevalidate } = useTexts()
 

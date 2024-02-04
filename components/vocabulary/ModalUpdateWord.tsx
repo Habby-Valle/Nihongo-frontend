@@ -32,7 +32,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
 
   const toast = useToast()
   const [saving, setSaving] = useState(false)
-  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/;
+  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
 
   useEffect(() => {
     if (originalWord) {
