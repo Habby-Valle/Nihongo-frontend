@@ -158,6 +158,7 @@ export default function GrammarList(props: IGrammarListProps) {
               bg: "#333333",
             }}
             w={"40px"}
+            h={"20px"}
             alignItems={"center"}
             rounded={"md"}
             shadow={1}
@@ -174,7 +175,8 @@ export default function GrammarList(props: IGrammarListProps) {
             _dark={{
               bg: "#333333",
             }}
-            w={"40px"}
+            w={"60px"}
+            h={"20px"}
             alignItems={"center"}
             rounded={"md"}
             shadow={1}

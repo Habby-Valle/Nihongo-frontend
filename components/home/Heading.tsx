@@ -4,6 +4,7 @@ import { Box, HStack, Icon, IconButton, Pressable, Text, useColorMode } from "na
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { MdArrowBack, MdDarkMode, MdLightMode } from "react-icons/md"
+
 import { WhoIam, useProfile } from "../../utils/api/user"
 
 interface IHeadingProps {
@@ -76,13 +77,13 @@ export function Heading({ title }: IHeadingProps) {
           >
             <Box style={{ borderRadius: 50, overflow: "hidden" }}>
               <Image
-                  loading={"eager"}
-                  src={`https://nihongo-gaido-4ec2db96e424.herokuapp.com/${profile?.avatar}`}
-                  alt="Avatar"
-                  width={30}
-                  height={30}
-                  objectFit="cover"
-                />
+                loading={"eager"}
+                src={`https://nihongo-gaido-4ec2db96e424.herokuapp.com/${profile?.avatar}`}
+                alt="Avatar"
+                width={30}
+                height={30}
+                objectFit="cover"
+              />
             </Box>
             <Text
               color="white"
