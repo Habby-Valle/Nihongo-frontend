@@ -20,6 +20,7 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue
   } = useForm<IFormInput>()
 
   const { mutate: categoriesRevalidate } = useCategories()
@@ -27,6 +28,10 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
   const [saving, setSaving] = useState(false)
 
   const toast = useToast()
+
+  const clearInputs = () => {
+    setValue("category", "")
+  }
 
   const onSubmit = async (data: IFormInput) => {
     console.log(data.category)
@@ -46,6 +51,7 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
         })
       }
       categoriesRevalidate()
+      clearInputs()
       props.onClose()
     } catch (error) {
       alert(error)
@@ -88,6 +94,7 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
               variant="ghost"
               colorScheme="blueGray"
               onPress={() => {
+                clearInputs()
                 props.onClose()
               }}
             >

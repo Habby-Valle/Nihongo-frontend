@@ -26,6 +26,7 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
     register,
     handleSubmit,
     formState: { errors },
+    setValue
   } = useForm<IExampleFormInput>()
 
   const [saving, setSaving] = useState(false)
@@ -33,6 +34,12 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
   const toast = useToast()
 
   const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
+
+  const clearInputs = () => {
+    setValue("example", "")
+    setValue("meaning", "")
+    setValue("annotation", "")
+  }
 
   const onSubmit = async (data: IExampleFormInput) => {
     setSaving(true)
@@ -54,6 +61,7 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
         })
       }
       examplesRevalidate()
+      clearInputs()
       props.onClose()
     } catch (error) {
       toast.show({
@@ -118,6 +126,7 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
               variant="ghost"
               colorScheme="blueGray"
               onPress={() => {
+                clearInputs()
                 props.onClose()
               }}
             >

@@ -33,6 +33,7 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
     register,
     handleSubmit,
     formState: { errors },
+    setValue
   } = useForm<IConjugationFormInput>()
 
   const [saving, setSaving] = useState(false)
@@ -40,6 +41,20 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
   const toast = useToast()
 
   const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
+
+  const clearInputs = () => {
+    setValue("present", "")
+    setValue("past", "")
+    setValue("negative", "")
+    setValue("teForm", "")
+    setValue("potential", "")
+    setValue("passive", "")
+    setValue("causative", "")
+    setValue("imperative", "")
+    setValue("volitional", "")
+    setValue("conditional", "")
+    setValue("causativePassive", "")
+  }
 
   const onSubmit = async (data: IConjugationFormInput) => {
     setSaving(true)
@@ -69,6 +84,7 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
         })
       }
       await conjugationRevalidate()
+      clearInputs()
     } catch (error) {
       toast.show({
         title: "Error",
@@ -218,6 +234,7 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
               variant="ghost"
               colorScheme="blueGray"
               onPress={() => {
+                clearInputs()
                 props.onClose()
               }}
             >
