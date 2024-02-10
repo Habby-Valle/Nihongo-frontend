@@ -56,6 +56,22 @@ export function useWords() {
   }
 }
 
+export function useWordToday() {
+  interface IResponse {
+    word_today: IWordList
+  }
+
+  const { data, error, isLoading, isValidating, mutate } = useSWR<IResponse>("/api/word/today", fetcchSimple)
+
+  return {
+    data: data?.word_today,
+    error,
+    isLoading,
+    isValidating,
+    mutate,
+  }
+}
+
 export function useWord(wordId: number | undefined) {
   interface WordReponse {
     word: IWordList
