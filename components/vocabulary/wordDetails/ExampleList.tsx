@@ -122,7 +122,7 @@ export default function ExampleList(props: IExampleListProps) {
               {item.meaning}
             </Text>
             <Text>{!item.annotation ? "No annotation" : item.annotation}</Text>
-            <Text>{new Date(item.createdAt).toLocaleDateString("pt-BR")}</Text>
+            <Text>{new Date(item.created_at).toLocaleDateString("pt-BR")}</Text>
           </Column>
         )}
       </Box>
