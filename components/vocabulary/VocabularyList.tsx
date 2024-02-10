@@ -1,8 +1,8 @@
 import React, { Suspense, lazy, memo, useMemo, useState } from "react"
 
-import { Box, Button, Divider, FlatList, Pressable, Row, Spinner, Text } from "native-base"
+import { Box, Button, Divider, FlatList, Pressable, Row, Spinner, Text, useToast } from "native-base"
 import { useRouter } from "next/router"
-import { MdAdd, MdList } from "react-icons/md"
+import { MdAdd, MdList, MdFileCopy, MdOutlineFileCopy } from "react-icons/md"
 
 import { IWordList, useWords } from "../../utils/api/vocabulary"
 import DataEmpty from "../DataEmpty"
@@ -22,7 +22,9 @@ export default function WordList(props: IWordListProps) {
   const [isModalAddCategoryOpen, setIsModalAddCategoryOpen] = useState(false)
   const [wordId, setWordId] = useState<number | null>(null)
   const [isModalVocabularyOpen, setIsModalVocabularyOpen] = useState(false)
+
   const router = useRouter()
+  const toast = useToast()
 
   const { data: words, error: wordsError, isLoading: wordsIsLoading, isValidating: wordsIsValidating } = useWords()
 
@@ -31,6 +33,7 @@ export default function WordList(props: IWordListProps) {
     setIsModalVocabularyOpen(true)
   }
 
+ 
   const filteredVocabulary = useMemo(() => {
     if (words === undefined) return []
 
@@ -131,6 +134,32 @@ export default function WordList(props: IWordListProps) {
   }
 
   const RenderItem = memo(({ item }: { item: IWordList }) => {
+
+    const [isCopied, setIsCopied] = useState(false)
+    const CopyIcon = isCopied ? MdFileCopy : MdOutlineFileCopy
+
+    const handleCopyToClipboard = async (text: string) => {
+      setIsCopied(true)
+      try {
+        await navigator.clipboard.writeText(text)
+        toast.show({
+          title: "Copied to clipboard",
+          placement: "top",
+          duration: 2000,
+        })
+      } catch (error) {
+        toast.show({
+          title: "Failed to copy to clipboard",
+          placement: "top",
+          duration: 200,
+        })
+      } finally {
+        setTimeout(() => {
+          setIsCopied(false)
+        }, 200)
+      }
+    }
+  
     return (
       <Pressable
         onPress={() => {
@@ -150,12 +179,26 @@ export default function WordList(props: IWordListProps) {
           w={"220px"}
           shadow={2}
         >
-          <Text
-            fontSize={20}
-            fontWeight={700}
+          <Row
+            justifyContent={"space-between"}
           >
-            {item.word} - {item.reading}
-          </Text>
+            <Text
+              fontSize={20}
+              fontWeight={700}
+            >
+              {item.word} - {item.reading}
+            </Text>
+            <Pressable
+              onPress={() => {
+                handleCopyToClipboard(item.word)
+              }}
+            >
+              <CopyIcon
+                size={24}
+                color={"#D02C23"}
+              />
+            </Pressable>
+          </Row>
           <Divider />
           <Text
             fontSize={15}
