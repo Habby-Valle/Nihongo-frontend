@@ -190,7 +190,7 @@ export default function WordList(props: IWordListProps) {
             </Text>
             <Pressable
               onPress={() => {
-                handleCopyToClipboard([item.word, item.meaning])
+                handleCopyToClipboard([item.word, item.reading, item.meaning])
               }}
             >
               <CopyIcon
