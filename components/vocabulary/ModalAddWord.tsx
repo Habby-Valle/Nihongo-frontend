@@ -9,6 +9,7 @@ import { createWord, useWords } from "../../utils/api/vocabulary"
 import { levelOptions, typeWordsOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
+import Textarea from "../Textarea"
 
 interface IModalAddWordProps {
   isOpen: boolean
@@ -22,6 +23,7 @@ export interface IVocabularyFormInput {
   type: TypeWord
   level: TypeLevel
   category: string
+  annotation?: string
 }
 
 export default function ModalAddWord(props: IModalAddWordProps) {
@@ -47,6 +49,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
     setValue("type", "Unknown")
     setValue("level", "Unknown")
     setValue("category", "")
+    setValue("annotation", "")
   }
 
   const onSubmit = async (data: IVocabularyFormInput) => {
@@ -61,6 +64,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
         type: data.type,
         level: data.level,
         category: parseInt(data.category),
+        annotation: data.annotation,
       })
 
       if (newWord) {
@@ -160,6 +164,12 @@ export default function ModalAddWord(props: IModalAddWordProps) {
                   value: category.id,
                 }
               })}
+            />
+
+            <Textarea
+              label="Annotation"
+              name="annotation"
+              register={register}
             />
           </Column>
         </Modal.Body>
