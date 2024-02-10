@@ -9,9 +9,9 @@ export interface IExampleList {
   meaning: string
   annotation: string
   wordId: number
-  createdAt: string
-  updatedAt: string
-  createdBy: number
+  created_at: string
+  updated_at: string
+  created_by: number
 }
 
 export interface IExampleCreate {
