@@ -211,13 +211,12 @@ export default function WordList(props: IWordListProps) {
               handleChangeWordId(item.id)
             }}
           >
-            頭上
-acima da cabeça
             <MdList
               size={24}
               color={"#D02C23"}
             />
           </Pressable>
+          
         </Box>
       </Pressable>
     )
