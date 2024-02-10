@@ -138,10 +138,10 @@ export default function WordList(props: IWordListProps) {
     const [isCopied, setIsCopied] = useState(false)
     const CopyIcon = isCopied ? MdFileCopy : MdOutlineFileCopy
 
-    const handleCopyToClipboard = async (text: string) => {
+    const handleCopyToClipboard = async (texts: string[]) => {
       setIsCopied(true)
       try {
-        await navigator.clipboard.writeText(text)
+        await navigator.clipboard.writeText(texts.join("\n"))
         toast.show({
           title: "Copied to clipboard",
           placement: "top",
@@ -190,7 +190,7 @@ export default function WordList(props: IWordListProps) {
             </Text>
             <Pressable
               onPress={() => {
-                handleCopyToClipboard(item.word)
+                handleCopyToClipboard([item.word, item.meaning])
               }}
             >
               <CopyIcon
@@ -201,16 +201,18 @@ export default function WordList(props: IWordListProps) {
           </Row>
           <Divider />
           <Text
-            fontSize={15}
-            fontWeight={500}
-          >
-            {item.meaning}
+              fontSize={15}
+              fontWeight={500}
+            >
+              {item.meaning}
           </Text>
           <Pressable
             onPress={() => {
               handleChangeWordId(item.id)
             }}
           >
+            頭上
+acima da cabeça
             <MdList
               size={24}
               color={"#D02C23"}
