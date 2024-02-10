@@ -13,6 +13,7 @@ export interface IWordList {
   type: TypeWord
   level: TypeLevel
   category: ICategoryList
+  annotation: string
   created_by: number
   created_at: string
   updated_at: string
@@ -25,6 +26,7 @@ export interface IWordCreate {
   type: TypeWord
   level: TypeLevel
   category: number
+  annotation?: string
   created_by?: number
 }
 
@@ -35,6 +37,7 @@ export interface IWordUpdate {
   type?: TypeWord
   level?: TypeLevel
   category?: number
+  annotation?: string
 }
 
 export function useWords() {
@@ -69,20 +72,20 @@ export function useWord(wordId: number | undefined) {
   }
 }
 
-export async function createWord({ word, reading, meaning, type, level, category }: IWordCreate) {
+export async function createWord({ word, reading, meaning, type, level, category, annotation }: IWordCreate) {
   interface IWordReponse {
     message: string
   }
 
   try {
-    const res = await axios.post<IWordReponse>("/api/words", { word, reading, meaning, type, level, category })
+    const res = await axios.post<IWordReponse>("/api/words", { word, reading, meaning, type, level, category, annotation })
     return res.data.message
   } catch (error: any) {
     throw new Error(error.message)
   }
 }
 
-export async function updateWord(wordId: number, { word, reading, meaning, type, level, category }: IWordUpdate) {
+export async function updateWord(wordId: number, { word, reading, meaning, type, level, category, annotation }: IWordUpdate) {
   interface IWordReponse {
     message: string
   }
@@ -95,6 +98,7 @@ export async function updateWord(wordId: number, { word, reading, meaning, type,
       type,
       level,
       category,
+      annotation,
     })
     return res.data.message
   } catch (error: any) {
