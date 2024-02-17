@@ -165,9 +165,6 @@ export default function WordList(props: IWordListProps) {
         onPress={() => {
           router.push(`/vocabulary/details/${item.id}`)
         }}
-        _hover={{
-          bg: "gray.200",
-        }}
       >
         <Box
           p={5}
@@ -232,12 +229,13 @@ export default function WordList(props: IWordListProps) {
       <FlatList
         w={"100%"}
         data={filteredVocabulary}
+
         ListHeaderComponent={header}
         renderItem={({ item }) => <RenderItem item={item} />}
         keyExtractor={(item) => item.id.toString()}
         ListEmptyComponent={<DataEmpty message="Não há palvras" />}
         ItemSeparatorComponent={() => <Box mt={2} />}
-        numColumns={3}
+        numColumns={4}
         windowSize={10}
       />
       <Suspense fallback={<Spinner />}>
