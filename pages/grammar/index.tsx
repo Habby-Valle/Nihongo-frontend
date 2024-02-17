@@ -15,7 +15,7 @@ export async function getServerSideProps({ req, res }: GetServerSidePropsContext
 export default function Grammar() {
   const [filters, setFilters] = React.useState<IGrammarsFilters>()
   return (
-    <BaseLayout title="Grammar">
+    <BaseLayout title="Grámatica">
       <Box
         justifyContent={"center"}
         alignItems={"center"}

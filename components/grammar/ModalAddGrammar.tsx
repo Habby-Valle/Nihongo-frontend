@@ -85,11 +85,11 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Add new grammar</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Adicionar nova gramática</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Grammar"
+              label="Gramática"
               name="grammar"
               type="text"
               register={register}
@@ -97,17 +97,17 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
               errors={errors}
             />
             <Input
-              label="Structure"
+              label="Estrutura"
               name="structure"
               type="text"
               register={register}
               // @ts-expect-error: errors type is not compatible with InputProps
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve conter apenas caracteres japoneses"
               pattern={japaneseRegex}
             />
             <Select
-              label="Level"
+              label="Nível"
               name="level"
               register={register}
               // @ts-expect-error: errors type is not compatible with InputProps
@@ -116,7 +116,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
             />
 
             <Textarea
-              label="Explain"
+              label="Explicação"
               name="explain"
               register={register}
             />
@@ -132,7 +132,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -143,7 +143,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

@@ -70,8 +70,8 @@ export default function FilterByMonth(props: IFilterMonthProps) {
       }}
       selectedValue={selectedMonth}
       minWidth={200}
-      accessibilityLabel="Select month"
-      placeholder="Select month"
+      accessibilityLabel="Escolha um mês"
+      placeholder="Escolha um mês"
       onValueChange={handleSelectMonth}
       _selectedItem={{
         bg: "cyan.600",
@@ -81,7 +81,7 @@ export default function FilterByMonth(props: IFilterMonthProps) {
       w={"200px"}
     >
       <Select.Item
-        label="Month"
+        label="Mês"
         value="month"
       />
       {uniqueMonth?.sort().map((month, index) => (

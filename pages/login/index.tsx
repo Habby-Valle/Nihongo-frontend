@@ -54,8 +54,8 @@ export default function Login() {
 
         router.push("/home")
         toast.show({
-          title: "Welcome",
-          description: `Welcome ${user.first_name}`,
+          title: "Seja Bem-Vindo!",
+          description: `Bem Vindo, ${user.first_name}`,
           placement: "top",
           duration: 2000,
         })
@@ -70,7 +70,7 @@ export default function Login() {
         } else {
           toast.show({
             title: "Error",
-            description: "Something went wrong",
+            description: "Aconteceu algum erro! Tente novamente!",
             placement: "top",
             duration: 2000,
           })
@@ -155,14 +155,14 @@ export default function Login() {
             />
           </FormControl>
           <FormControl>
-            <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Password</FormControl.Label>
+            <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Senha</FormControl.Label>
             <Input
               value={password}
               onChangeText={(text) => {
                 setPassword(text)
               }}
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Senha"
               shadow={1}
               _focus={{ borderColor: "#D02C23" }}
               _hover={{ borderColor: "#D02C23" }}
@@ -191,7 +191,7 @@ export default function Login() {
         >
           <Column width={"100%"}>
             <Row>
-              <Text mr={"6px"}>Don t have an account?</Text>
+              <Text mr={"6px"}>Não tem uma conta?</Text>
               <Pressable
                 onPress={() => {
                   router.push("/register")
@@ -204,14 +204,14 @@ export default function Login() {
                     router.push("/register")
                   }}
                 >
-                  Register
+                  Registre-se
                 </Text>
               </Pressable>
             </Row>
           </Column>
           <Column width={"100%"}>
             <Row>
-              <Text mr={"6px"}>Forgot your password?</Text>
+              <Text mr={"6px"}>Esqueceu sua senha?</Text>
               <Text
                 fontWeight={"600"}
                 color={"#D02C23"}
@@ -219,7 +219,7 @@ export default function Login() {
                   router.push("/forgot-password")
                 }}
               >
-                Reset
+                Mude
               </Text>
             </Row>
           </Column>

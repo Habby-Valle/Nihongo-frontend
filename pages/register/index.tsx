@@ -113,8 +113,8 @@ export default function Register() {
       if (!userRegistered) throw new Error("Something went wrong")
 
       toast.show({
-        title: "Registered",
-        description: `User ${userRegistered.username} registered successfully`,
+        title: "Conta criada!",
+        description: `Usuário ${userRegistered.username} registrado com sucesso!`,
         placement: "top",
         duration: 2000,
       })
@@ -133,7 +133,7 @@ export default function Register() {
       } else {
         toast.show({
           title: "Error",
-          description: "Something went wrong",
+          description: "Aconteceu algum erro! Tente novamente!",
           placement: "top",
           duration: 2000,
         })
@@ -155,7 +155,7 @@ export default function Register() {
       }}
     >
       <Head>
-        <title>Nihongo Gaido - Register</title>
+        <title>Nihongo Gaido - Criar conta</title>
       </Head>
       <Column
         borderRadius={"5px"}
@@ -205,33 +205,33 @@ export default function Register() {
               isRequired
               isInvalid={!isFirstNameValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>First name</FormControl.Label>
+              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Nome</FormControl.Label>
               <Input
                 value={firstName}
                 onChangeText={handleChangeName}
-                placeholder="First name"
+                placeholder="Nome"
                 shadow={1}
                 _focus={{ borderColor: "#D02C23" }}
                 _hover={{ borderColor: "#D02C23" }}
                 focusOutlineColor={"#D02C23"}
               />
-              <FormControl.ErrorMessage>First name invalid</FormControl.ErrorMessage>
+              <FormControl.ErrorMessage>Nome inválido</FormControl.ErrorMessage>
             </FormControl>
             <FormControl
               isRequired
               isInvalid={!isLastNameValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Last name</FormControl.Label>
+              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Sobrenome</FormControl.Label>
               <Input
                 value={lastName}
                 onChangeText={handleChangeLastName}
-                placeholder="Last name"
+                placeholder="Sobrenome"
                 shadow={1}
                 _focus={{ borderColor: "#D02C23" }}
                 _hover={{ borderColor: "#D02C23" }}
                 focusOutlineColor={"#D02C23"}
               />
-              <FormControl.ErrorMessage>Last name invalid</FormControl.ErrorMessage>
+              <FormControl.ErrorMessage>Sobrenome inválido</FormControl.ErrorMessage>
             </FormControl>
             <FormControl
               isRequired
@@ -247,7 +247,7 @@ export default function Register() {
                 _hover={{ borderColor: "#D02C23" }}
                 focusOutlineColor={"#D02C23"}
               />
-              <FormControl.ErrorMessage>Username invalid</FormControl.ErrorMessage>
+              <FormControl.ErrorMessage>Username inválido</FormControl.ErrorMessage>
             </FormControl>
           </Column>
           <Column
@@ -268,18 +268,18 @@ export default function Register() {
                 _hover={{ borderColor: "#D02C23" }}
                 focusOutlineColor={"#D02C23"}
               />
-              <FormControl.ErrorMessage>Email invalid</FormControl.ErrorMessage>
+              <FormControl.ErrorMessage>Email inválido</FormControl.ErrorMessage>
             </FormControl>
             <FormControl
               isRequired
               isInvalid={!isPasswordValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Password</FormControl.Label>
+              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Senha</FormControl.Label>
               <Input
                 value={password}
                 onChangeText={handleChangeSenha}
                 type={showPassword ? "text" : "password"}
-                placeholder="Password"
+                placeholder="Senha"
                 shadow={1}
                 _focus={{ borderColor: "#D02C23" }}
                 _hover={{ borderColor: "#D02C23" }}
@@ -299,7 +299,7 @@ export default function Register() {
               isRequired
               isInvalid={!isConfirmPasswordValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Confirm password</FormControl.Label>
+              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Confirmar senha</FormControl.Label>
               <Input
                 value={confirmPassword}
                 onChangeText={handleChangeConfirmarSenha}
@@ -329,7 +329,7 @@ export default function Register() {
         >
           <Column width={"100%"}>
             <Row>
-              <Text mr={"6px"}>Already have an account?</Text>
+              <Text mr={"6px"}>Já tem uma conta?</Text>
               <Pressable
                 onPress={() => {
                   router.push("/register")
@@ -375,7 +375,7 @@ export default function Register() {
               confirmPassword.trim() === ""
             }
           >
-            Register
+            Criar conta
           </Button>
         </Column>
       </Column>

@@ -15,7 +15,7 @@ export async function getServerSideProps({ req, res }: GetServerSidePropsContext
 export default function Vocabulary() {
   const [filters, setFilters] = useState<IVocabularyFilters>()
   return (
-    <BaseLayout title="Vocabulary">
+    <BaseLayout title="Vocabulário">
       <Box
         justifyContent={"center"}
         alignItems={"center"}

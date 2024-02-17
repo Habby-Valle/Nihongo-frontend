@@ -13,14 +13,14 @@ export async function getServerSideProps({ req, res }: GetServerSidePropsContext
 
 export default function Text() {
   return (
-    <BaseLayout title="Text">
+    <BaseLayout title="Textos escritos">
       <Box w={"100%"}>
         <Textt
           textAlign={"center"}
           fontSize={"xl"}
           fontWeight={"bold"}
         >
-          Choose an option
+          Escolha uma opção
         </Textt>
         <TextOptions />
       </Box>

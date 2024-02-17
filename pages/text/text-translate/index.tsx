@@ -14,7 +14,7 @@ export async function getServerSideProps({ req, res }: GetServerSidePropsContext
 
 export default function TextTranslate() {
   return (
-    <BaseLayout title="Text translate">
+    <BaseLayout title="Textos traduzidos">
       <Row
         justifyContent={"space-around"}
         alignItems={"flex-start"}
