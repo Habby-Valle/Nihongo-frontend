@@ -25,7 +25,7 @@ export default function ModalDeleteConjugation(props: IModalDeleteConjugationPro
 
       toast.show({
         title: "Success",
-        description: `Delete conjugation successfully!`,
+        description: `Excluir conjugation successfully!`,
         placement: "top",
         duration: 2000,
       })
@@ -46,7 +46,7 @@ export default function ModalDeleteConjugation(props: IModalDeleteConjugationPro
     >
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Delete conjugation</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Excluir conjugation</Modal.Header>
         <Modal.Body>Are you sure you want to delete this conjugation?</Modal.Body>
         <Modal.Footer>
           <Button.Group
@@ -68,7 +68,7 @@ export default function ModalDeleteConjugation(props: IModalDeleteConjugationPro
               isLoading={saving}
               _text={{ color: "white" }}
             >
-              Delete
+              Excluir
             </Button>
           </Button.Group>
         </Modal.Footer>

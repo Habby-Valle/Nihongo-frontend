@@ -95,7 +95,7 @@ export default function WritingView(props: IWritinglProps) {
               setModalDeleteText(true)
             }}
           >
-            Delete text
+            Excluir text
           </Button>
         </Row>
       </Column>

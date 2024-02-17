@@ -74,7 +74,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
       if (updatedWord) {
         toast.show({
           title: "Success",
-          description: `Word updated`,
+          description: `Palavra updated`,
           placement: "top",
           duration: 2000,
         })
@@ -110,22 +110,22 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}> Update word</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}> Atualizar palavra</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Word"
+              label="Palavra"
               name="word"
               type="text"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
               errors={errors}
-              patternError="Word must be in Japanese"
+              patternError="Palavra must be in Japanese"
               pattern={japaneseRegex}
             />
 
             <Input
-              label="Reading"
+              label="Leitura"
               name="reading"
               type="text"
               register={register}
@@ -136,7 +136,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
             />
 
             <Input
-              label="Meaning"
+              label="Significado"
               name="meaning"
               type="text"
               register={register}
@@ -145,7 +145,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
             />
 
             <Select
-              label="Type"
+              label="Tipo"
               name="type"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
@@ -154,7 +154,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
             />
 
             <Select
-              label="Level"
+              label="Nível"
               name="level"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
@@ -163,7 +163,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
             />
 
             <Select
-              label="Category"
+              label="Categoria"
               name="category"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
@@ -177,7 +177,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
             />
 
             <Textarea
-              label="Annotation"
+              label="Anotações"
               name="annotation"
               register={register}
             />

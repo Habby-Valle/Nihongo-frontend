@@ -33,7 +33,7 @@ export default function ModalSentence(props: ModalSentenceProps) {
                   props.onClose()
                 }}
               >
-                Delete
+                Excluir
               </Button>
               <Button
                 colorScheme="warning"

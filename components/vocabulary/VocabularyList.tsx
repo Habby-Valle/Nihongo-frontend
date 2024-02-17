@@ -88,7 +88,7 @@ export default function WordList(props: IWordListProps) {
           fontSize={20}
           fontWeight={700}
         >
-          Tota de palavras ({words?.length})
+          Total de palavras ({words?.length})
         </Text>
         <Row
           justifyContent={"space-between"}

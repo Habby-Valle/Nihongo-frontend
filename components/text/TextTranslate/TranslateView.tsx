@@ -136,7 +136,7 @@ export default function Translate(props: ITextDetailProps) {
                 setModalDeleteText(true)
               }}
             >
-              Delete text
+              Excluir text
             </Button>
           </Row>
         </Column>

@@ -25,7 +25,7 @@ export default function ModalDeleteExample(props: IModalDeleteExampleProps) {
 
       toast.show({
         title: "Success",
-        description: `Delete sentence successfully!`,
+        description: `Excluir sentence successfully!`,
         placement: "top",
         duration: 2000,
       })
@@ -46,7 +46,7 @@ export default function ModalDeleteExample(props: IModalDeleteExampleProps) {
     >
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Delete example</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Excluir example</Modal.Header>
         <Modal.Body>Are you sure you want to delete this example?</Modal.Body>
         <Modal.Footer>
           <Button.Group
@@ -68,7 +68,7 @@ export default function ModalDeleteExample(props: IModalDeleteExampleProps) {
               isLoading={saving}
               _text={{ color: "white" }}
             >
-              Delete
+              Excluir
             </Button>
           </Button.Group>
         </Modal.Footer>
