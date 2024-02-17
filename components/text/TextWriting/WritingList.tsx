@@ -55,7 +55,7 @@ export default function TranslateList() {
   }
 
   if (textsLoading) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   return (

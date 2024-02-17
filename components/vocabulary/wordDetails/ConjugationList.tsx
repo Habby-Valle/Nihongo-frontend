@@ -27,7 +27,7 @@ export default function ConjugationList(props: IConjugationListProps) {
   }
 
   if (conjugationIsLoading) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   if (!conjugation) {

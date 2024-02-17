@@ -117,117 +117,117 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Update conjugation</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Atualizar conjugação</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Present"
+              label="Presente"
               name="present"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Past"
+              label="Passado"
               name="past"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Negative"
+              label="Negativa"
               name="negative"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Te form"
+              label="Forma Te"
               name="teForm"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Potential"
+              label="Potencial"
               name="potential"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Passive"
+              label="Passiva"
               name="passive"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Causative"
+              label="Causativa"
               name="causative"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Imperative"
+              label="Imparativa"
               name="imperative"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Volitional"
+              label="Volicional"
               name="volitional"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Conditional"
+              label="Condicional"
               name="conditional"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
             <Input
-              label="Causative passive"
+              label="Causativa Passiva"
               name="causativePassive"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve estar em japonês"
               pattern={japaneseRegex}
             />
           </Column>

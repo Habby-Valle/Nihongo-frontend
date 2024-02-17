@@ -23,7 +23,7 @@ export default function Translate(props: ITextDetailProps) {
   }
 
   if (textLoading) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   return (

@@ -34,7 +34,7 @@ export default function WordDetailsAndExamples(props: IWordDetailsProps) {
   }
 
   if (word === undefined || wordIsLoading || wordIsValidating) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   function getCurrentTab() {
@@ -96,12 +96,12 @@ function Header({ word }: IHeaderProps) {
           {word.word} - {word.reading}
         </Text>
         <Divider />
-        <Text>Meaning: {word.meaning}</Text>
-        <Text>Type: {word.type}</Text>
-        <Text>Level: {word.level}</Text>
-        <Text>Category: {word.category?.name}</Text>
+        <Text>Significado: {word.meaning}</Text>
+        <Text>Tipo: {word.type}</Text>
+        <Text>Nível: {word.level}</Text>
+        <Text>Categoria: {word.category?.name}</Text>
         {word.annotation && (
-          <Text>Annotation: {word.annotation}</Text>
+          <Text>Anotações: {word.annotation}</Text>
         )}
       </Column>
       <Column justifyContent={"space-between"}>
@@ -123,7 +123,7 @@ function Header({ word }: IHeaderProps) {
           disabled={!["Verb - Group 1", "Verb - Group 2", "Verb - Group 3"].includes(word.type)}
           opacity={["Verb - Group 1", "Verb - Group 2", "Verb - Group 3"].includes(word.type) ? 1 : 0.5}
         >
-          <Text color={"white"}>Conjugation</Text>
+          <Text color={"white"}>Conjugação</Text>
         </Button>
 
         <Button
@@ -142,7 +142,7 @@ function Header({ word }: IHeaderProps) {
             />
           }
         >
-          <Text color={"white"}>Example</Text>
+          <Text color={"white"}>Exemplo</Text>
         </Button>
       </Column>
 
@@ -201,7 +201,7 @@ function TabHeader({ setSelectedTab, word }: ITabHeaderProps) {
           fontWeight={"bold"}
           fontSize={15}
         >
-          Examples
+          Exemplos
         </Text>
       </Pressable>
       {["Verb - Group 1", "Verb - Group 2", "Verb - Group 3"].includes(word.type) && (
@@ -220,7 +220,7 @@ function TabHeader({ setSelectedTab, word }: ITabHeaderProps) {
             fontWeight={"bold"}
             fontSize={15}
           >
-            Conjugations
+            Conjugações
           </Text>
         </Pressable>
       )}

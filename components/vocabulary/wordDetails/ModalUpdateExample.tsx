@@ -67,7 +67,7 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
       if (updatedExample) {
         toast.show({
           title: "Success",
-          description: `Example updated`,
+          description: `Exemplo atualizado com sucesso!`,
           placement: "top",
           duration: 2000,
         })
@@ -79,7 +79,7 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
     } catch (error) {
       toast.show({
         title: "Error",
-        description: `Something went wrong`,
+        description: `Erro ao atualizar exemplo!`,
         placement: "top",
         duration: 2000,
       })
@@ -102,22 +102,22 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Edit example</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Atualizar exemplo</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Example"
+              label="Exemplo"
               name="example"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="Exemplo deve estar em japonês!"
               pattern={japaneseRegex}
             />
 
             <Input
-              label="Meaning"
+              label="Tradução"
               name="meaning"
               type="text"
               register={register}
@@ -126,7 +126,7 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
             />
 
             <Textarea
-              label="Annotation"
+              label="Anotação"
               name="annotation"
               register={register}
             />

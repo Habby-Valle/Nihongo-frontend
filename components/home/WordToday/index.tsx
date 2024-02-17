@@ -12,7 +12,7 @@ export default function WordToday() {
     } = useWordToday()
 
     if (wordIsLoading) {
-        return <Text>Loading...</Text>
+        return <Text>Carregando...</Text>
     }
 
     if (wordError) {

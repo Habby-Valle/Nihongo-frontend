@@ -23,7 +23,7 @@ export default function WritingView(props: IWritinglProps) {
   }
 
   if (textLoading) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   return (
