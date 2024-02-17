@@ -33,10 +33,10 @@ export default function Translate() {
 
     if (text.trim().length === 0) {
       setIsTitleValid(false)
-      setTitleErrorMessage("Title is required")
+      setTitleErrorMessage("Título é obrigatório")
     } else if (!japaneseRegex.test(text)) {
       setIsTitleValid(false)
-      setTitleErrorMessage("Title must be in Japanese")
+      setTitleErrorMessage("Título deve ser em japonês")
     } else {
       setIsTitleValid(true)
       setTitleErrorMessage("")
@@ -48,7 +48,7 @@ export default function Translate() {
 
     if (text.trim().length === 0) {
       setIsTextValid(false)
-      setTextErrorMessage("Text is required")
+      setTextErrorMessage("Texto é obrigatório")
     } else {
       setIsTextValid(true)
       setTextErrorMessage("")
@@ -60,10 +60,10 @@ export default function Translate() {
 
     if (text.trim().length === 0) {
       setIsTranslateValid(false)
-      setTranslateErrorMessage("Translate is required")
+      setTranslateErrorMessage("Tradução é obrigatória")
     } else if (text.length <= 16) {
       setIsTranslateValid(false)
-      setTranslateErrorMessage("Translate must be at least 10 characters")
+      setTranslateErrorMessage("Tradução deve ter mais de 16 caracteres")
     } else {
       setIsTranslateValid(true)
       setTranslateErrorMessage("")
@@ -94,7 +94,7 @@ export default function Translate() {
       if (newText) {
         Toast.show({
           title: "Success",
-          description: `Text created`,
+          description: `Texto adicionado com sucesso!`,
           placement: "top",
           duration: 20000,
         })
@@ -131,7 +131,7 @@ export default function Translate() {
             key="title-label"
             testID="title-label"
           >
-            Title
+            Título
           </FormControl.Label>
           <Input
             placeholder={"Title"}
@@ -169,7 +169,7 @@ export default function Translate() {
               fontSize: "lg",
             }}
           >
-            Text
+            Conteúdo
           </FormControl.Label>
           <TextEditor
             content={text}
@@ -192,7 +192,7 @@ export default function Translate() {
               fontSize: "lg",
             }}
           >
-            Translate
+            Tradução
           </FormControl.Label>
           <TextEditor
             content={translate}
@@ -216,7 +216,7 @@ export default function Translate() {
                 fontSize: "lg",
               }}
             >
-              Annotation
+              Anotação
             </FormControl.Label>
             <TextEditor
               content={annotation}
@@ -250,7 +250,7 @@ export default function Translate() {
           _hover={{ bg: "#ae251e" }}
           _pressed={{ bg: "#ae251e" }}
         >
-          {AddAnnotation ? "Hide Annotation" : "Add Annotation"}
+          {AddAnnotation ? "Esconder anotação" : "Add anotação"}
         </Button>
       </Row>
     </Column>

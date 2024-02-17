@@ -45,14 +45,14 @@ export default function TextWritingCard() {
           fontSize={"xl"}
           fontWeight={"bold"}
         >
-          Writing
+          Escrever
         </Text>
         <Text
           textAlign={"justify"}
           fontSize={"sm"}
           fontWeight={"400"}
         >
-          Here you can practice your writing skills.
+          Aqui você pode escrever textos em japonês
         </Text>
       </Column>
     </Pressable>

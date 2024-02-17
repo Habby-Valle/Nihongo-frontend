@@ -80,7 +80,7 @@ export default function Translate(props: ITextDetailProps) {
             fontSize={15}
             textAlign={"center"}
           >
-            Translate
+            Tradução
           </Text>
           <HTMLRenderer
             html={text?.translate ?? "<p>oba</p>"}
@@ -110,7 +110,7 @@ export default function Translate(props: ITextDetailProps) {
             fontSize={15}
             textAlign={"center"}
           >
-            Annotation
+            Anotações
           </Text>
           <HTMLRenderer
             html={text?.annotation || "<p>Nenhuma anotação disponível</p>"}
@@ -127,7 +127,7 @@ export default function Translate(props: ITextDetailProps) {
               _pressed={{ bg: "#ae251e" }}
               onPress={props.onEdit}
             >
-              Edit text
+              Atualizar texto
             </Button>
             <Button
               variant={"ghost"}
@@ -136,7 +136,7 @@ export default function Translate(props: ITextDetailProps) {
                 setModalDeleteText(true)
               }}
             >
-              Excluir text
+              Excluir texto
             </Button>
           </Row>
         </Column>

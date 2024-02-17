@@ -25,7 +25,7 @@ export default function TranslateList() {
           fontSize={20}
           textAlign={"left"}
         >
-          Texts
+          Textos escritos
         </Text>
       </Column>
     )
@@ -74,7 +74,7 @@ export default function TranslateList() {
         renderItem={item}
         keyExtractor={(item) => item.id.toString()}
         ListHeaderComponent={headers}
-        ListEmptyComponent={<DataEmpty message={"No texts found"} />}
+        ListEmptyComponent={<DataEmpty message={"Nenhum texto encontrado"} />}
         ItemSeparatorComponent={() => <Divider bg={"#D02C23"} />}
       />
     </Box>

@@ -26,7 +26,7 @@ export default function ModalDeleteText(props: IModalDeleteTextProps) {
 
       toast.show({
         title: "Success",
-        description: `Excluir text successfully!`,
+        description: `Texto excluído com sucesso`,
         placement: "top",
         duration: 2000,
       })
@@ -48,8 +48,10 @@ export default function ModalDeleteText(props: IModalDeleteTextProps) {
     >
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Excluir Text</Modal.Header>
-        <Modal.Body>Are you sure you want to delete this text?</Modal.Body>
+        <Modal.Header _text={{ color: "#D02C23" }}>Excluir texto</Modal.Header>
+        <Modal.Body>
+          Tem certeza que deseja excluir este texto?
+        </Modal.Body>
         <Modal.Footer>
           <Button.Group
             variant="ghost"

@@ -56,10 +56,10 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
 
     if (text.trim().length === 0) {
       setIsTitleValid(false)
-      setTitleErrorMessage("Title is required")
+      setTitleErrorMessage("Título é obrigatório")
     } else if (!japaneseRegex.test(text)) {
       setIsTitleValid(false)
-      setTitleErrorMessage("Title must be in Japanese")
+      setTitleErrorMessage("Título deve ser em japonês")
     } else {
       setIsTitleValid(true)
       setTitleErrorMessage("")
@@ -71,7 +71,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
 
     if (text.trim().length === 0) {
       setIsTextValid(false)
-      setTextErrorMessage("Text is required")
+      setTextErrorMessage("Texto é obrigatório")
     } else {
       setIsTextValid(true)
       setTextErrorMessage("")
@@ -100,7 +100,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
       if (updatedText) {
         Toast.show({
           title: "Success",
-          description: `Text updated`,
+          description: `Texto atualizado com sucesso!`,
           placement: "top",
           duration: 2000,
         })
@@ -138,7 +138,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
             key="title-label"
             testID="title-label"
           >
-            Title
+            Título
           </FormControl.Label>
           <Input
             placeholder={"Title"}
@@ -176,7 +176,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
               fontSize: "lg",
             }}
           >
-            Text
+            Contéudo
           </FormControl.Label>
           <TextEditor
             content={text}
@@ -200,7 +200,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
                 fontSize: "lg",
               }}
             >
-              Annotation
+              Anotações
             </FormControl.Label>
             <TextEditor
               content={annotation}
@@ -234,7 +234,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
           _hover={{ bg: "#ae251e" }}
           _pressed={{ bg: "#ae251e" }}
         >
-          {AddAnnotation ? "Hide Annotation" : "Show Annotation"}
+          {AddAnnotation ? "Esconder anotação" : "Mostrar anotação"}
         </Button>
 
         <Button
@@ -255,7 +255,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
           _hover={{ bg: "#ae251e" }}
           _pressed={{ bg: "#ae251e" }}
         >
-          Back
+          Voltar
         </Button>
       </Row>
     </Column>
