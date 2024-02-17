@@ -54,7 +54,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
       if (newSentence) {
         toast.show({
           title: "Success",
-          description: `Sentence added`,
+          description: `Sentença adicionada com sucesso!`,
           placement: "top",
           duration: 2000,
         })
@@ -83,22 +83,22 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Adicionar novasentence</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Adicionar nova sentença</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Sentence"
+              label="Frase"
               name="sentence"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not in the type
               errors={errors}
-              patternError="Sentence must be in Japanese"
+              patternError="A frase deve estar em japonês!"
               pattern={japaneseRegex}
             />
 
             <Input
-              label="Translate"
+              label="Tradução"
               name="translate"
               type="text"
               register={register}
@@ -107,7 +107,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
             />
 
             <Textarea
-              label="Annotation"
+              label="Anotações"
               name="annotation"
               register={register}
             />

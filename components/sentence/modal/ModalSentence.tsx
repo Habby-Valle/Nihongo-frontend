@@ -22,7 +22,7 @@ export default function ModalSentence(props: ModalSentenceProps) {
     >
       <Modal.Content>
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Sentences options</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Opções da sentença</Modal.Header>
         <Modal.Body>
           <Box>
             <Column space={"10px"}>
@@ -42,15 +42,15 @@ export default function ModalSentence(props: ModalSentenceProps) {
                   props.onClose()
                 }}
               >
-                Edit
+                Atualizar
               </Button>
-              <Button
+              {/* <Button
                 colorScheme="info"
                 onPress={() => {}}
                 disabled
               >
-                View
-              </Button>
+                Ver
+              </Button> */}
             </Column>
           </Box>
         </Modal.Body>

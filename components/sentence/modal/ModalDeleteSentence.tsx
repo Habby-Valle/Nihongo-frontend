@@ -25,7 +25,7 @@ export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
 
       toast.show({
         title: "Success",
-        description: `Excluir sentence successfully!`,
+        description: `Sentença excluída com sucesso!`,
         placement: "top",
         duration: 2000,
       })
@@ -46,8 +46,10 @@ export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
     >
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Excluir sentence</Modal.Header>
-        <Modal.Body>Are you sure you want to delete this sentence?</Modal.Body>
+        <Modal.Header _text={{ color: "#D02C23" }}>Excluir sentença</Modal.Header>
+        <Modal.Body>
+          Tem certeza que deseja excluir esta sentença?
+        </Modal.Body>
         <Modal.Footer>
           <Button.Group
             variant="ghost"

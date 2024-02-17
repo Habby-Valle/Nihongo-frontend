@@ -40,7 +40,7 @@ export default function SentenceList(props: ISentenceListProps) {
           fontSize={20}
           fontWeight={700}
         >
-          Sentences({props.sentences?.length})
+          Sentenças ({props.sentences?.length})
         </Text>
         <Button
           onPress={handleAddSentence}
