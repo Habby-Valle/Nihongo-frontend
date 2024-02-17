@@ -146,7 +146,7 @@ export default function ProfileInfo() {
             >
               Nome:{" "}
             </Text>
-            {profile?.user.first_name ?? "Nome não disponível"}
+            {profile?.user.first_name !== "" ? profile?.user.first_name : "Nome não disponível"}
           </Text>
           <Text
             color="#D02C23"
@@ -158,7 +158,7 @@ export default function ProfileInfo() {
             >
               Sobrenome:{" "}
             </Text>
-            {profile?.user.last_name ?? "Sobrenome não disponível"}
+            {profile?.user.last_name !== "" ? profile?.user.last_name : "Sobrenome não disponível"}
           </Text>
           <Text
             color="#D02C23"
@@ -218,7 +218,7 @@ export default function ProfileInfo() {
               setModalVisible(true)
             }}
           >
-            Change profile
+            Atualizar perfil
           </Button>
         </Row>
         <ModalProfile
