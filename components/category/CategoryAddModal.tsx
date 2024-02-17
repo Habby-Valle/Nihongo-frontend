@@ -75,11 +75,11 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Add new category</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Adicionar nova categoria</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Category"
+              label="Categoria"
               name="category"
               type="text"
               register={register}
@@ -98,7 +98,7 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -109,7 +109,7 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

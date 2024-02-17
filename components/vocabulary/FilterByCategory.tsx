@@ -47,8 +47,8 @@ export default function FilterByCategory(props: IFilterByCategoryProps) {
       onValueChange={handleSelectCategory}
       minWidth={200}
       shadow={1}
-      accessibilityLabel="Select category"
-      placeholder="Select category"
+      accessibilityLabel="Escolha uma categoria"
+      placeholder="Escolha uma categoria"
       mt={1}
       w={"200px"}
       _selectedItem={{
@@ -56,7 +56,7 @@ export default function FilterByCategory(props: IFilterByCategoryProps) {
       }}
     >
       <Select.Item
-        label="Category"
+        label="Categoria"
         value="category"
       />
       {categories?.map((category, index) => (

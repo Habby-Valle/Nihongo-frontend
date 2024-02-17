@@ -89,28 +89,28 @@ export default function GrammarList(props: IGrammarListProps) {
           color={"#f2f2f2"}
           w={"150px"}
         >
-          Grammar
+          Gramática
         </Heading>
         <Heading
           size={"sm"}
           color={"#f2f2f2"}
           w={"150px"}
         >
-          Structure
+          Estrutura
         </Heading>
         <Heading
           size={"sm"}
           color={"#f2f2f2"}
           w={"150px"}
         >
-          Level
+          Nível
         </Heading>
         <Heading
           size={"sm"}
           color={"#f2f2f2"}
           w={"110px"}
         >
-          Action
+          Ação
         </Heading>
       </Row>
     )
@@ -163,7 +163,7 @@ export default function GrammarList(props: IGrammarListProps) {
             rounded={"md"}
             shadow={1}
           >
-            <Text color={"#D02C23"}>Edit</Text>
+            <Text color={"#D02C23"}>Editar</Text>
           </Pressable>
           <Pressable
             onPress={() => {
@@ -181,7 +181,7 @@ export default function GrammarList(props: IGrammarListProps) {
             rounded={"md"}
             shadow={1}
           >
-            <Text>Delete</Text>
+            <Text>Excluir</Text>
           </Pressable>
         </Row>
       </Row>
@@ -199,7 +199,7 @@ export default function GrammarList(props: IGrammarListProps) {
   if (grammarsError) {
     return (
       <Box p={5}>
-        <Error message={"Error loading grammars"} />
+        <Error message={"Erro ao carregar as gramáticas"} />
       </Box>
     )
   }

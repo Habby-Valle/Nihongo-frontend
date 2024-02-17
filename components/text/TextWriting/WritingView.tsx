@@ -23,7 +23,7 @@ export default function WritingView(props: IWritinglProps) {
   }
 
   if (textLoading) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   return (
@@ -69,7 +69,7 @@ export default function WritingView(props: IWritinglProps) {
           fontSize={15}
           textAlign={"center"}
         >
-          Annotation
+          Anotações
         </Text>
         <HTMLRenderer
           html={text?.annotation || "<p>Nenhuma anotação disponível</p>"}
@@ -86,7 +86,7 @@ export default function WritingView(props: IWritinglProps) {
             _pressed={{ bg: "#ae251e" }}
             onPress={props.onEdit}
           >
-            Edit text
+            Atualizar texto
           </Button>
           <Button
             variant={"ghost"}
@@ -95,7 +95,7 @@ export default function WritingView(props: IWritinglProps) {
               setModalDeleteText(true)
             }}
           >
-            Delete text
+            Excluir texto
           </Button>
         </Row>
       </Column>

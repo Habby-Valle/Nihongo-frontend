@@ -30,10 +30,10 @@ export default function WritingCreate() {
 
     if (text.trim().length === 0) {
       setIsTitleValid(false)
-      setTitleErrorMessage("Title is required")
+      setTitleErrorMessage("Título é obrigatório")
     } else if (!japaneseRegex.test(text)) {
       setIsTitleValid(false)
-      setTitleErrorMessage("Title must be in Japanese")
+      setTitleErrorMessage("Título deve ser em japonês")
     } else {
       setIsTitleValid(true)
       setTitleErrorMessage("")
@@ -45,7 +45,7 @@ export default function WritingCreate() {
 
     if (text.trim().length === 0) {
       setIsTextValid(false)
-      setTextErrorMessage("Text is required")
+      setTextErrorMessage("Texto é obrigatório")
     } else {
       setIsTextValid(true)
       setTextErrorMessage("")
@@ -73,7 +73,7 @@ export default function WritingCreate() {
       if (newText) {
         Toast.show({
           title: "Success",
-          description: `Text created`,
+          description: `Texto adicionado com sucesso!`,
           placement: "top",
           duration: 2000,
         })
@@ -110,7 +110,7 @@ export default function WritingCreate() {
             key="title-label"
             testID="title-label"
           >
-            Title
+            Título
           </FormControl.Label>
           <Input
             placeholder={"Title"}
@@ -148,7 +148,7 @@ export default function WritingCreate() {
               fontSize: "lg",
             }}
           >
-            Text
+            Contéudo
           </FormControl.Label>
           <TextEditor
             content={text}
@@ -172,7 +172,7 @@ export default function WritingCreate() {
                 fontSize: "lg",
               }}
             >
-              Annotation
+              Anotação
             </FormControl.Label>
             <TextEditor
               content={annotation}
@@ -195,7 +195,7 @@ export default function WritingCreate() {
           isDisabled={!isTitleValid || !isTextValid}
           isLoading={saving}
         >
-          Save
+          Salvar
         </Button>
         <Button
           onPress={() => {
@@ -210,7 +210,7 @@ export default function WritingCreate() {
           _hover={{ bg: "#ae251e" }}
           _pressed={{ bg: "#ae251e" }}
         >
-          {AddAnnotation ? "Hide Annotation" : "Add Annotation"}
+          {AddAnnotation ? "Esconder anotação" : "Add anotação"}
         </Button>
       </Row>
     </Column>

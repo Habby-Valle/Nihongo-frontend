@@ -70,7 +70,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
       if (newWord) {
         toast.show({
           title: "Success",
-          description: `Word added`,
+          description: `Palavra adicionada com sucesso`,
           placement: "top",
           duration: 2000,
         })
@@ -100,33 +100,33 @@ export default function ModalAddWord(props: IModalAddWordProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Add new word</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Adicionar nova palavra</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Word"
+              label="Palavra"
               name="word"
               type="text"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
               errors={errors}
-              patternError="Word must be in Japanese"
+              patternError="A palavra deve estar em japonês"
               pattern={japaneseRegex}
             />
 
             <Input
-              label="Reading"
+              label="Leitura"
               name="reading"
               type="text"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
               errors={errors}
-              patternError="Reading must be in Japanese"
+              patternError="A leitura deve estar em japonês"
               pattern={japaneseRegex}
             />
 
             <Input
-              label="Meaning"
+              label="Significado"
               name="meaning"
               type="text"
               register={register}
@@ -135,7 +135,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
             />
 
             <Select
-              label="Type"
+              label="Tipo"
               name="type"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
@@ -144,7 +144,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
             />
 
             <Select
-              label="Level"
+              label="Nível"
               name="level"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
@@ -153,7 +153,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
             />
 
             <Select
-              label="Category"
+              label="Categoria"
               name="category"
               register={register}
               // @ts-expect-error: levelOptions is not assignable to type
@@ -167,7 +167,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
             />
 
             <Textarea
-              label="Annotation"
+              label="Anotações"
               name="annotation"
               register={register}
             />
@@ -183,7 +183,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -194,7 +194,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

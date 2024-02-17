@@ -43,7 +43,7 @@ export default function SearchVocabulary(props: ISearchVocabularyProps) {
     >
       <Column space={"20px"}>
         <Input
-          placeholder="Search word, reading and meaning"
+          placeholder="Buscar palavra, leitura ou significado"
           _light={{
             bg: "white",
           }}

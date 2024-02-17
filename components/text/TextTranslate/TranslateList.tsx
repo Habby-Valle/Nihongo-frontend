@@ -12,8 +12,6 @@ export default function TranslateList() {
   const { data: texts, error: textsError, isLoading: textsLoading } = useTexts()
 
   const router = useRouter()
-  console.log(texts)
-
   function headers() {
     return (
       <Column
@@ -26,7 +24,7 @@ export default function TranslateList() {
           fontSize={20}
           textAlign={"left"}
         >
-          Texts
+          Textos
         </Text>
       </Column>
     )
@@ -56,7 +54,7 @@ export default function TranslateList() {
   }
 
   if (textsLoading) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   return (
@@ -75,7 +73,7 @@ export default function TranslateList() {
         renderItem={item}
         keyExtractor={(item) => item.id.toString()}
         ListHeaderComponent={headers}
-        ListEmptyComponent={<DataEmpty message={"No texts found"} />}
+        ListEmptyComponent={<DataEmpty message={"Nenhum texto encontrado"} />}
         ItemSeparatorComponent={() => <Divider bg={"#D02C23"} />}
       />
     </Box>

@@ -45,14 +45,14 @@ export default function TextTranslateCard() {
           fontSize={"xl"}
           fontWeight={"bold"}
         >
-          Translate
+          Traduzir
         </Text>
         <Text
           textAlign={"justify"}
           fontSize={"sm"}
           fontWeight={"400"}
         >
-          Here you can translate a text from one language to another.
+          Aqui você pode traduzir textos escritos
         </Text>
       </Column>
     </Pressable>

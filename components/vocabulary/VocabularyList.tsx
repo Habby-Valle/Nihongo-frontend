@@ -88,7 +88,7 @@ export default function WordList(props: IWordListProps) {
           fontSize={20}
           fontWeight={700}
         >
-          Words({words?.length})
+          Total de palavras ({words?.length})
         </Text>
         <Row
           justifyContent={"space-between"}
@@ -109,7 +109,7 @@ export default function WordList(props: IWordListProps) {
               />
             }
           >
-            Add Word
+            Add Palavra
           </Button>
           <Button
             onPress={() => {
@@ -126,7 +126,7 @@ export default function WordList(props: IWordListProps) {
               />
             }
           >
-            Add Category
+            Add Categoria
           </Button>
         </Row>
       </Row>
@@ -143,13 +143,13 @@ export default function WordList(props: IWordListProps) {
       try {
         await navigator.clipboard.writeText(texts.join("\n"))
         toast.show({
-          title: "Copied to clipboard",
+          title: "Copiado para a área de transferência",
           placement: "top",
           duration: 2000,
         })
       } catch (error) {
         toast.show({
-          title: "Failed to copy to clipboard",
+          title: "Erro ao copiar para a área de transferência",
           placement: "top",
           duration: 200,
         })
@@ -235,7 +235,7 @@ export default function WordList(props: IWordListProps) {
         ListHeaderComponent={header}
         renderItem={({ item }) => <RenderItem item={item} />}
         keyExtractor={(item) => item.id.toString()}
-        ListEmptyComponent={<DataEmpty message="No words" />}
+        ListEmptyComponent={<DataEmpty message="Não há palvras" />}
         ItemSeparatorComponent={() => <Box mt={2} />}
         numColumns={3}
         windowSize={10}

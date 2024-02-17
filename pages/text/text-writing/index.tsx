@@ -14,7 +14,7 @@ export async function getServerSideProps({ req, res }: GetServerSidePropsContext
 
 export default function TextWriting() {
   return (
-    <BaseLayout title="Text writing">
+    <BaseLayout title="Escrita">
       <Row
         justifyContent={"space-around"}
         alignItems={"flex-start"}

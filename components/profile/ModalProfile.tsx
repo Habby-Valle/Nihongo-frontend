@@ -144,7 +144,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
       if (profileUpdated) {
         toast.show({
           title: "Success",
-          description: `Profile updated`,
+          description: `Perfil atualizado com sucesso`,
           placement: "top",
           duration: 2000,
         })
@@ -183,7 +183,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Change Profile</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Atualizar perfil</Modal.Header>
         <Modal.Body>
           <Row
             justifyContent={"space-between"}
@@ -197,11 +197,11 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 isRequired
                 isInvalid={!isFirstNameValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>First name</FormControl.Label>
+                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Nome</FormControl.Label>
                 <Input
                   value={firstName}
                   onChangeText={handleNameChange}
-                  placeholder="First name"
+                  placeholder="Nome"
                   shadow={1}
                   _focus={{ borderColor: "#D02C23" }}
                   _hover={{ borderColor: "#D02C23" }}
@@ -213,17 +213,17 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                     bg: "#262626",
                   }}
                 />
-                <FormControl.ErrorMessage>First name invalid</FormControl.ErrorMessage>
+                <FormControl.ErrorMessage>Nome inválido</FormControl.ErrorMessage>
               </FormControl>
               <FormControl
                 isRequired
                 isInvalid={!isLastNameValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Last name</FormControl.Label>
+                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Sobrenome</FormControl.Label>
                 <Input
                   value={lastName}
                   onChangeText={handleLastNameChange}
-                  placeholder="Last name"
+                  placeholder="Sobrenome"
                   shadow={1}
                   _focus={{ borderColor: "#D02C23" }}
                   _hover={{ borderColor: "#D02C23" }}
@@ -235,7 +235,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                     bg: "#262626",
                   }}
                 />
-                <FormControl.ErrorMessage>Last name invalid</FormControl.ErrorMessage>
+                <FormControl.ErrorMessage>Sobrenome inválido</FormControl.ErrorMessage>
               </FormControl>
               <FormControl
                 isRequired
@@ -257,7 +257,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                     bg: "#262626",
                   }}
                 />
-                <FormControl.ErrorMessage>Username invalid</FormControl.ErrorMessage>
+                <FormControl.ErrorMessage>Username inválido</FormControl.ErrorMessage>
               </FormControl>
             </Column>
             <Column
@@ -284,18 +284,18 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                     bg: "#262626",
                   }}
                 />
-                <FormControl.ErrorMessage>Email invalid</FormControl.ErrorMessage>
+                <FormControl.ErrorMessage>Email inválido</FormControl.ErrorMessage>
               </FormControl>
               <FormControl
                 isRequired
                 isInvalid={!isPhoneValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Phone</FormControl.Label>
+                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Telefone</FormControl.Label>
                 <Input
                   value={phone}
                   onChangeText={handlePhoneChange}
                   mask="+55 (99) 99999-9999"
-                  placeholder="Phone"
+                  placeholder="Telefone"
                   shadow={1}
                   _focus={{ borderColor: "#D02C23" }}
                   _hover={{ borderColor: "#D02C23" }}
@@ -307,19 +307,19 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                     bg: "#262626",
                   }}
                 />
-                <FormControl.ErrorMessage>Phone invalid</FormControl.ErrorMessage>
+                <FormControl.ErrorMessage>Telefone inválido</FormControl.ErrorMessage>
               </FormControl>
               <FormControl
                 isRequired
                 isInvalid={!isDateBirthValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>DateBirth</FormControl.Label>
+                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Data de nascimento</FormControl.Label>
                 <Input
                   value={dateBirth}
                   onChangeText={(text) => {
                     setDateBirth(text)
                   }}
-                  placeholder="Confirm password"
+                  placeholder="Data de nascimento"
                   shadow={1}
                   _focus={{ borderColor: "#D02C23" }}
                   _hover={{ borderColor: "#D02C23" }}
@@ -331,7 +331,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                     bg: "#262626",
                   }}
                 />
-                <FormControl.ErrorMessage>DateBirth invalid</FormControl.ErrorMessage>
+                <FormControl.ErrorMessage>Data de nascimento inválida</FormControl.ErrorMessage>
               </FormControl>
             </Column>
           </Row>
@@ -346,7 +346,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -364,7 +364,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 !isDateBirthValid
               }
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

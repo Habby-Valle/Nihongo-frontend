@@ -54,7 +54,7 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
       if (updatedSentence) {
         toast.show({
           title: "Success",
-          description: `Sentence updated`,
+          description: `Sentença atualizada com sucesso!`,
           placement: "top",
           duration: 3000,
         })
@@ -83,22 +83,22 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Update sentence</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Atualizar sentença</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Sentence"
+              label="Frase"
               name="sentence"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not in the type
               errors={errors}
-              patternError="Sentence must be in Japanese"
+              patternError="A frase deve estar em japonês!"
               pattern={japaneseRegex}
             />
 
             <Input
-              label="Translate"
+              label="Tradução"
               name="translate"
               type="text"
               register={register}
@@ -107,7 +107,7 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
             />
 
             <Textarea
-              label="Annotation"
+              label="Anotações"
               name="annotation"
               register={register}
             />
@@ -122,7 +122,7 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -133,7 +133,7 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

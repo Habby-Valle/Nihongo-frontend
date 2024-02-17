@@ -59,7 +59,7 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
       if (updatedGrammar) {
         toast.show({
           title: "Success",
-          description: `Grammar updated`,
+          description: `Gramática atualizada!`,
           placement: "top",
           duration: 2000,
         })
@@ -69,7 +69,7 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
     } catch (error) {
       toast.show({
         title: "Error",
-        description: `Something went wrong`,
+        description: `Erro ao atualizar gramática!`,
         placement: "top",
         duration: 2000,
       })
@@ -93,11 +93,11 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Update grammar</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Atualizar gramática</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
-              label="Grammar"
+              label="Gramática"
               name="grammar"
               type="text"
               register={register}
@@ -105,17 +105,17 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
               errors={errors}
             />
             <Input
-              label="Structure"
+              label="Estrutura"
               name="structure"
               type="text"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
               errors={errors}
-              patternError="Structure must be in Japanese"
+              patternError="A estrutura deve conter apenas caracteres japoneses"
               pattern={japaneseRegex}
             />
             <Select
-              label="Level"
+              label="Nível"
               name="level"
               register={register}
               // @ts-expect-error: patternError is not a valid prop
@@ -124,7 +124,7 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
             />
 
             <Textarea
-              label="Explain"
+              label="Explicação"
               name="explain"
               register={register}
             />
@@ -139,7 +139,7 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -150,7 +150,7 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

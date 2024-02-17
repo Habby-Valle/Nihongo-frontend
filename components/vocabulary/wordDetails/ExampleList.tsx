@@ -121,7 +121,7 @@ export default function ExampleList(props: IExampleListProps) {
             >
               {item.meaning}
             </Text>
-            <Text>{!item.annotation ? "No annotation" : item.annotation}</Text>
+            <Text>{!item.annotation ? "Sem anotações" : item.annotation}</Text>
             <Text>{new Date(item.created_at).toLocaleDateString("pt-BR")}</Text>
           </Column>
         )}
@@ -134,7 +134,7 @@ export default function ExampleList(props: IExampleListProps) {
   }
 
   if (examples === undefined || examplesIsLoading || examplesIsValidating) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   return (
@@ -143,7 +143,7 @@ export default function ExampleList(props: IExampleListProps) {
       _dark={{ bg: "gray.700", borderColor: "white" }}
     >
       <FlatList
-        ListEmptyComponent={<DataEmpty message={"No examples found"} />}
+        ListEmptyComponent={<DataEmpty message={"Nenhum exemplo encontrado"} />}
         data={examples}
         renderItem={items}
         keyExtractor={(item) => item.id.toString()}

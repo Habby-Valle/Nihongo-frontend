@@ -16,7 +16,7 @@ export default function WordDetails() {
   const router = useRouter()
   const wordId = parseInt(router.query.wordId?.toString() || "")
   return (
-    <BaseLayout title="Word Details">
+    <BaseLayout title="Detalhes da palavra">
       <Box
         w={"100%"}
         justifyContent={"center"}

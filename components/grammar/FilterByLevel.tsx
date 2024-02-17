@@ -37,8 +37,8 @@ export default function FilterByLevel(props: IFilterByLevelProps) {
       onValueChange={handleSelectLevel}
       minWidth={200}
       shadow={1}
-      accessibilityLabel="Select level"
-      placeholder="Select level"
+      accessibilityLabel="Escolha um nível"
+      placeholder="Escolha um nível"
       mt={1}
       w={"200px"}
       _selectedItem={{
@@ -46,7 +46,7 @@ export default function FilterByLevel(props: IFilterByLevelProps) {
       }}
     >
       <Select.Item
-        label="Level"
+        label="Nível"
         value="level"
       />
       {levelOptions.map((level, index) => (

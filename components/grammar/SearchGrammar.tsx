@@ -42,7 +42,7 @@ export default function SearchGrammar(props: ISearchGrammarProps) {
     >
       <Column space={"20px"}>
         <Input
-          placeholder="Search grammar"
+          placeholder="Buscar gramática"
           _light={{
             bg: "white",
           }}
@@ -95,7 +95,7 @@ export default function SearchGrammar(props: ISearchGrammarProps) {
             />
           }
         >
-          Add grammar
+          Add Gramática
         </Button>
       </Column>
       <ModalAddGrammar

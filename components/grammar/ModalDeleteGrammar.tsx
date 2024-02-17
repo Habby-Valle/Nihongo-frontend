@@ -25,7 +25,7 @@ export default function ModalDeleteGrammar(props: IModalDeleteGrammarProps) {
 
       toast.show({
         title: "Success",
-        description: `Delete grammar successfully!`,
+        description: `Gramática deletada com sucesso!`,
         placement: "top",
         duration: 2000,
       })
@@ -45,8 +45,8 @@ export default function ModalDeleteGrammar(props: IModalDeleteGrammarProps) {
     >
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Delete Grammar</Modal.Header>
-        <Modal.Body>Are you sure you want to delete this grammar?</Modal.Body>
+        <Modal.Header _text={{ color: "#D02C23" }}>Excluir gramática</Modal.Header>
+        <Modal.Body>Você tem certeza que quer excluir essa gramática?</Modal.Body>
         <Modal.Footer>
           <Button.Group
             variant="ghost"
@@ -57,7 +57,7 @@ export default function ModalDeleteGrammar(props: IModalDeleteGrammarProps) {
               variant="ghost"
               colorScheme="blueGray"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -67,7 +67,7 @@ export default function ModalDeleteGrammar(props: IModalDeleteGrammarProps) {
               isLoading={saving}
               _text={{ color: "white" }}
             >
-              Delete
+              Excluir
             </Button>
           </Button.Group>
         </Modal.Footer>

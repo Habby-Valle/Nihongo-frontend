@@ -64,10 +64,10 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
 
     if (text.trim().length === 0) {
       setIsTitleValid(false)
-      setTitleErrorMessage("Title is required")
+      setTitleErrorMessage("Título é obrigatório")
     } else if (!japaneseRegex.test(text)) {
       setIsTitleValid(false)
-      setTitleErrorMessage("Title must be in Japanese")
+      setTitleErrorMessage("Título deve ser em japonês")
     } else {
       setIsTitleValid(true)
       setTitleErrorMessage("")
@@ -79,7 +79,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
 
     if (text.trim().length === 0) {
       setIsTextValid(false)
-      setTextErrorMessage("Text is required")
+      setTextErrorMessage("Texto é obrigatório")
     } else {
       setIsTextValid(true)
       setTextErrorMessage("")
@@ -91,10 +91,10 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
 
     if (text.trim().length === 0) {
       setIsTranslateValid(false)
-      setTranslateErrorMessage("Translate is required")
+      setTranslateErrorMessage("Tradução é obrigatória")
     } else if (text.length <= 16) {
       setIsTranslateValid(false)
-      setTranslateErrorMessage("Translate must be at least 10 characters")
+      setTranslateErrorMessage("Tradução deve ter pelo menos 10 caracteres")
     } else {
       setIsTranslateValid(true)
       setTranslateErrorMessage("")
@@ -125,7 +125,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
       if (updatedText) {
         Toast.show({
           title: "Success",
-          description: `Text updated`,
+          description: `Texto atualizado com sucesso!`,
           placement: "top",
           duration: 20000,
         })
@@ -163,7 +163,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
             key="title-label"
             testID="title-label"
           >
-            Title
+            Título
           </FormControl.Label>
           <Input
             placeholder={"Title"}
@@ -201,7 +201,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
               fontSize: "lg",
             }}
           >
-            Text
+            Conteúdo
           </FormControl.Label>
           <TextEditor
             content={text}
@@ -224,7 +224,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
               fontSize: "lg",
             }}
           >
-            Translate
+            Tradução
           </FormControl.Label>
           <TextEditor
             content={translate}
@@ -248,7 +248,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
                 fontSize: "lg",
               }}
             >
-              Annotation
+              Anotação
             </FormControl.Label>
             <TextEditor
               content={annotation}
@@ -270,7 +270,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
           isDisabled={!isTitleValid || !isTextValid || !isTranslateValid}
           isLoading={saving}
         >
-          Save
+          Salvar
         </Button>
 
         <Button
@@ -282,7 +282,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
           _hover={{ bg: "#ae251e" }}
           _pressed={{ bg: "#ae251e" }}
         >
-          {AddAnnotation ? "Hide Annotation" : "Show Annotation"}
+          {AddAnnotation ? "Esconder anotação" : "Mostrar anotação"}
         </Button>
 
         <Button
@@ -293,7 +293,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
           _pressed={{ bg: "#ae251e" }}
           isDisabled={!someInfoChanged || !isTitleValid || !isTextValid || !isTranslateValid}
         >
-          Cancel
+          Cancelar
         </Button>
 
         <Button
@@ -303,7 +303,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
           _hover={{ bg: "#ae251e" }}
           _pressed={{ bg: "#ae251e" }}
         >
-          Back
+          Voltar
         </Button>
       </Row>
     </Column>

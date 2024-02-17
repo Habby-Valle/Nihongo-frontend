@@ -16,7 +16,7 @@ export default function Sentence() {
   const router = useRouter()
   const grammarId = parseInt(router.query.grammarId?.toString() || "")
   return (
-    <BaseLayout title="Sentences">
+    <BaseLayout title="Sentenças">
       <Box
         justifyContent={"center"}
         alignItems={"center"}

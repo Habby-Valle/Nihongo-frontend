@@ -24,7 +24,7 @@ export default function ModalDeleteWord(props: IModalDeleteWordProps) {
 
       toast.show({
         title: "Success",
-        description: `Delete sentence successfully!`,
+        description: `Palavra deletada com sucesso!`,
         placement: "top",
         duration: 2000,
       })
@@ -45,8 +45,8 @@ export default function ModalDeleteWord(props: IModalDeleteWordProps) {
     >
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Delete word</Modal.Header>
-        <Modal.Body>Are you sure you want to delete this word?</Modal.Body>
+        <Modal.Header _text={{ color: "#D02C23" }}>Excluir palavra</Modal.Header>
+        <Modal.Body>Você tem certeza que deseja excluir essa palavra?</Modal.Body>
         <Modal.Footer>
           <Button.Group
             variant="ghost"
@@ -57,7 +57,7 @@ export default function ModalDeleteWord(props: IModalDeleteWordProps) {
               variant="ghost"
               colorScheme="blueGray"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -67,7 +67,7 @@ export default function ModalDeleteWord(props: IModalDeleteWordProps) {
               isLoading={saving}
               _text={{ color: "white" }}
             >
-              Delete
+              Excluir
             </Button>
           </Button.Group>
         </Modal.Footer>

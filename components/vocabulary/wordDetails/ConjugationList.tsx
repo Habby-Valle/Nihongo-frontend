@@ -27,11 +27,11 @@ export default function ConjugationList(props: IConjugationListProps) {
   }
 
   if (conjugationIsLoading) {
-    return <Text>Loading...</Text>
+    return <Text>Carregando...</Text>
   }
 
   if (!conjugation) {
-    return <DataEmpty message="No conjugation" />
+    return <DataEmpty message="Sem conjugações" />
   }
 
   return (
@@ -72,21 +72,21 @@ export default function ConjugationList(props: IConjugationListProps) {
         alignItems={"center"}
       >
         <Column space={4}>
-          <Text fontWeight={"bold"}>Present: {conjugation.present}</Text>
-          <Text fontWeight={"bold"}>Negative: {conjugation.negative}</Text>
-          <Text fontWeight={"bold"}>Past: {conjugation.past}</Text>
-          <Text fontWeight={"bold"}>Te form: {conjugation.te_form}</Text>
+          <Text fontWeight={"bold"}>Presente: {conjugation.present}</Text>
+          <Text fontWeight={"bold"}>Negativa: {conjugation.negative}</Text>
+          <Text fontWeight={"bold"}>Passado: {conjugation.past}</Text>
+          <Text fontWeight={"bold"}>Forma Te: {conjugation.te_form}</Text>
         </Column>
         <Column space={4}>
-          <Text fontWeight={"bold"}>Potential: {conjugation.potential}</Text>
-          <Text fontWeight={"bold"}>Volitional: {conjugation.volitional}</Text>
-          <Text fontWeight={"bold"}>Causative: {conjugation.causative}</Text>
-          <Text fontWeight={"bold"}>Passive: {conjugation.passive}</Text>
+          <Text fontWeight={"bold"}>Potencial: {conjugation.potential}</Text>
+          <Text fontWeight={"bold"}>Volitiva: {conjugation.volitional}</Text>
+          <Text fontWeight={"bold"}>Causativa: {conjugation.causative}</Text>
+          <Text fontWeight={"bold"}>Passiva: {conjugation.passive}</Text>
         </Column>
         <Column space={4}>
-          <Text fontWeight={"bold"}>Causative Passive: {conjugation.causative_passive}</Text>
-          <Text fontWeight={"bold"}>Conditional: {conjugation.conditional}</Text>
-          <Text fontWeight={"bold"}>Imperative: {conjugation.imperative}</Text>
+          <Text fontWeight={"bold"}>Passiva Causativa: {conjugation.causative_passive}</Text>
+          <Text fontWeight={"bold"}>Condicional: {conjugation.conditional}</Text>
+          <Text fontWeight={"bold"}>Imperativa: {conjugation.imperative}</Text>
         </Column>
       </Row>
 

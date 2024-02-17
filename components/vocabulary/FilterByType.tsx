@@ -37,8 +37,8 @@ export default function FilterByType(props: IFilterByTypeProps) {
       onValueChange={handleSelectType}
       minWidth={200}
       shadow={1}
-      accessibilityLabel="Select type"
-      placeholder="Select type"
+      accessibilityLabel="Escolha a classe da palavra"
+      placeholder="Escolha a classe da palavra"
       mt={1}
       w={"200px"}
       _selectedItem={{
@@ -46,7 +46,7 @@ export default function FilterByType(props: IFilterByTypeProps) {
       }}
     >
       <Select.Item
-        label="By type"
+        label="Por classe"
         value="by type"
       />
       {typeWordsOptions.map((type, index) => (
