@@ -40,15 +40,27 @@ export interface IWordUpdate {
   annotation?: string
 }
 
-export function useWords() {
+export interface IMetadata {
+  count: number
+  num_pages: number
+  page_size: number
+  next: string | null
+  previous: string | null
+}
+
+export function useWords(page?: number, page_size?: number) {
   interface WordReponse {
+    metadata: IMetadata
     results: IWordList[]
   }
 
-  const { data, error, isLoading, isValidating, mutate } = useSWR<WordReponse>("/api/words", fetcchSimple)
+  const url = page_size ? `/api/words?page=${page}&page_size=${page_size}` : `/api/words?page=${page}`
+
+  const { data, error, isLoading, isValidating, mutate } = useSWR<WordReponse>(url, fetcchSimple)
 
   return {
     data: data?.results,
+    metadata: data?.metadata,
     error,
     isLoading,
     isValidating,

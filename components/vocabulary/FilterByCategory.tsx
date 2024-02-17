@@ -3,7 +3,6 @@ import React from "react"
 import { Select } from "native-base"
 
 import { useCategories } from "../../utils/api/category"
-import { useWords } from "../../utils/api/vocabulary"
 
 interface IFilterByCategoryProps {
   onCategorySelected?: (selectedCategory: string | null) => void
@@ -12,9 +11,7 @@ interface IFilterByCategoryProps {
 export default function FilterByCategory(props: IFilterByCategoryProps) {
   const [selectedCategory, setSelectedCategory] = React.useState<string>()
 
-  const { data: categories, error: categoriesError, isLoading: categoriesIsLoading } = useCategories()
-
-  const { data: words, error: wordsError, isLoading: wordsIsLoading } = useWords()
+  const { data: categories } = useCategories()
 
   const handleSelectCategory = (category: string) => {
     setSelectedCategory(category)
@@ -28,14 +25,6 @@ export default function FilterByCategory(props: IFilterByCategoryProps) {
 
   return (
     <Select
-      isDisabled={
-        !categories ||
-        categoriesError !== undefined ||
-        categoriesIsLoading ||
-        !words ||
-        wordsError !== undefined ||
-        wordsIsLoading
-      }
       size={"md"}
       _light={{
         bg: "white",

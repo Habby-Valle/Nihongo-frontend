@@ -9,6 +9,7 @@ import DataEmpty from "../DataEmpty"
 import Error from "../Error"
 import CategoryAddModal from "../category/CategoryAddModal"
 import { IVocabularyFilters } from "./SearchVocabulary"
+import PageNumbers from "../PageNumbers"
 
 const ModalAddWord = lazy(async () => await import("./ModalAddWord"))
 const ModalVocabulary = lazy(async () => await import("./ModalVocabulary"))
@@ -23,10 +24,16 @@ export default function WordList(props: IWordListProps) {
   const [wordId, setWordId] = useState<number | null>(null)
   const [isModalVocabularyOpen, setIsModalVocabularyOpen] = useState(false)
 
+  const [page, setPage] = useState(1)
   const router = useRouter()
   const toast = useToast()
 
-  const { data: words, error: wordsError, isLoading: wordsIsLoading, isValidating: wordsIsValidating } = useWords()
+  const { 
+    data: words, 
+    metadata: wordsMetadata,
+    error: wordsError, 
+    isLoading: wordsIsLoading, 
+  } = useWords(page)
 
   const handleChangeWordId = (wordId: number | null) => {
     setWordId(wordId)
@@ -73,7 +80,7 @@ export default function WordList(props: IWordListProps) {
 
   if (wordsError) return <Error message={wordsError.message} />
 
-  if (wordsIsLoading || wordsIsValidating) return <Spinner />
+  if (wordsIsLoading) return <Spinner />
 
   function header() {
     return (
@@ -129,6 +136,49 @@ export default function WordList(props: IWordListProps) {
             Add Categoria
           </Button>
         </Row>
+      </Row>
+    )
+  }
+
+  function footer() {
+    return (
+      <Row
+        width={"100%"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        p={"10px"}
+      >
+        <Button
+          bg={"#D02C23"}
+          _hover={{ bg: "#ae251e" }}
+          _pressed={{ bg: "#ae251e" }}
+          size={"md"}
+          onPress={() => {
+            setPage(page - 1)
+          }}
+          isDisabled={page === 1}
+        >
+          Anterior
+        </Button>
+        <PageNumbers
+          totalPages={wordsMetadata?.num_pages ?? 1}
+          currentPage={page}
+          onPageChange={(newPage) => {
+            setPage(newPage)
+          }}
+        />
+        <Button
+          bg={"#D02C23"}
+          _hover={{ bg: "#ae251e" }}
+          _pressed={{ bg: "#ae251e" }}
+          size={"md"}
+          onPress={() => {
+            setPage(page + 1)
+          }}
+          isDisabled={page === (wordsMetadata?.num_pages ?? 1)}
+        >
+          Próximo
+        </Button>
       </Row>
     )
   }
@@ -231,6 +281,7 @@ export default function WordList(props: IWordListProps) {
         data={filteredVocabulary}
 
         ListHeaderComponent={header}
+        ListFooterComponent={footer}
         renderItem={({ item }) => <RenderItem item={item} />}
         keyExtractor={(item) => item.id.toString()}
         ListEmptyComponent={<DataEmpty message="Não há palvras" />}
