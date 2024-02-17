@@ -56,7 +56,7 @@ export default function ModalVocabulary(props: ModalVocabularyProps) {
               variant="ghost"
               colorScheme="blueGray"
             >
-              Cancel
+              Cancelar
             </Button>
           </Button.Group>
         </Modal.Footer>

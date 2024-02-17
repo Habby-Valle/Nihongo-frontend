@@ -60,7 +60,7 @@ export default function ModalDeleteText(props: IModalDeleteTextProps) {
               variant="ghost"
               colorScheme="blueGray"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}

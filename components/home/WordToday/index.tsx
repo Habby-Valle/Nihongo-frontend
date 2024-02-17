@@ -28,7 +28,7 @@ export default function WordToday() {
                 fontSize="xl"
                 fontWeight="bold"
                 >
-                Word of the day
+                Palavra do dia
             </Text>
             <Divider />
             <Column
@@ -64,7 +64,7 @@ export default function WordToday() {
 
                 </Row>
                 <Link href={`/vocabulary/details/${word?.id}`}>
-                    More details
+                    Mais detalhes
                 </Link>
             </Column>
         </Column>

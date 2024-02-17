@@ -58,7 +58,7 @@ export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
               variant="ghost"
               colorScheme="blueGray"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}

@@ -109,7 +109,7 @@ export function LateralMenu() {
                 fontWeight={"400"}
                 color={"white"}
               >
-                Grammar
+                Gramática
               </Text>
             </HStack>
           </Pressable>
@@ -133,7 +133,7 @@ export function LateralMenu() {
                 fontWeight={"400"}
                 color={"white"}
               >
-                Vocabulary
+                Vocabulário
               </Text>
             </HStack>
           </Pressable>
@@ -157,7 +157,7 @@ export function LateralMenu() {
                 fontWeight={"400"}
                 color={"white"}
               >
-                Text
+                Textos
               </Text>
             </HStack>
           </Pressable>
@@ -187,7 +187,7 @@ export function LateralMenu() {
                 fontWeight={"400"}
                 color={"white"}
               >
-                Profile
+                Perfil
               </Text>
             </HStack>
           </Pressable>

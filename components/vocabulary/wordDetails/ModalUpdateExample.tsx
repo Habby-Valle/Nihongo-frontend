@@ -143,7 +143,7 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -154,7 +154,7 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

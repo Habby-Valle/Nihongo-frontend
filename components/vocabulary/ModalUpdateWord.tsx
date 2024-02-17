@@ -193,7 +193,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
                 clearInputs()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -204,7 +204,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

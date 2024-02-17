@@ -195,7 +195,7 @@ export default function WritingCreate() {
           isDisabled={!isTitleValid || !isTextValid}
           isLoading={saving}
         >
-          Save
+          Salvar
         </Button>
         <Button
           onPress={() => {

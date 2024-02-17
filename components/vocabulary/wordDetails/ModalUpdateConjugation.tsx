@@ -242,7 +242,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
                 setOriginalValues()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -253,7 +253,7 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

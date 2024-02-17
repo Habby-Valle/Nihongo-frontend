@@ -122,7 +122,7 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -133,7 +133,7 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

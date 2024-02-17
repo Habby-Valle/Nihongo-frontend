@@ -346,7 +346,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -364,7 +364,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 !isDateBirthValid
               }
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

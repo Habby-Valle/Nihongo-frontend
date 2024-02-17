@@ -239,7 +239,7 @@ export default function Translate() {
           isDisabled={!isTitleValid || !isTextValid || !isTranslateValid}
           isLoading={saving}
         >
-          Save
+          Salvar
         </Button>
         <Button
           onPress={() => {

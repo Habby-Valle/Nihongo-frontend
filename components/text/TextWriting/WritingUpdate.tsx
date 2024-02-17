@@ -222,7 +222,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
           isDisabled={!isTitleValid || !isTextValid}
           isLoading={saving}
         >
-          Save
+          Salvar
         </Button>
 
         <Button
@@ -245,7 +245,7 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
           _pressed={{ bg: "#ae251e" }}
           isDisabled={!someInfoChanged || !isTitleValid || !isTextValid}
         >
-          Cancel
+          Cancelar
         </Button>
 
         <Button

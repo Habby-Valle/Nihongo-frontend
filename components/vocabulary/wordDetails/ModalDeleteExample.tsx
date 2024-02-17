@@ -58,7 +58,7 @@ export default function ModalDeleteExample(props: IModalDeleteExampleProps) {
               variant="ghost"
               colorScheme="blueGray"
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}

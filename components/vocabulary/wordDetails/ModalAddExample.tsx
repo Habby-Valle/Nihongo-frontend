@@ -90,7 +90,7 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Add new example</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Adicionar novaexample</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
@@ -130,7 +130,7 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -141,7 +141,7 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

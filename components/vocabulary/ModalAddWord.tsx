@@ -100,7 +100,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Add new word</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Adicionar novaword</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
@@ -183,7 +183,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -194,7 +194,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

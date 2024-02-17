@@ -134,7 +134,7 @@ export default function ProfileInfo() {
               _pressed={{ bg: "#ae251e" }}
               isLoading={saving}
             >
-              Save
+              Salvar
             </Button>
           </Column>
         </Row>

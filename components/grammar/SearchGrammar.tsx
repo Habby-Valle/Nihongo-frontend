@@ -95,7 +95,7 @@ export default function SearchGrammar(props: ISearchGrammarProps) {
             />
           }
         >
-          Add gramática
+          Add Gramática
         </Button>
       </Column>
       <ModalAddGrammar

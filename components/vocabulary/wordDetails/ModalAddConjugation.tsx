@@ -238,7 +238,7 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -249,7 +249,7 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
                 void handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>

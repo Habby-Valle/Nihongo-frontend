@@ -64,7 +64,7 @@ export default function ModalSentence(props: ModalSentenceProps) {
               variant="ghost"
               colorScheme="blueGray"
             >
-              Cancel
+              Cancelar
             </Button>
           </Button.Group>
         </Modal.Footer>

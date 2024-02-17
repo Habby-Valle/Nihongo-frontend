@@ -83,7 +83,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Add new sentence</Modal.Header>
+        <Modal.Header _text={{ color: "#D02C23" }}>Adicionar novasentence</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
@@ -123,7 +123,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
                 props.onClose()
               }}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               bg={"#D02C23"}
@@ -134,7 +134,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
                 handleSubmit(onSubmit)()
               }}
             >
-              Save
+              Salvar
             </Button>
           </Button.Group>
         </Modal.Footer>
