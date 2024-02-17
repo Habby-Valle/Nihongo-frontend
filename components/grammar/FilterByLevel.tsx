@@ -11,8 +11,6 @@ interface IFilterByLevelProps {
 
 export default function FilterByLevel(props: IFilterByLevelProps) {
   const [selectedLevel, setSelectedLevel] = useState<string>()
-  const { data: grammars, error: grammarsError, isLoading: grammarsIsLoading } = useGrammars()
-
   const handleSelectLevel = (level: string) => {
     setSelectedLevel(level)
 
@@ -25,7 +23,6 @@ export default function FilterByLevel(props: IFilterByLevelProps) {
 
   return (
     <Select
-      isDisabled={!grammars || grammarsError !== undefined || grammarsIsLoading}
       size={"md"}
       _light={{
         bg: "white",

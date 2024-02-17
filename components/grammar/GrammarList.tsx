@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react"
 import { ListRenderItemInfo } from "react-native"
 
-import { Box, Column, Divider, FlatList, Heading, Pressable, Row, Text } from "native-base"
+import { Box, Button, Column, Divider, FlatList, Heading, Pressable, Row, Text } from "native-base"
 import { useRouter } from "next/router"
 
 import { IGrammarList, useGrammars } from "../../utils/api/grammar"
@@ -11,23 +11,26 @@ import GrammarSkeleton from "./GrammarSkeleton"
 import ModalDeleteGrammar from "./ModalDeleteGrammar"
 import ModalUpdateGrammar from "./ModalUpdateGrammar"
 import { IGrammarsFilters } from "./SearchGrammar"
+import PageNumbers from "../PageNumbers"
 
 interface IGrammarListProps {
   filters?: IGrammarsFilters
 }
 
 export default function GrammarList(props: IGrammarListProps) {
+
+  const [page, setPage] = useState(1)
+
   const {
     data: grammars,
+    metadata: grammarsMetadata,
     error: grammarsError,
     isLoading: grammarsIsLoading,
-    isValidating: grammarsIsValidating,
-  } = useGrammars()
+  } = useGrammars(page)
 
   const [grammarId, setGrammarId] = useState<number | null>(null)
   const [modalVisible, setModalVisible] = useState(false)
   const [modalDeleteVisible, setModalDeleteVisible] = useState(false)
-
   const router = useRouter()
 
   const handleChangeGrammarId = (id: number) => {
@@ -116,6 +119,49 @@ export default function GrammarList(props: IGrammarListProps) {
     )
   }
 
+  function footer() {
+    return (
+      <Row
+        width={"100%"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+        py={"10px"}
+      >
+        <Button
+          bg={"#D02C23"}
+          _hover={{ bg: "#ae251e" }}
+          _pressed={{ bg: "#ae251e" }}
+          size={"md"}
+          onPress={() => {
+            setPage(page - 1)
+          }}
+          isDisabled={page === 1}
+        >
+          Anterior
+        </Button>
+        <PageNumbers
+          totalPages={grammarsMetadata?.num_pages ?? 1}
+          currentPage={page}
+          onPageChange={(newPage) => {
+            setPage(newPage)
+          }}
+        />
+        <Button
+          bg={"#D02C23"}
+          _hover={{ bg: "#ae251e" }}
+          _pressed={{ bg: "#ae251e" }}
+          size={"md"}
+          onPress={() => {
+            setPage(page + 1)
+          }}
+          isDisabled={page === (grammarsMetadata?.num_pages ?? 1)}
+        >
+          Próximo
+        </Button>
+      </Row>
+    )
+  }
+
   function items({ item }: ListRenderItemInfo<IGrammarList>) {
     return (
       <Row
@@ -188,7 +234,7 @@ export default function GrammarList(props: IGrammarListProps) {
     )
   }
 
-  if (grammarsIsLoading || grammarsIsValidating) {
+  if (grammarsIsLoading) {
     return (
       <Box p={5}>
         <GrammarSkeleton />
@@ -212,6 +258,7 @@ export default function GrammarList(props: IGrammarListProps) {
       <FlatList
         data={filteredGrammars}
         ListHeaderComponent={header}
+        ListFooterComponent={footer}
         ItemSeparatorComponent={() => <Divider bg={"#D02C23"} />}
         ListEmptyComponent={() => <DataEmpty message={"No grammar found"} />}
         renderItem={items}
