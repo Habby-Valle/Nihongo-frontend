@@ -10,6 +10,7 @@ import Error from "../Error"
 import SentenceCard from "./SentenceCard"
 import ModalAddSentence from "./modal/ModalAddSentence"
 import ModalSentence from "./modal/ModalSentence"
+import LoadMore from "../LoadMore"
 
 interface ISentenceListProps {
   grammarId: number
@@ -118,21 +119,11 @@ export default function SentenceList(props: ISentenceListProps) {
       </Row>
       {pages}
       {sentences !== undefined && sentences.length > 0 && (
-        <Row py={"10px"}>
-          <Button
-            width={"100%"}
-            bg={"#D02C23"}
-            _hover={{ bg: "#ae251e" }}
-            _pressed={{ bg: "#ae251e" }}
-            size={"md"}
-            onPress={() => {
-              setCnt(cnt + 1)
-            }}
-            isDisabled={sentencesMetadata?.num_pages === cnt}
-          >
-            Carregar mais
-          </Button>
-        </Row>
+        <LoadMore
+          setCnt={setCnt}
+          cnt={cnt}
+          numPages={sentencesMetadata?.num_pages || 1}
+        />
       )}
       <ModalSentence
         isOpen={modalVisible}
