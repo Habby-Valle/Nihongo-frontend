@@ -60,7 +60,7 @@ export default function SentenceList(props: ISentenceListProps) {
   const [modalAddVisible, setModalAddVisible] = useState(false)
   const [sentenceId, setSentenceId] = useState<number | null>(null)
   const [cnt, setCnt] = useState(1)
-  const { metadata: sentencesMetadata } = useSentences(props.grammarId, cnt)
+  const { data: sentences, metadata: sentencesMetadata } = useSentences(props.grammarId, cnt)
   const pages = []
 
   const handleChangeSentenceId = (id: number) => {
@@ -98,7 +98,7 @@ export default function SentenceList(props: ISentenceListProps) {
           fontSize={20}
           fontWeight={700}
         >
-          Sentenças ({pages?.length})
+          Sentenças ({sentences?.length})
         </Text>
         <Button
           onPress={handleAddSentence}
@@ -117,21 +117,23 @@ export default function SentenceList(props: ISentenceListProps) {
         </Button>
       </Row>
       {pages}
-      <Row py={"10px"}>
-        <Button
-          width={"100%"}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
-          size={"md"}
-          onPress={() => {
-            setCnt(cnt + 1)
-          }}
-          isDisabled={sentencesMetadata?.num_pages === cnt}
-        >
-          Carregar mais
-        </Button>
-      </Row>
+      {sentences !== undefined && sentences.length > 0 && (
+        <Row py={"10px"}>
+          <Button
+            width={"100%"}
+            bg={"#D02C23"}
+            _hover={{ bg: "#ae251e" }}
+            _pressed={{ bg: "#ae251e" }}
+            size={"md"}
+            onPress={() => {
+              setCnt(cnt + 1)
+            }}
+            isDisabled={sentencesMetadata?.num_pages === cnt}
+          >
+            Carregar mais
+          </Button>
+        </Row>
+      )}
       <ModalSentence
         isOpen={modalVisible}
         onClose={() => {
