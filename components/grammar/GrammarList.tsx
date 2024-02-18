@@ -7,18 +7,17 @@ import { useRouter } from "next/router"
 import { IGrammarList, useGrammars } from "../../utils/api/grammar"
 import DataEmpty from "../DataEmpty"
 import Error from "../Error"
+import PageNumbers from "../PageNumbers"
 import GrammarSkeleton from "./GrammarSkeleton"
 import ModalDeleteGrammar from "./ModalDeleteGrammar"
 import ModalUpdateGrammar from "./ModalUpdateGrammar"
 import { IGrammarsFilters } from "./SearchGrammar"
-import PageNumbers from "../PageNumbers"
 
 interface IGrammarListProps {
   filters?: IGrammarsFilters
 }
 
 export default function GrammarList(props: IGrammarListProps) {
-
   const [page, setPage] = useState(1)
 
   const {

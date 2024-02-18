@@ -106,14 +106,25 @@ export async function createWord({ word, reading, meaning, type, level, category
   }
 
   try {
-    const res = await axios.post<IWordReponse>("/api/words", { word, reading, meaning, type, level, category, annotation })
+    const res = await axios.post<IWordReponse>("/api/words", {
+      word,
+      reading,
+      meaning,
+      type,
+      level,
+      category,
+      annotation,
+    })
     return res.data.message
   } catch (error: any) {
     throw new Error(error.message)
   }
 }
 
-export async function updateWord(wordId: number, { word, reading, meaning, type, level, category, annotation }: IWordUpdate) {
+export async function updateWord(
+  wordId: number,
+  { word, reading, meaning, type, level, category, annotation }: IWordUpdate,
+) {
   interface IWordReponse {
     message: string
   }

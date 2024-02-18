@@ -1,7 +1,8 @@
 import axios from "axios"
 import useSWR from "swr"
-import { IMetadata } from "./vocabulary"
+
 import { fetcchSimple } from "./user"
+import { IMetadata } from "./vocabulary"
 
 export interface IGrammarList {
   id: number

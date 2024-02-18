@@ -100,9 +100,7 @@ function Header({ word }: IHeaderProps) {
         <Text>Tipo: {word.type}</Text>
         <Text>Nível: {word.level}</Text>
         <Text>Categoria: {word.category?.name}</Text>
-        {word.annotation && (
-          <Text>Anotações: {word.annotation}</Text>
-        )}
+        {word.annotation && <Text>Anotações: {word.annotation}</Text>}
       </Column>
       <Column justifyContent={"space-between"}>
         <Button

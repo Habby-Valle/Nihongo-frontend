@@ -25,7 +25,6 @@ export default function FilterByType(props: IFilterByTypeProps) {
 
   return (
     <Select
-     
       size={"md"}
       _light={{
         bg: "white",

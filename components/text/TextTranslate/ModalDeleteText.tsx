@@ -49,9 +49,7 @@ export default function ModalDeleteText(props: IModalDeleteTextProps) {
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
         <Modal.Header _text={{ color: "#D02C23" }}>Excluir texto</Modal.Header>
-        <Modal.Body>
-          Tem certeza que deseja excluir este texto?
-        </Modal.Body>
+        <Modal.Body>Tem certeza que deseja excluir este texto?</Modal.Body>
         <Modal.Footer>
           <Button.Group
             variant="ghost"

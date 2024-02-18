@@ -10,9 +10,7 @@ interface IGrammarExplainProps {
 
 export default function GrammarExplain(props: IGrammarExplainProps) {
   return (
-    <Column
-      maxWidth={"50%"}
-    >
+    <Column maxWidth={"50%"}>
       <Text
         fontSize={20}
         fontWeight={700}

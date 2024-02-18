@@ -2,14 +2,14 @@ import React, { Suspense, lazy, memo, useMemo, useState } from "react"
 
 import { Box, Button, Divider, FlatList, Pressable, Row, Spinner, Text, useToast } from "native-base"
 import { useRouter } from "next/router"
-import { MdAdd, MdList, MdFileCopy, MdOutlineFileCopy } from "react-icons/md"
+import { MdAdd, MdFileCopy, MdList, MdOutlineFileCopy } from "react-icons/md"
 
 import { IWordList, useWords } from "../../utils/api/vocabulary"
 import DataEmpty from "../DataEmpty"
 import Error from "../Error"
+import PageNumbers from "../PageNumbers"
 import CategoryAddModal from "../category/CategoryAddModal"
 import { IVocabularyFilters } from "./SearchVocabulary"
-import PageNumbers from "../PageNumbers"
 
 const ModalAddWord = lazy(async () => await import("./ModalAddWord"))
 const ModalVocabulary = lazy(async () => await import("./ModalVocabulary"))
@@ -28,19 +28,13 @@ export default function WordList(props: IWordListProps) {
   const router = useRouter()
   const toast = useToast()
 
-  const { 
-    data: words, 
-    metadata: wordsMetadata,
-    error: wordsError, 
-    isLoading: wordsIsLoading, 
-  } = useWords(page)
+  const { data: words, metadata: wordsMetadata, error: wordsError, isLoading: wordsIsLoading } = useWords(page)
 
   const handleChangeWordId = (wordId: number | null) => {
     setWordId(wordId)
     setIsModalVocabularyOpen(true)
   }
 
- 
   const filteredVocabulary = useMemo(() => {
     if (words === undefined) return []
 
@@ -184,7 +178,6 @@ export default function WordList(props: IWordListProps) {
   }
 
   const RenderItem = memo(({ item }: { item: IWordList }) => {
-
     const [isCopied, setIsCopied] = useState(false)
     const CopyIcon = isCopied ? MdFileCopy : MdOutlineFileCopy
 
@@ -209,7 +202,7 @@ export default function WordList(props: IWordListProps) {
         }, 200)
       }
     }
-  
+
     return (
       <Pressable
         onPress={() => {
@@ -226,9 +219,7 @@ export default function WordList(props: IWordListProps) {
           w={"220px"}
           shadow={2}
         >
-          <Row
-            justifyContent={"space-between"}
-          >
+          <Row justifyContent={"space-between"}>
             <Text
               fontSize={20}
               fontWeight={700}
@@ -248,10 +239,10 @@ export default function WordList(props: IWordListProps) {
           </Row>
           <Divider />
           <Text
-              fontSize={15}
-              fontWeight={500}
-            >
-              {item.meaning}
+            fontSize={15}
+            fontWeight={500}
+          >
+            {item.meaning}
           </Text>
           <Pressable
             onPress={() => {
@@ -263,7 +254,6 @@ export default function WordList(props: IWordListProps) {
               color={"#D02C23"}
             />
           </Pressable>
-          
         </Box>
       </Pressable>
     )
@@ -279,7 +269,6 @@ export default function WordList(props: IWordListProps) {
       <FlatList
         w={"100%"}
         data={filteredVocabulary}
-
         ListHeaderComponent={header}
         ListFooterComponent={footer}
         renderItem={({ item }) => <RenderItem item={item} />}
