@@ -25,7 +25,6 @@ export default function FilterByType(props: IFilterByTypeProps) {
 
   return (
     <Select
-      isDisabled={!words || wordsError !== undefined || wordsIsLoading}
       size={"md"}
       _light={{
         bg: "white",

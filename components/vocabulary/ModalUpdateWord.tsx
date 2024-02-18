@@ -8,8 +8,8 @@ import { updateWord, useWord, useWords } from "../../utils/api/vocabulary"
 import { levelOptions, typeWordsOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
-import { IVocabularyFormInput } from "./ModalAddWord"
 import Textarea from "../Textarea"
+import { IVocabularyFormInput } from "./ModalAddWord"
 
 interface IModalAddWordProps {
   isOpen: boolean

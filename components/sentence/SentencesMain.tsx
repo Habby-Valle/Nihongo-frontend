@@ -3,7 +3,6 @@ import React from "react"
 import { Column } from "native-base"
 
 import { useGrammar } from "../../utils/api/grammar"
-import { useSentences } from "../../utils/api/sentence"
 import Error from "../Error"
 import GrammarExplain from "./GrammarExplain"
 import GrammarExplainSkeleton from "./GrammarExplainSkeleton"
@@ -15,13 +14,10 @@ interface ISentenceMainProps {
 }
 
 export default function SentenceMain(props: ISentenceMainProps) {
-  const { data: sentences, error: sentencesError, isLoading: sentencesIsLoading } = useSentences(props.grammarId)
-
   const { data: grammar, error: grammarError, isLoading: grammarIsLoading } = useGrammar(props.grammarId)
 
-  if (sentencesError) return <Error message="Error loading sentences" />
   if (grammarError) return <Error message="Error loading grammar" />
-  if (sentencesIsLoading || grammarIsLoading) {
+  if (grammarIsLoading) {
     return (
       <Column
         justifyContent={"center"}
@@ -42,10 +38,7 @@ export default function SentenceMain(props: ISentenceMainProps) {
       w={"100%"}
     >
       <GrammarExplain grammar={grammar} />
-      <SentenceList
-        sentences={sentences}
-        grammarId={props.grammarId}
-      />
+      <SentenceList grammarId={props.grammarId} />
     </Column>
   )
 }

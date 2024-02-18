@@ -47,9 +47,7 @@ export default function ModalDeleteConjugation(props: IModalDeleteConjugationPro
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
         <Modal.Header _text={{ color: "#D02C23" }}>Excluir conjugação</Modal.Header>
-        <Modal.Body>
-          Tem certeza que deseja excluir essa conjugação?
-        </Modal.Body>
+        <Modal.Body>Tem certeza que deseja excluir essa conjugação?</Modal.Body>
         <Modal.Footer>
           <Button.Group
             variant="ghost"

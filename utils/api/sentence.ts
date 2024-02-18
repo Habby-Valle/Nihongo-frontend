@@ -2,6 +2,7 @@ import axios from "axios"
 import useSWR from "swr"
 
 import { fetcchSimple } from "./user"
+import { IMetadata } from "./vocabulary"
 
 export interface ISentenceList {
   id: number
@@ -28,18 +29,19 @@ export interface ISentenceUpdate {
   annotation?: string
 }
 
-export function useSentences(grammarId: number | undefined) {
+export function useSentences(grammarId: number | undefined, page?: number, page_size?: number) {
   interface SentenceReponse {
+    metadata: IMetadata
     results: ISentenceList[]
   }
-
-  const { data, error, isLoading, isValidating, mutate } = useSWR<SentenceReponse>(
-    `/api/sentences/${grammarId}`,
-    fetcchSimple,
-  )
+  const url = page_size
+    ? `/api/sentences/${grammarId}?page=${page}&page_size=${page_size}`
+    : `/api/sentences/${grammarId}?page=${page}`
+  const { data, error, isLoading, isValidating, mutate } = useSWR<SentenceReponse>(url, fetcchSimple)
 
   return {
     data: data?.results,
+    metadata: data?.metadata,
     error,
     isLoading,
     isValidating,

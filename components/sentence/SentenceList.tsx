@@ -1,23 +1,68 @@
 import React, { useState } from "react"
 import { ListRenderItemInfo } from "react-native"
 
-import { Box, Button, Column, Divider, FlatList, Pressable, Row, Text } from "native-base"
-import { MdAdd, MdList } from "react-icons/md"
+import { Button, Column, Divider, FlatList, Row, Text } from "native-base"
+import { MdAdd } from "react-icons/md"
 
-import { ISentenceList } from "../../utils/api/sentence"
+import { ISentenceList, useSentences } from "../../utils/api/sentence"
 import DataEmpty from "../DataEmpty"
+import Error from "../Error"
+import SentenceCard from "./SentenceCard"
 import ModalAddSentence from "./modal/ModalAddSentence"
 import ModalSentence from "./modal/ModalSentence"
+import LoadMore from "../LoadMore"
 
 interface ISentenceListProps {
-  sentences: ISentenceList[] | undefined
-  grammarId: number | null
+  grammarId: number
+  index?: number
+}
+
+interface IPageProps {
+  index: number
+  grammarId: number
+  handleChangeSentenceId: (id: number) => void
+}
+
+function Page({ index, grammarId, handleChangeSentenceId }: IPageProps) {
+  const { data: sentences, error: sentencesError, isLoading: sentencesIsLoading } = useSentences(grammarId, index)
+
+  function items({ item }: ListRenderItemInfo<ISentenceList>) {
+    return (
+      <SentenceCard
+        sentence={item}
+        handleChangeSentenceId={handleChangeSentenceId}
+      />
+    )
+  }
+
+  if (sentencesIsLoading) return <Text>Carregando...</Text>
+  if (sentencesError) return <Error message="Error loading sentences" />
+
+  return (
+    <>
+      <FlatList
+        data={sentences}
+        renderItem={items}
+        keyExtractor={(item) => item.id.toString()}
+        ListEmptyComponent={<DataEmpty message="No sentences" />}
+        ItemSeparatorComponent={() => (
+          <Divider
+            bg={"none"}
+            mt={2}
+          />
+        )}
+      />
+    </>
+  )
 }
 
 export default function SentenceList(props: ISentenceListProps) {
   const [modalVisible, setModalVisible] = useState(false)
   const [modalAddVisible, setModalAddVisible] = useState(false)
   const [sentenceId, setSentenceId] = useState<number | null>(null)
+  const [cnt, setCnt] = useState(1)
+  const { data: sentences, metadata: sentencesMetadata } = useSentences(props.grammarId, cnt)
+  const pages = []
 
   const handleChangeSentenceId = (id: number) => {
     setSentenceId(id)
@@ -28,8 +73,22 @@ export default function SentenceList(props: ISentenceListProps) {
     setModalAddVisible(true)
   }
 
-  function header() {
-    return (
+  for (let i = 0; i < cnt; i++) {
+    pages.push(
+      <Page
+        key={i}
+        index={i + 1}
+        grammarId={props.grammarId}
+        handleChangeSentenceId={handleChangeSentenceId}
+      />,
+    )
+  }
+
+  return (
+    <Column
+      w={"50%"}
+      space={"10px"}
+    >
       <Row
         justifyContent={"space-between"}
         alignItems={"center"}
@@ -40,7 +99,7 @@ export default function SentenceList(props: ISentenceListProps) {
           fontSize={20}
           fontWeight={700}
         >
-          Sentenças ({props.sentences?.length})
+          Sentenças ({sentences?.length})
         </Text>
         <Button
           onPress={handleAddSentence}
@@ -58,69 +117,14 @@ export default function SentenceList(props: ISentenceListProps) {
           Add
         </Button>
       </Row>
-    )
-  }
-
-  function items({ item }: ListRenderItemInfo<ISentenceList>) {
-    return (
-      <Column
-        w={"100%"}
-        p={"10px"}
-        _light={{ bg: "white" }}
-        _dark={{ bg: "gray.700" }}
-        rounded={"md"}
-      >
-        <Row justifyContent={"space-between"}>
-          <Text
-            fontSize={20}
-            fontWeight={700}
-          >
-            {item.sentence}
-          </Text>
-          <Pressable
-            onPress={() => {
-              handleChangeSentenceId(item.id)
-            }}
-          >
-            <MdList
-              size={24}
-              color={"#D02C23"}
-            />
-          </Pressable>
-        </Row>
-        <Text
-          fontSize={16}
-          fontWeight={500}
-        >
-          {item.translate}
-        </Text>
-        {item.annotation && (
-          <Text
-            fontSize={16}
-            fontWeight={500}
-          >
-            {item.annotation}
-          </Text>
-        )}
-      </Column>
-    )
-  }
-
-  return (
-    <Box w={"50%"}>
-      <FlatList
-        data={props.sentences}
-        renderItem={items}
-        ListHeaderComponent={header}
-        keyExtractor={(item) => item.id.toString()}
-        ListEmptyComponent={<DataEmpty message="No sentences" />}
-        ItemSeparatorComponent={() => (
-          <Divider
-            bg={"none"}
-            mt={2}
-          />
-        )}
-      />
+      {pages}
+      {sentences !== undefined && sentences.length > 0 && (
+        <LoadMore
+          setCnt={setCnt}
+          cnt={cnt}
+          numPages={sentencesMetadata?.num_pages || 1}
+        />
+      )}
       <ModalSentence
         isOpen={modalVisible}
         onClose={() => {
@@ -136,6 +140,6 @@ export default function SentenceList(props: ISentenceListProps) {
         }}
         grammarId={props.grammarId}
       />
-    </Box>
+    </Column>
   )
 }

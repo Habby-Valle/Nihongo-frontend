@@ -2,6 +2,7 @@ import axios from "axios"
 import useSWR from "swr"
 
 import { fetcchSimple } from "./user"
+import { IMetadata } from "./vocabulary"
 
 export interface IGrammarList {
   id: number
@@ -28,14 +29,16 @@ export interface IGrammarUpdate {
   explain?: string
 }
 
-export function useGrammars() {
+export function useGrammars(page?: number, page_size?: number) {
   interface GrammarsResponse {
+    metadata: IMetadata
     results: IGrammarList[]
   }
-
-  const { data, error, isLoading, isValidating, mutate } = useSWR<GrammarsResponse>("/api/grammar", fetcchSimple)
+  const url = page_size ? `/api/grammar?page=${page}&page_size=${page_size}` : `/api/grammar?page=${page}`
+  const { data, error, isLoading, isValidating, mutate } = useSWR<GrammarsResponse>(url, fetcchSimple)
   return {
     data: data?.results,
+    metadata: data?.metadata,
     error,
     isLoading,
     isValidating,

@@ -47,9 +47,7 @@ export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
         <Modal.Header _text={{ color: "#D02C23" }}>Excluir sentença</Modal.Header>
-        <Modal.Body>
-          Tem certeza que deseja excluir esta sentença?
-        </Modal.Body>
+        <Modal.Body>Tem certeza que deseja excluir esta sentença?</Modal.Body>
         <Modal.Footer>
           <Button.Group
             variant="ghost"

@@ -313,7 +313,9 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 isRequired
                 isInvalid={!isDateBirthValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Data de nascimento</FormControl.Label>
+                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>
+                  Data de nascimento
+                </FormControl.Label>
                 <Input
                   value={dateBirth}
                   onChangeText={(text) => {

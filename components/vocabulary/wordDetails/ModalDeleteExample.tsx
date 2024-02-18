@@ -47,9 +47,7 @@ export default function ModalDeleteExample(props: IModalDeleteExampleProps) {
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
         <Modal.Header _text={{ color: "#D02C23" }}>Excluir exemplo</Modal.Header>
-        <Modal.Body>
-          Tem certeza que deseja excluir este exemplo?
-        </Modal.Body>
+        <Modal.Body>Tem certeza que deseja excluir este exemplo?</Modal.Body>
         <Modal.Footer>
           <Button.Group
             variant="ghost"

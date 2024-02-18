@@ -17,7 +17,7 @@ interface IFilterMonthProps {
 
 export default function FilterByMonth(props: IFilterMonthProps) {
   const [selectedMonth, setSelectedMonth] = useState<string>()
-  const { data: grammars, error: grammarsError, isLoading: grammarsIsLoading } = useGrammars()
+  const { data: grammars } = useGrammars()
 
   const uniqueMonth = useMemo(
     () =>
@@ -59,7 +59,6 @@ export default function FilterByMonth(props: IFilterMonthProps) {
 
   return (
     <Select
-      isDisabled={!grammars || grammarsError !== undefined || grammarsIsLoading}
       size={"md"}
       shadow={1}
       _light={{

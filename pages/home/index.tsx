@@ -3,8 +3,8 @@ import React from "react"
 import { GetServerSidePropsContext } from "next"
 
 import { BaseLayout } from "../../components/home/BaseLayout"
-import { redirectIfNoCredentials } from "../../utils"
 import WordToday from "../../components/home/WordToday"
+import { redirectIfNoCredentials } from "../../utils"
 
 export async function getServerSideProps({ req, res }: GetServerSidePropsContext) {
   return redirectIfNoCredentials({ req, res })
