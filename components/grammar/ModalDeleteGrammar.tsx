@@ -2,16 +2,16 @@ import React, { useState } from "react"
 
 import { Button, Modal, useToast } from "native-base"
 
-import { deleteGrammar, useGrammars } from "../../utils/api/grammar"
+import { deleteGrammar } from "../../utils/api/grammar"
 
 interface IModalDeleteGrammarProps {
   isOpen: boolean
   onClose: () => void
+  onReload: () => void
   grammarId: number | null
 }
 
 export default function ModalDeleteGrammar(props: IModalDeleteGrammarProps) {
-  const { mutate: grammarsRevalidate } = useGrammars()
   const [saving, setSaving] = useState(false)
 
   const toast = useToast()
@@ -29,8 +29,7 @@ export default function ModalDeleteGrammar(props: IModalDeleteGrammarProps) {
         placement: "top",
         duration: 2000,
       })
-
-      grammarsRevalidate()
+      props.onReload()
       props.onClose()
     } catch (error) {
       alert(error)

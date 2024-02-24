@@ -3,9 +3,8 @@ import React, { useEffect, useState } from "react"
 import { Button, Column, Modal, useToast } from "native-base"
 import { useForm } from "react-hook-form"
 
-import { updateGrammar, useGrammar, useGrammars } from "../../utils/api/grammar"
+import { updateGrammar, useGrammar } from "../../utils/api/grammar"
 import { levelOptions } from "../../utils/options"
-import Error from "../Error"
 import Input from "../Input"
 import Select from "../Select"
 import Textarea from "../Textarea"
@@ -14,12 +13,11 @@ import { IGrammarFormInput } from "./ModalAddGrammar"
 interface IModalUpdateGrammarProps {
   isOpen: boolean
   onClose: () => void
+  onReload: () => void
   grammarId: number | null
 }
 
 export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
-  const { mutate: grammarsRevalidate } = useGrammars()
-
   const { data: originalGrammar } = useGrammar(props.grammarId || 0)
 
   const {
@@ -57,6 +55,7 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
       })
 
       if (updatedGrammar) {
+        props.onReload()
         toast.show({
           title: "Success",
           description: `Gramática atualizada!`,
@@ -64,7 +63,6 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
           duration: 2000,
         })
       }
-      grammarsRevalidate()
       props.onClose()
     } catch (error) {
       toast.show({

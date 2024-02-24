@@ -1,7 +1,5 @@
 import React, { useState } from "react"
 
-import { Box } from "native-base"
-
 import { useGrammars } from "../../utils/api/grammar"
 import Error from "../Error"
 import GrammarList from "./GrammarList"
@@ -17,6 +15,7 @@ export default function GrammarPage() {
     metadata: grammarsMetadata,
     error: grammarsError,
     isLoading: grammarsIsLoading,
+    mutate: grammarRevalidate,
   } = useGrammars(page, searchText)
 
   function renderContent() {
@@ -32,6 +31,7 @@ export default function GrammarPage() {
         page={page || 1}
         setPage={setPage}
         numPages={grammarsMetadata?.num_pages || 1}
+        revalidate={grammarRevalidate}
       />
     )
   }
@@ -41,6 +41,7 @@ export default function GrammarPage() {
       <SearchGrammar
         searchText={searchText}
         setSeachText={setSearchText}
+        mutate={grammarRevalidate}
       />
       {renderContent()}
     </>

@@ -4,7 +4,7 @@ import { Button, Column, Modal, useToast } from "native-base"
 import { useForm } from "react-hook-form"
 
 import { ICategoryList, useCategories } from "../../utils/api/category"
-import { updateWord, useWord, useWords } from "../../utils/api/vocabulary"
+import { updateWord, useWord } from "../../utils/api/vocabulary"
 import { levelOptions, typeWordsOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
@@ -14,12 +14,11 @@ import { IVocabularyFormInput } from "./ModalAddWord"
 interface IModalAddWordProps {
   isOpen: boolean
   onClose: () => void
+  onReload: () => void
   wordId: number | null
 }
 
 export default function ModalUpdateWord(props: IModalAddWordProps) {
-  const { mutate: wordsRevalidate } = useWords()
-
   const { data: originalWord } = useWord(props.wordId || 0)
 
   const {
@@ -29,7 +28,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
     setValue,
   } = useForm<IVocabularyFormInput>()
 
-  const { data: categories, mutate: categoriesRevalidate } = useCategories()
+  const { data: categories } = useCategories()
 
   const toast = useToast()
   const [saving, setSaving] = useState(false)
@@ -72,6 +71,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
       })
 
       if (updatedWord) {
+        props.onReload()
         toast.show({
           title: "Success",
           description: `Palavra updated`,
@@ -79,8 +79,6 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
           duration: 2000,
         })
       }
-      wordsRevalidate()
-      categoriesRevalidate()
       props.onClose()
       clearInputs()
     } catch (error) {

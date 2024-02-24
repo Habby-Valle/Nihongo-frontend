@@ -2,17 +2,16 @@ import React, { useState } from "react"
 
 import { Button, Modal, useToast } from "native-base"
 
-import { deleteSentence, useSentences } from "../../../utils/api/sentence"
+import { deleteSentence } from "../../../utils/api/sentence"
 
 interface IModalDeleteSentenceProps {
   isOpen: boolean
   onClose: () => void
+  onReload: () => void
   sentenceId: number | null
-  grammarId: number | null
 }
 
 export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
-  const { mutate: sentencesRevalidates } = useSentences(props.grammarId || undefined)
   const [saving, setSaving] = useState(false)
   const toast = useToast()
 
@@ -30,7 +29,7 @@ export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
         duration: 2000,
       })
 
-      sentencesRevalidates()
+      props.onReload()
       props.onClose()
     } catch (error) {
       alert(error)

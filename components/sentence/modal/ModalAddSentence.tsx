@@ -3,12 +3,13 @@ import React, { useState } from "react"
 import { Button, Column, Modal, useToast } from "native-base"
 import { useForm } from "react-hook-form"
 
-import { createSentence, useSentences } from "../../../utils/api/sentence"
+import { createSentence } from "../../../utils/api/sentence"
 import Input from "../../Input"
 import Textarea from "../../Textarea"
 
 interface IModalAddSentenceProps {
   isOpen: boolean
+  onSave: () => void
   onClose: () => void
   grammarId: number | null
 }
@@ -28,9 +29,6 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
   } = useForm<ISentenceFormInput>()
 
   const toast = useToast()
-
-  const { mutate: sentenceRevalidate } = useSentences(props.grammarId || undefined)
-
   const [saving, setSaving] = useState(false)
   const japaneseRegex = /[\u3000-\u303F\u3040-\u309F\u30A0-\u30FF\uFF00-\uFFEF]/
   const clearInputs = () => {
@@ -52,6 +50,7 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
       })
 
       if (newSentence) {
+        props.onSave()
         toast.show({
           title: "Success",
           description: `Sentença adicionada com sucesso!`,
@@ -59,7 +58,6 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
           duration: 2000,
         })
       }
-      sentenceRevalidate()
       clearInputs()
       props.onClose()
     } catch (error) {

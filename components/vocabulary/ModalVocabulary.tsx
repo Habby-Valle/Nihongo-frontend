@@ -8,6 +8,7 @@ import ModalUpdateWord from "./ModalUpdateWord"
 interface ModalVocabularyProps {
   isOpen: boolean
   onClose: () => void
+  revalidate: () => void
   wordId: number | null
 }
 
@@ -63,6 +64,9 @@ export default function ModalVocabulary(props: ModalVocabularyProps) {
       </Modal.Content>
       <ModalUpdateWord
         isOpen={modalVisible}
+        onReload={async () => {
+          await props.revalidate()
+        }}
         onClose={() => {
           setModalVisible(false)
         }}
@@ -71,6 +75,9 @@ export default function ModalVocabulary(props: ModalVocabularyProps) {
 
       <ModalDeleteWord
         isOpen={modalDeleteVisible}
+        onReload={async () => {
+          await props.revalidate()
+        }}
         onClose={() => {
           setModalDeleteVisible(false)
         }}

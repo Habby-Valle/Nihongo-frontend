@@ -61,7 +61,11 @@ export default function SentenceList(props: ISentenceListProps) {
   const [modalAddVisible, setModalAddVisible] = useState(false)
   const [sentenceId, setSentenceId] = useState<number | null>(null)
   const [cnt, setCnt] = useState(1)
-  const { data: sentences, metadata: sentencesMetadata } = useSentences(props.grammarId, cnt)
+  const {
+    data: sentences,
+    metadata: sentencesMetadata,
+    mutate: revalidateSentences,
+  } = useSentences(props.grammarId, cnt)
   const pages = []
 
   const handleChangeSentenceId = (id: number) => {
@@ -127,6 +131,7 @@ export default function SentenceList(props: ISentenceListProps) {
       )}
       <ModalSentence
         isOpen={modalVisible}
+        revalidate={revalidateSentences}
         onClose={() => {
           setModalVisible(false)
         }}
@@ -135,6 +140,9 @@ export default function SentenceList(props: ISentenceListProps) {
       />
       <ModalAddSentence
         isOpen={modalAddVisible}
+        onSave={async () => {
+          await revalidateSentences()
+        }}
         onClose={() => {
           setModalAddVisible(false)
         }}
