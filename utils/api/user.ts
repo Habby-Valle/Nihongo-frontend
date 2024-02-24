@@ -42,12 +42,14 @@ export interface IProfileUpdate {
 export function WhoIam() {
   interface IResponse {
     user: IUser
+    profile: IProfile
   }
 
   const { data, error, isLoading, isValidating, mutate } = useSWR<IResponse>("/api/whoami/", fetcchSimple)
 
   return {
     data: data?.user,
+    profile: data?.profile,
     error,
     isLoading,
     isValidating,

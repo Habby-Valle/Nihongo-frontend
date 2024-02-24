@@ -4,7 +4,8 @@ import format from "date-fns/format"
 import { Box, Button, Column, Row, Text, useToast } from "native-base"
 import Image from "next/image"
 
-import { WhoIam, updateProfileAvatar, useProfile } from "../../utils/api/user"
+import Default from "../../public/images/default.jpg"
+import { WhoIam, updateProfileAvatar } from "../../utils/api/user"
 import { applyPhoneMask } from "../../utils/validation"
 import Error from "../Error"
 import ModalProfile from "./ModalProfile"
@@ -12,17 +13,21 @@ import ProfileSkeleton from "./ProfileSkeleton"
 
 export default function ProfileInfo() {
   const [modalVisible, setModalVisible] = useState(false)
-  const { data: userInfo, error: userInfoError, mutate: userRevalidate } = WhoIam()
+  const {
+    data: userInfo,
+    profile: userProfile,
+    isLoading: profileLoading,
+    error: userInfoError,
+    mutate: userRevalidate,
+  } = WhoIam()
   const [image, setImage] = useState<File>()
   const [saving, setSaving] = useState(false)
   const toast = useToast()
-  const {
-    data: profile,
-    error: profileError,
-    isLoading: profileLoading,
-    isValidating: profileValidating,
-    mutate: profileRevalidate,
-  } = useProfile(userInfo?.id)
+
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const cleanAPI_URL = API_URL?.endsWith("/") ? API_URL.slice(0, -1) : API_URL
+
+  const urlImage = userProfile?.avatar ? `${cleanAPI_URL}${userProfile.avatar}` : Default
 
   async function handleUpdateProfileAvatar() {
     setSaving(true)
@@ -40,7 +45,6 @@ export default function ProfileInfo() {
       }
 
       userRevalidate()
-      profileRevalidate()
     } catch (error) {
       toast.show({
         title: "Error",
@@ -53,7 +57,7 @@ export default function ProfileInfo() {
     }
   }
 
-  if (profileLoading || profileValidating) {
+  if (profileLoading) {
     return (
       <Box
         justifyContent="center"
@@ -65,7 +69,7 @@ export default function ProfileInfo() {
     )
   }
 
-  if (userInfoError || profileError) {
+  if (userInfoError) {
     return <Error message="Error loading profile" />
   }
 
@@ -103,13 +107,23 @@ export default function ProfileInfo() {
             borderWidth={"3px"}
             style={{ width: 100, height: 100, borderRadius: 50, overflow: "hidden" }}
           >
-            <Image
-              src={`https://nihongo-gaido-4ec2db96e424.herokuapp.com/${profile?.avatar}`}
-              alt="Avatar"
-              width={100}
-              height={100}
-              objectFit="cover"
-            />
+            {userProfile?.avatar ? (
+              <Image
+                src={urlImage}
+                alt="Avatar"
+                width={100}
+                height={100}
+                objectFit="cover"
+              />
+            ) : (
+              <Image
+                src={Default}
+                alt="Avatar"
+                width={100}
+                height={100}
+                objectFit="cover"
+              />
+            )}
           </Box>
           <Column
             space={"12px"}
@@ -146,7 +160,7 @@ export default function ProfileInfo() {
             >
               Nome:{" "}
             </Text>
-            {profile?.user.first_name !== "" ? profile?.user.first_name : "Nome não disponível"}
+            {userProfile?.user.first_name !== "" ? userProfile?.user.first_name : "Nome não disponível"}
           </Text>
           <Text
             color="#D02C23"
@@ -158,7 +172,7 @@ export default function ProfileInfo() {
             >
               Sobrenome:{" "}
             </Text>
-            {profile?.user.last_name !== "" ? profile?.user.last_name : "Sobrenome não disponível"}
+            {userProfile?.user.last_name !== "" ? userProfile?.user.last_name : "Sobrenome não disponível"}
           </Text>
           <Text
             color="#D02C23"
@@ -170,7 +184,7 @@ export default function ProfileInfo() {
             >
               Username:{" "}
             </Text>
-            {profile?.user.username}
+            {userProfile?.user.username}
           </Text>
           <Text
             color="#D02C23"
@@ -182,7 +196,7 @@ export default function ProfileInfo() {
             >
               Email:{" "}
             </Text>
-            {profile?.user.email ?? "Email não disponível"}
+            {userProfile?.user.email ?? "Email não disponível"}
           </Text>
           <Text
             color="#D02C23"
@@ -194,7 +208,7 @@ export default function ProfileInfo() {
             >
               Telefone:{" "}
             </Text>
-            {applyPhoneMask(profile?.phone) ?? "Telefone não disponível"}
+            {applyPhoneMask(userProfile?.phone) ?? "Telefone não disponível"}
           </Text>
           <Text
             color="#D02C23"
@@ -206,7 +220,9 @@ export default function ProfileInfo() {
             >
               Data de Nascimento:{" "}
             </Text>
-            {profile?.date_of_birth ? format(new Date(profile.date_of_birth), "dd-MM-yyyy") : "Data não disponível"}
+            {userProfile?.date_of_birth
+              ? format(new Date(userProfile.date_of_birth), "dd-MM-yyyy")
+              : "Data não disponível"}
           </Text>
         </Column>
         <Row justifyContent={"flex-end"}>

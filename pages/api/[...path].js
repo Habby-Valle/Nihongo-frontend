@@ -2,7 +2,7 @@ import Cookies from "cookies"
 import httpProxy from "http-proxy"
 import url from "url"
 
-const API_URL = process.env.API_URL
+const API_URL = process.env.NEXT_PUBLIC_API_URL
 const proxy = httpProxy.createProxyServer()
 export const config = {
   api: {

@@ -5,7 +5,8 @@ import Image from "next/image"
 import { useRouter } from "next/router"
 import { MdArrowBack, MdDarkMode, MdLightMode } from "react-icons/md"
 
-import { WhoIam, useProfile } from "../../utils/api/user"
+import Default from "../../public/images/default.jpg"
+import { WhoIam } from "../../utils/api/user"
 
 interface IHeadingProps {
   title: string
@@ -14,11 +15,13 @@ interface IHeadingProps {
 export function Heading({ title }: IHeadingProps) {
   const [theme, setTheme] = useState<"light" | "dark">("light")
   const { toggleColorMode } = useColorMode()
-  const { data: userInfo } = WhoIam()
+  const { data: userInfo, profile: userProfile } = WhoIam()
 
-  const { data: profile } = useProfile(userInfo?.id)
+  const API_URL = process.env.NEXT_PUBLIC_API_URL
+  const cleanAPI_URL = API_URL?.endsWith("/") ? API_URL.slice(0, -1) : API_URL
 
   const router = useRouter()
+  const urlImage = userProfile?.avatar ? `${cleanAPI_URL}${userProfile.avatar}` : Default
 
   return (
     <Box
@@ -76,14 +79,23 @@ export function Heading({ title }: IHeadingProps) {
             }}
           >
             <Box style={{ borderRadius: 50, overflow: "hidden" }}>
-              <Image
-                loading={"eager"}
-                src={`https://nihongo-gaido-4ec2db96e424.herokuapp.com/${profile?.avatar}`}
-                alt="Avatar"
-                width={30}
-                height={30}
-                objectFit="cover"
-              />
+              {userProfile?.avatar ? (
+                <Image
+                  src={urlImage}
+                  alt="Avatar"
+                  width={30}
+                  height={30}
+                  objectFit="cover"
+                />
+              ) : (
+                <Image
+                  src={Default}
+                  alt="Avatar"
+                  width={30}
+                  height={30}
+                  objectFit="cover"
+                />
+              )}
             </Box>
             <Text
               color="white"
