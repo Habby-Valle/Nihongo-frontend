@@ -7,10 +7,10 @@ import { MdAdd } from "react-icons/md"
 import { ISentenceList, useSentences } from "../../utils/api/sentence"
 import DataEmpty from "../DataEmpty"
 import Error from "../Error"
+import LoadMore from "../LoadMore"
 import SentenceCard from "./SentenceCard"
 import ModalAddSentence from "./modal/ModalAddSentence"
 import ModalSentence from "./modal/ModalSentence"
-import LoadMore from "../LoadMore"
 
 interface ISentenceListProps {
   grammarId: number

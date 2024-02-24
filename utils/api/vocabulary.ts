@@ -48,14 +48,14 @@ export interface IMetadata {
   previous: string | null
 }
 
-export function useWords(page?: number, page_size?: number) {
+export function useWords(page?: number, search?: string, page_size?: number) {
   interface WordReponse {
     metadata: IMetadata
     results: IWordList[]
   }
 
-  const url = page_size ? `/api/words?page=${page}&page_size=${page_size}` : `/api/words?page=${page}`
-
+  let url = page_size ? `/api/words?page=${page}&page_size=${page_size}` : `/api/words?page=${page}`
+  search ? (url = url + `&search=${search}`) : null
   const { data, error, isLoading, isValidating, mutate } = useSWR<WordReponse>(url, fetcchSimple)
 
   return {
