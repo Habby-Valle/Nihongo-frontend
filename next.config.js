@@ -20,7 +20,7 @@ module.exports = withNativebase({
     },
     reactStrictMode: true,
     images: {
-      domains: ["nihongo-gaido-4ec2db96e424.herokuapp.com"], // Adicione o domínio correto aqui
+      domains: ["nihongo-gaido-4ec2db96e424.herokuapp.com", "127.0.0.1", "localhost"], // Adicione o domínio correto aqui
     },
   },
 })
