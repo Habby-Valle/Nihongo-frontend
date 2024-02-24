@@ -3,46 +3,25 @@ import React, { useState } from "react"
 import { Button, Column, Input, Row } from "native-base"
 import { MdAdd, MdSearch } from "react-icons/md"
 
-import FilterByLevel from "./FilterByLevel"
-import FilterByMonth, { IGrammarFilterMonth } from "./FilterByMonth"
 import ModalAddGrammar from "./ModalAddGrammar"
 
-export interface IGrammarsFilters {
-  searchText: string | null
-  level: string | null
-  month: IGrammarFilterMonth | null
-}
-
 interface ISearchGrammarProps {
-  onFiltersChanged?: (filters: IGrammarsFilters) => void
+  searchText: string
+  setSeachText: (text: string) => void
 }
 
 export default function SearchGrammar(props: ISearchGrammarProps) {
   const [modalVisible, setModalVisible] = useState(false)
-  const [filters, setFilters] = useState<IGrammarsFilters>({
-    searchText: null,
-    level: null,
-    month: null,
-  })
-
-  function handleFilterChanged(filters: IGrammarsFilters) {
-    setFilters(filters)
-
-    if (props.onFiltersChanged !== undefined) {
-      props.onFiltersChanged(filters)
-    }
-  }
-
   return (
     <Row
       justifyContent={"space-between"}
-      alignItems={"center"}
+      alignItems={"flex-end"}
       p={5}
       w={"100%"}
     >
       <Column space={"20px"}>
         <Input
-          placeholder="Buscar gramática"
+          placeholder="Buscar gramática, estrutura e nível..."
           _light={{
             bg: "white",
           }}
@@ -51,10 +30,8 @@ export default function SearchGrammar(props: ISearchGrammarProps) {
           }}
           w={"700px"}
           size={"md"}
-          onChangeText={(text) => {
-            handleFilterChanged({ ...filters, searchText: text })
-          }}
-          value={filters.searchText ?? ""}
+          onChangeText={(text) => props.setSeachText(text)}
+          value={props.searchText}
           InputRightElement={
             <MdSearch
               size={25}
@@ -62,23 +39,11 @@ export default function SearchGrammar(props: ISearchGrammarProps) {
             />
           }
         />
-        <Column width={"200px"}>
-          <FilterByLevel
-            onLevelSelected={(level) => {
-              handleFilterChanged({ ...filters, level })
-            }}
-          />
-        </Column>
       </Column>
       <Column
         space={"20px"}
         alignItems={"flex-end"}
       >
-        <FilterByMonth
-          onMonthSelected={(month) => {
-            handleFilterChanged({ ...filters, month })
-          }}
-        />
         <Button
           bg={"#D02C23"}
           onPress={() => {

@@ -29,12 +29,14 @@ export interface IGrammarUpdate {
   explain?: string
 }
 
-export function useGrammars(page?: number, page_size?: number) {
+export function useGrammars(page?: number, search?: string, page_size?: number) {
   interface GrammarsResponse {
     metadata: IMetadata
     results: IGrammarList[]
   }
-  const url = page_size ? `/api/grammar?page=${page}&page_size=${page_size}` : `/api/grammar?page=${page}`
+  let url = page_size ? `/api/grammar?page=${page}&page_size=${page_size}` : `/api/grammar?page=${page}`
+  search ? (url = url + `&search=${search}`) : null
+
   const { data, error, isLoading, isValidating, mutate } = useSWR<GrammarsResponse>(url, fetcchSimple)
   return {
     data: data?.results,

@@ -4,18 +4,19 @@ import { Box, Button, Divider, FlatList, Pressable, Row, Spinner, Text, useToast
 import { useRouter } from "next/router"
 import { MdAdd, MdFileCopy, MdList, MdOutlineFileCopy } from "react-icons/md"
 
-import { IWordList, useWords } from "../../utils/api/vocabulary"
+import { IWordList } from "../../utils/api/vocabulary"
 import DataEmpty from "../DataEmpty"
-import Error from "../Error"
 import PageNumbers from "../PageNumbers"
 import CategoryAddModal from "../category/CategoryAddModal"
-import { IVocabularyFilters } from "./SearchVocabulary"
 
 const ModalAddWord = lazy(async () => await import("./ModalAddWord"))
 const ModalVocabulary = lazy(async () => await import("./ModalVocabulary"))
 
 interface IWordListProps {
-  filters?: IVocabularyFilters
+  words: IWordList[]
+  page: number
+  setPage: (page: number) => void
+  numPages: number
 }
 
 export default function WordList(props: IWordListProps) {
@@ -24,58 +25,13 @@ export default function WordList(props: IWordListProps) {
   const [wordId, setWordId] = useState<number | null>(null)
   const [isModalVocabularyOpen, setIsModalVocabularyOpen] = useState(false)
 
-  const [page, setPage] = useState(1)
   const router = useRouter()
   const toast = useToast()
-
-  const { data: words, metadata: wordsMetadata, error: wordsError, isLoading: wordsIsLoading } = useWords(page)
 
   const handleChangeWordId = (wordId: number | null) => {
     setWordId(wordId)
     setIsModalVocabularyOpen(true)
   }
-
-  const filteredVocabulary = useMemo(() => {
-    if (words === undefined) return []
-
-    const filters = props.filters
-
-    if (filters === undefined) return words
-
-    if (Object.values(filters).every((v) => v === null)) return words
-
-    let filteredWords = words
-
-    if (filters.searchText !== null) {
-      filteredWords = filteredWords.filter(
-        (word) =>
-          word.word.toLocaleLowerCase().includes(filters.searchText?.toLocaleLowerCase() ?? "") ||
-          word.reading.toLocaleLowerCase().includes(filters.searchText?.toLocaleLowerCase() ?? "") ||
-          word.meaning.toLocaleLowerCase().includes(filters.searchText?.toLocaleLowerCase() ?? ""),
-      )
-    }
-
-    if (filters.category !== null) {
-      filteredWords = filteredWords.filter((word) => {
-        return word.category !== null && word.category.name === filters.category
-      })
-    }
-
-    if (filters.level !== null) {
-      filteredWords = filteredWords.filter((word) => word.level === filters.level)
-    }
-
-    if (filters.type !== null) {
-      filteredWords = filteredWords.filter((word) => word.type === filters.type)
-    }
-
-    return filteredWords
-  }, [words, props.filters])
-
-  if (wordsError) return <Error message={wordsError.message} />
-
-  if (wordsIsLoading) return <Spinner />
-
   function header() {
     return (
       <Row
@@ -89,7 +45,7 @@ export default function WordList(props: IWordListProps) {
           fontSize={20}
           fontWeight={700}
         >
-          Total de palavras ({words?.length})
+          Total de palavras ({props.words?.length})
         </Text>
         <Row
           justifyContent={"space-between"}
@@ -148,17 +104,17 @@ export default function WordList(props: IWordListProps) {
           _pressed={{ bg: "#ae251e" }}
           size={"md"}
           onPress={() => {
-            setPage(page - 1)
+            props.setPage(props.page - 1)
           }}
-          isDisabled={page === 1}
+          isDisabled={props.page === 1}
         >
           Anterior
         </Button>
         <PageNumbers
-          totalPages={wordsMetadata?.num_pages ?? 1}
-          currentPage={page}
+          totalPages={props.numPages ?? 1}
+          currentPage={props.page}
           onPageChange={(newPage) => {
-            setPage(newPage)
+            props.setPage(newPage)
           }}
         />
         <Button
@@ -167,9 +123,9 @@ export default function WordList(props: IWordListProps) {
           _pressed={{ bg: "#ae251e" }}
           size={"md"}
           onPress={() => {
-            setPage(page + 1)
+            props.setPage(props.page + 1)
           }}
-          isDisabled={page === (wordsMetadata?.num_pages ?? 1)}
+          isDisabled={props.page === (props.numPages ?? 1)}
         >
           Próximo
         </Button>
@@ -268,7 +224,7 @@ export default function WordList(props: IWordListProps) {
     >
       <FlatList
         w={"100%"}
-        data={filteredVocabulary}
+        data={props.words}
         ListHeaderComponent={header}
         ListFooterComponent={footer}
         renderItem={({ item }) => <RenderItem item={item} />}

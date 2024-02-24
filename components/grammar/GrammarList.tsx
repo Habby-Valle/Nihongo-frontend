@@ -1,32 +1,23 @@
-import React, { useMemo, useState } from "react"
+import React, { useState } from "react"
 import { ListRenderItemInfo } from "react-native"
 
 import { Box, Button, Column, Divider, FlatList, Heading, Pressable, Row, Text } from "native-base"
 import { useRouter } from "next/router"
 
-import { IGrammarList, useGrammars } from "../../utils/api/grammar"
+import { IGrammarList } from "../../utils/api/grammar"
 import DataEmpty from "../DataEmpty"
-import Error from "../Error"
 import PageNumbers from "../PageNumbers"
-import GrammarSkeleton from "./GrammarSkeleton"
 import ModalDeleteGrammar from "./ModalDeleteGrammar"
 import ModalUpdateGrammar from "./ModalUpdateGrammar"
-import { IGrammarsFilters } from "./SearchGrammar"
 
 interface IGrammarListProps {
-  filters?: IGrammarsFilters
+  grammars: IGrammarList[]
+  page: number
+  setPage: (page: number) => void
+  numPages: number
 }
 
 export default function GrammarList(props: IGrammarListProps) {
-  const [page, setPage] = useState(1)
-
-  const {
-    data: grammars,
-    metadata: grammarsMetadata,
-    error: grammarsError,
-    isLoading: grammarsIsLoading,
-  } = useGrammars(page)
-
   const [grammarId, setGrammarId] = useState<number | null>(null)
   const [modalVisible, setModalVisible] = useState(false)
   const [modalDeleteVisible, setModalDeleteVisible] = useState(false)
@@ -41,43 +32,6 @@ export default function GrammarList(props: IGrammarListProps) {
     setGrammarId(id)
     setModalDeleteVisible(true)
   }
-
-  const filteredGrammars = useMemo(() => {
-    if (grammars === undefined) return []
-
-    const filters = props.filters
-
-    if (filters === undefined) return grammars
-
-    if (Object.values(filters).every((v) => v === null)) return grammars
-
-    let _filteredGrammars = grammars
-
-    if (filters.searchText !== null) {
-      _filteredGrammars = _filteredGrammars.filter(
-        (grammar) =>
-          grammar.grammar.toLocaleLowerCase().includes(filters.searchText?.toLocaleLowerCase() ?? "") ||
-          grammar.structure.toLocaleLowerCase().includes(filters.searchText?.toLocaleLowerCase() ?? ""),
-      )
-    }
-
-    if (filters.level !== null) {
-      _filteredGrammars = _filteredGrammars.filter((grammar) => grammar.level === filters.level)
-    }
-
-    if (filters.month !== null) {
-      // eslint-disable-next-line array-callback-return
-      _filteredGrammars = _filteredGrammars.filter((grammar) => {
-        if (
-          new Date(grammar.created_at).getFullYear() === filters.month?.year &&
-          new Date(grammar.created_at).getMonth() + 1 === filters.month?.month
-        )
-          return true
-      })
-    }
-
-    return _filteredGrammars
-  }, [grammars, props.filters])
 
   function header() {
     return (
@@ -132,17 +86,17 @@ export default function GrammarList(props: IGrammarListProps) {
           _pressed={{ bg: "#ae251e" }}
           size={"md"}
           onPress={() => {
-            setPage(page - 1)
+            props.setPage(props.page - 1)
           }}
-          isDisabled={page === 1}
+          isDisabled={props.page === 1}
         >
           Anterior
         </Button>
         <PageNumbers
-          totalPages={grammarsMetadata?.num_pages ?? 1}
-          currentPage={page}
+          totalPages={props.numPages ?? 1}
+          currentPage={props.page}
           onPageChange={(newPage) => {
-            setPage(newPage)
+            props.setPage(newPage)
           }}
         />
         <Button
@@ -151,9 +105,9 @@ export default function GrammarList(props: IGrammarListProps) {
           _pressed={{ bg: "#ae251e" }}
           size={"md"}
           onPress={() => {
-            setPage(page + 1)
+            props.setPage(props.page + 1)
           }}
-          isDisabled={page === (grammarsMetadata?.num_pages ?? 1)}
+          isDisabled={props.page === (props.numPages ?? 1)}
         >
           Próximo
         </Button>
@@ -233,29 +187,13 @@ export default function GrammarList(props: IGrammarListProps) {
     )
   }
 
-  if (grammarsIsLoading) {
-    return (
-      <Box p={5}>
-        <GrammarSkeleton />
-      </Box>
-    )
-  }
-
-  if (grammarsError) {
-    return (
-      <Box p={5}>
-        <Error message={"Erro ao carregar as gramáticas"} />
-      </Box>
-    )
-  }
-
   return (
     <Box
       p={5}
       w={"100%"}
     >
       <FlatList
-        data={filteredGrammars}
+        data={props.grammars}
         ListHeaderComponent={header}
         ListFooterComponent={footer}
         ItemSeparatorComponent={() => <Divider bg={"#D02C23"} />}

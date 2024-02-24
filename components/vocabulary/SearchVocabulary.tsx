@@ -1,49 +1,24 @@
-import React, { useState } from "react"
+import React from "react"
 
 import { Column, Input, Row } from "native-base"
 import { MdSearch } from "react-icons/md"
 
-import FilterByLevel from "../grammar/FilterByLevel"
-import FilterByCategory from "./FilterByCategory"
-import FilterByType from "./FilterByType"
-
-export interface IVocabularyFilters {
-  searchText: string | null
-  category: string | null
-  level: string | null
-  type: string | null
-}
-
 interface ISearchVocabularyProps {
-  onFiltersChanged?: (filters: IVocabularyFilters) => void
+  searchText: string
+  setSearchText: (searchText: string) => void
 }
 
 export default function SearchVocabulary(props: ISearchVocabularyProps) {
-  const [filters, setFilters] = useState<IVocabularyFilters>({
-    searchText: null,
-    category: null,
-    level: null,
-    type: null,
-  })
-
-  function handleFilterChanged(filters: IVocabularyFilters) {
-    setFilters(filters)
-
-    if (props.onFiltersChanged !== undefined) {
-      props.onFiltersChanged(filters)
-    }
-  }
-
   return (
     <Row
       justifyContent={"space-between"}
-      alignItems={"center"}
+      alignItems={"flex-start"}
       p={5}
       width={"100%"}
     >
       <Column space={"20px"}>
         <Input
-          placeholder="Buscar palavra, leitura ou significado"
+          placeholder="Buscar palavra, leitura, significado ou nível"
           _light={{
             bg: "white",
           }}
@@ -53,9 +28,9 @@ export default function SearchVocabulary(props: ISearchVocabularyProps) {
           w={"700px"}
           size={"md"}
           onChangeText={(text) => {
-            handleFilterChanged({ ...filters, searchText: text })
+            props.setSearchText(text)
           }}
-          value={filters.searchText ?? ""}
+          value={props.searchText}
           InputRightElement={
             <MdSearch
               size={25}
@@ -63,29 +38,16 @@ export default function SearchVocabulary(props: ISearchVocabularyProps) {
             />
           }
         />
-        <Column width={"200px"}>
-          <FilterByCategory
-            onCategorySelected={(category) => {
-              handleFilterChanged({ ...filters, category })
-            }}
-          />
-        </Column>
+        {/* <Column width={"200px"}>
+          <FilterByCategory onCategorySelected={() => console.log("Category selected")} />
+        </Column> */}
       </Column>
-      <Column
+      {/* <Column
         space={"20px"}
         alignItems={"flex-end"}
       >
-        <FilterByLevel
-          onLevelSelected={(level) => {
-            handleFilterChanged({ ...filters, level })
-          }}
-        />
-        <FilterByType
-          onTypeSelected={(type) => {
-            handleFilterChanged({ ...filters, type })
-          }}
-        />
-      </Column>
+        <FilterByType onTypeSelected={() => console.log("Type selected")} />
+      </Column> */}
     </Row>
   )
 }

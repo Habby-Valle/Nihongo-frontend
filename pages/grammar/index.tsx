@@ -3,8 +3,7 @@ import React from "react"
 import { Box } from "native-base"
 import { GetServerSidePropsContext } from "next"
 
-import GrammarList from "../../components/grammar/GrammarList"
-import SearchGrammar, { IGrammarsFilters } from "../../components/grammar/SearchGrammar"
+import GrammarPage from "../../components/grammar/GrammarPage"
 import { BaseLayout } from "../../components/home/BaseLayout"
 import { redirectIfNoCredentials } from "../../utils"
 
@@ -13,7 +12,6 @@ export async function getServerSideProps({ req, res }: GetServerSidePropsContext
 }
 
 export default function Grammar() {
-  const [filters, setFilters] = React.useState<IGrammarsFilters>()
   return (
     <BaseLayout title="Grámatica">
       <Box
@@ -22,8 +20,7 @@ export default function Grammar() {
         w={"100%"}
         flex={2}
       >
-        <SearchGrammar onFiltersChanged={setFilters} />
-        <GrammarList filters={filters} />
+        <GrammarPage />
       </Box>
     </BaseLayout>
   )

@@ -2,7 +2,6 @@ import React, { useState } from "react"
 
 import { Select } from "native-base"
 
-import { useWords } from "../../utils/api/vocabulary"
 import { typeWordsOptions } from "../../utils/options"
 
 interface IFilterByTypeProps {
@@ -11,7 +10,6 @@ interface IFilterByTypeProps {
 
 export default function FilterByType(props: IFilterByTypeProps) {
   const [selectedType, setSelectedType] = useState<string>()
-  const { data: words, error: wordsError, isLoading: wordsIsLoading } = useWords()
 
   const handleSelectType = (type: string) => {
     setSelectedType(type)
