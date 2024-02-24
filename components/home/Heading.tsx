@@ -4,8 +4,6 @@ import { Box, HStack, Icon, IconButton, Pressable, Text, useColorMode } from "na
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { MdArrowBack, MdDarkMode, MdLightMode } from "react-icons/md"
-
-import Default from "../../public/images/default.jpg"
 import { WhoIam } from "../../utils/api/user"
 
 interface IHeadingProps {
@@ -21,8 +19,6 @@ export function Heading({ title }: IHeadingProps) {
   const cleanAPI_URL = API_URL?.endsWith("/") ? API_URL.slice(0, -1) : API_URL
 
   const router = useRouter()
-  const urlImage = userProfile?.avatar ? `${cleanAPI_URL}${userProfile.avatar}` : Default
-
   return (
     <Box
       bg="#D02C23"
@@ -81,21 +77,13 @@ export function Heading({ title }: IHeadingProps) {
             <Box style={{ borderRadius: 50, overflow: "hidden" }}>
               {userProfile?.avatar ? (
                 <Image
-                  src={urlImage}
+                  src={`${cleanAPI_URL}${userProfile.avatar}`}
                   alt="Avatar"
                   width={30}
                   height={30}
                   objectFit="cover"
                 />
-              ) : (
-                <Image
-                  src={Default}
-                  alt="Avatar"
-                  width={30}
-                  height={30}
-                  objectFit="cover"
-                />
-              )}
+              ) : (null)}
             </Box>
             <Text
               color="white"

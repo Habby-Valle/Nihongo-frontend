@@ -4,7 +4,6 @@ import format from "date-fns/format"
 import { Box, Button, Column, Row, Text, useToast } from "native-base"
 import Image from "next/image"
 
-import Default from "../../public/images/default.jpg"
 import { WhoIam, updateProfileAvatar } from "../../utils/api/user"
 import { applyPhoneMask } from "../../utils/validation"
 import Error from "../Error"
@@ -26,8 +25,6 @@ export default function ProfileInfo() {
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL
   const cleanAPI_URL = API_URL?.endsWith("/") ? API_URL.slice(0, -1) : API_URL
-
-  const urlImage = userProfile?.avatar ? `${cleanAPI_URL}${userProfile.avatar}` : Default
 
   async function handleUpdateProfileAvatar() {
     setSaving(true)
@@ -109,21 +106,13 @@ export default function ProfileInfo() {
           >
             {userProfile?.avatar ? (
               <Image
-                src={urlImage}
+                src={`${cleanAPI_URL}${userProfile.avatar}`}
                 alt="Avatar"
                 width={100}
                 height={100}
                 objectFit="cover"
               />
-            ) : (
-              <Image
-                src={Default}
-                alt="Avatar"
-                width={100}
-                height={100}
-                objectFit="cover"
-              />
-            )}
+            ) : (null)}
           </Box>
           <Column
             space={"12px"}
