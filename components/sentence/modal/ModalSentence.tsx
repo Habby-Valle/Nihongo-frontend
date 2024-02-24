@@ -8,6 +8,7 @@ import ModalUpdateSentence from "./ModalUpdateSentence"
 interface ModalSentenceProps {
   isOpen: boolean
   onClose: () => void
+  revalidate: () => void
   sentenceId: number | null
   grammarId: number | null
 }
@@ -71,6 +72,9 @@ export default function ModalSentence(props: ModalSentenceProps) {
       </Modal.Content>
       <ModalUpdateSentence
         isOpen={modalVisible}
+        onReload={async () => {
+          await props.revalidate()
+        }}
         onClose={() => {
           setModalVisible(false)
         }}
@@ -79,11 +83,13 @@ export default function ModalSentence(props: ModalSentenceProps) {
       />
       <ModalDeleteSentence
         isOpen={modalDeleteVisible}
+        onReload={async () => {
+          await props.revalidate()
+        }}
         onClose={() => {
           setModalDeleteVisible(false)
         }}
         sentenceId={props.sentenceId}
-        grammarId={props.grammarId}
       />
     </Modal>
   )

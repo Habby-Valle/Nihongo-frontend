@@ -15,6 +15,7 @@ interface IGrammarListProps {
   page: number
   setPage: (page: number) => void
   numPages: number
+  revalidate: () => void
 }
 
 export default function GrammarList(props: IGrammarListProps) {
@@ -203,6 +204,9 @@ export default function GrammarList(props: IGrammarListProps) {
       />
       <ModalUpdateGrammar
         isOpen={modalVisible}
+        onReload={async () => {
+          await props.revalidate()
+        }}
         onClose={() => {
           setModalVisible(false)
         }}
@@ -210,6 +214,9 @@ export default function GrammarList(props: IGrammarListProps) {
       />
       <ModalDeleteGrammar
         isOpen={modalDeleteVisible}
+        onReload={async () => {
+          await props.revalidate()
+        }}
         onClose={() => {
           setModalDeleteVisible(false)
         }}

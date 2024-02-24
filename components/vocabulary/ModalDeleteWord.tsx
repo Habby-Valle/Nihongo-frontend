@@ -2,16 +2,16 @@ import React, { useState } from "react"
 
 import { Button, Modal, useToast } from "native-base"
 
-import { deleteWord, useWords } from "../../utils/api/vocabulary"
+import { deleteWord } from "../../utils/api/vocabulary"
 
 interface IModalDeleteWordProps {
   isOpen: boolean
   onClose: () => void
+  onReload: () => void
   wordId: number | null
 }
 
 export default function ModalDeleteWord(props: IModalDeleteWordProps) {
-  const { mutate: wordsRevalidate } = useWords()
   const [saving, setSaving] = useState(false)
   const toast = useToast()
 
@@ -29,7 +29,7 @@ export default function ModalDeleteWord(props: IModalDeleteWordProps) {
         duration: 2000,
       })
 
-      wordsRevalidate()
+      props.onReload()
       props.onClose()
     } catch (error) {
       alert(error)

@@ -17,6 +17,7 @@ interface IWordListProps {
   page: number
   setPage: (page: number) => void
   numPages: number
+  revalidate: () => void
 }
 
 export default function WordList(props: IWordListProps) {
@@ -237,6 +238,9 @@ export default function WordList(props: IWordListProps) {
       <Suspense fallback={<Spinner />}>
         <ModalAddWord
           isOpen={isModalAddWordOpen}
+          onSave={async () => {
+            await props.revalidate()
+          }}
           onClose={() => {
             setIsModalAddWordOpen(false)
           }}
@@ -245,6 +249,7 @@ export default function WordList(props: IWordListProps) {
       <Suspense fallback={<Spinner />}>
         <ModalVocabulary
           isOpen={isModalVocabularyOpen}
+          revalidate={props.revalidate}
           onClose={() => {
             setIsModalVocabularyOpen(false)
           }}

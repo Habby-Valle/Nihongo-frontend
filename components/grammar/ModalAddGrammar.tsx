@@ -3,7 +3,7 @@ import React, { useState } from "react"
 import { Button, Column, Modal, useToast } from "native-base"
 import { useForm } from "react-hook-form"
 
-import { createGrammar, useGrammars } from "../../utils/api/grammar"
+import { createGrammar } from "../../utils/api/grammar"
 import { levelOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
@@ -12,6 +12,7 @@ import Textarea from "../Textarea"
 interface IModalAddGrammarProps {
   isOpen: boolean
   onClose: () => void
+  onSave: () => void
 }
 
 export interface IGrammarFormInput {
@@ -28,8 +29,6 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
     formState: { errors },
     setValue,
   } = useForm<IGrammarFormInput>()
-
-  const { mutate: grammarsRevalidate } = useGrammars()
 
   const [saving, setSaving] = useState(false)
   const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
@@ -54,6 +53,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
       })
 
       if (newGrammar) {
+        props.onSave()
         toast.show({
           title: "Success",
           description: `Grammar added`,
@@ -61,7 +61,6 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
           duration: 2000,
         })
       }
-      grammarsRevalidate()
       clearInputs()
       props.onClose()
     } catch (error) {

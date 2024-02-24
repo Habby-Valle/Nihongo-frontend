@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { Button, Column, Modal, useToast } from "native-base"
 import { useForm } from "react-hook-form"
 
-import { updateSentence, useSentence, useSentences } from "../../../utils/api/sentence"
+import { updateSentence, useSentence } from "../../../utils/api/sentence"
 import Input from "../../Input"
 import Textarea from "../../Textarea"
 import { ISentenceFormInput } from "./ModalAddSentence"
@@ -11,14 +11,13 @@ import { ISentenceFormInput } from "./ModalAddSentence"
 interface IModalUpdateSentenceProps {
   isOpen: boolean
   onClose: () => void
+  onReload: () => void
   sentenceId: number | null
   grammarId: number | null
 }
 
 export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
-  const { mutate: sentencesRevalidate } = useSentences(props.grammarId || 0)
   const { data: originalSentence } = useSentence(props.sentenceId || 0)
-
   const {
     register,
     handleSubmit,
@@ -52,13 +51,13 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
       })
 
       if (updatedSentence) {
+        props.onReload()
         toast.show({
           title: "Success",
           description: `Sentença atualizada com sucesso!`,
           placement: "top",
           duration: 3000,
         })
-        sentencesRevalidate()
         props.onClose()
       }
     } catch (error) {

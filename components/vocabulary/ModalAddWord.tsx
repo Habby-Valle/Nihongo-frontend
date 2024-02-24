@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 
 import { ICategoryList, useCategories } from "../../utils/api/category"
 import { TypeLevel, TypeWord } from "../../utils/api/types"
-import { createWord, useWords } from "../../utils/api/vocabulary"
+import { createWord } from "../../utils/api/vocabulary"
 import { levelOptions, typeWordsOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
@@ -14,6 +14,7 @@ import Textarea from "../Textarea"
 interface IModalAddWordProps {
   isOpen: boolean
   onClose: () => void
+  onSave: () => void
 }
 
 export interface IVocabularyFormInput {
@@ -27,9 +28,7 @@ export interface IVocabularyFormInput {
 }
 
 export default function ModalAddWord(props: IModalAddWordProps) {
-  const { mutate: wordsRevalidate } = useWords()
-
-  const { data: categories, mutate: categoriesRevalidate } = useCategories()
+  const { data: categories } = useCategories()
 
   const {
     register,
@@ -68,6 +67,7 @@ export default function ModalAddWord(props: IModalAddWordProps) {
       })
 
       if (newWord) {
+        props.onSave()
         toast.show({
           title: "Success",
           description: `Palavra adicionada com sucesso`,
@@ -75,8 +75,6 @@ export default function ModalAddWord(props: IModalAddWordProps) {
           duration: 2000,
         })
       }
-      categoriesRevalidate()
-      wordsRevalidate()
       clearInputs()
       props.onClose()
     } catch (error) {

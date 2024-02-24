@@ -38,6 +38,7 @@ export function useGrammars(page?: number, search?: string, page_size?: number) 
   search ? (url = url + `&search=${search}`) : null
 
   const { data, error, isLoading, isValidating, mutate } = useSWR<GrammarsResponse>(url, fetcchSimple)
+
   return {
     data: data?.results,
     metadata: data?.metadata,

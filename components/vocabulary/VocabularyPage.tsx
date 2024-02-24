@@ -15,11 +15,12 @@ export default function VocabularyPage() {
     metadata: wordsMetadata,
     error: wordsError,
     isLoading: wordsIsLoading,
+    mutate: wordsRevalidate,
   } = useWords(page, searchText)
 
   function renderContent() {
     if (wordsIsLoading) return <Spinner />
-    
+
     if (wordsError) return <Error message={wordsError.message} />
     return (
       <WordList
@@ -27,6 +28,7 @@ export default function VocabularyPage() {
         page={page}
         setPage={setPage}
         numPages={wordsMetadata?.num_pages || 1}
+        revalidate={wordsRevalidate}
       />
     )
   }

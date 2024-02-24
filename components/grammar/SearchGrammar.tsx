@@ -8,6 +8,7 @@ import ModalAddGrammar from "./ModalAddGrammar"
 interface ISearchGrammarProps {
   searchText: string
   setSeachText: (text: string) => void
+  mutate: () => void
 }
 
 export default function SearchGrammar(props: ISearchGrammarProps) {
@@ -65,6 +66,9 @@ export default function SearchGrammar(props: ISearchGrammarProps) {
       </Column>
       <ModalAddGrammar
         isOpen={modalVisible}
+        onSave={async () => {
+          await props.mutate()
+        }}
         onClose={() => {
           setModalVisible(false)
         }}
