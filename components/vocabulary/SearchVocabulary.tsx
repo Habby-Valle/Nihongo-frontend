@@ -3,10 +3,6 @@ import React from "react"
 import { Column, Input, Row } from "native-base"
 import { MdSearch } from "react-icons/md"
 
-import FilterByLevel from "../grammar/FilterByLevel"
-import FilterByCategory from "./FilterByCategory"
-import FilterByType from "./FilterByType"
-
 interface ISearchVocabularyProps {
   searchText: string
   setSearchText: (searchText: string) => void
@@ -16,13 +12,13 @@ export default function SearchVocabulary(props: ISearchVocabularyProps) {
   return (
     <Row
       justifyContent={"space-between"}
-      alignItems={"center"}
+      alignItems={"flex-start"}
       p={5}
       width={"100%"}
     >
       <Column space={"20px"}>
         <Input
-          placeholder="Buscar palavra, leitura ou significado"
+          placeholder="Buscar palavra, leitura, significado ou nível"
           _light={{
             bg: "white",
           }}
@@ -42,17 +38,16 @@ export default function SearchVocabulary(props: ISearchVocabularyProps) {
             />
           }
         />
-        <Column width={"200px"}>
+        {/* <Column width={"200px"}>
           <FilterByCategory onCategorySelected={() => console.log("Category selected")} />
-        </Column>
+        </Column> */}
       </Column>
-      <Column
+      {/* <Column
         space={"20px"}
         alignItems={"flex-end"}
       >
-        <FilterByLevel onLevelSelected={() => console.log("Level selected")} />
         <FilterByType onTypeSelected={() => console.log("Type selected")} />
-      </Column>
+      </Column> */}
     </Row>
   )
 }

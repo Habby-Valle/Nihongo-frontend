@@ -17,13 +17,10 @@ export default function VocabularyPage() {
     isLoading: wordsIsLoading,
   } = useWords(page, searchText)
 
-  if (wordsError) return <Error message={wordsError.message} />
-
-  if (wordsIsLoading) return <Spinner />
-
   function renderContent() {
     if (wordsIsLoading) return <Spinner />
-
+    
+    if (wordsError) return <Error message={wordsError.message} />
     return (
       <WordList
         words={words || []}
