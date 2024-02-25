@@ -112,7 +112,7 @@ export default function ProfileInfo() {
                 height={100}
                 objectFit="cover"
               />
-            ) : (null)}
+            ) : null}
           </Box>
           <Column
             space={"12px"}
