@@ -1,9 +1,10 @@
 import React, { useState } from "react"
 
-import { Box, HStack, Icon, IconButton, Pressable, Text, useColorMode } from "native-base"
+import { Box, Column, Icon, IconButton, Pressable, Row, Text, useColorMode } from "native-base"
 import Image from "next/image"
 import { useRouter } from "next/router"
 import { MdArrowBack, MdDarkMode, MdLightMode } from "react-icons/md"
+
 import { WhoIam } from "../../utils/api/user"
 
 interface IHeadingProps {
@@ -20,80 +21,75 @@ export function Heading({ title }: IHeadingProps) {
 
   const router = useRouter()
   return (
-    <Box
+    <Row
       bg="#D02C23"
-      h={"60px"}
-      p={9}
-      justifyContent="center"
-      width={"100%"}
+      w={"100%"}
+      px={9}
+      py={"10px"}
+      alignItems="center"
+      justifyContent="space-between"
     >
-      <HStack
-        justifyContent="space-between"
+      <IconButton
+        onPress={() => {
+          router.back()
+        }}
+        icon={
+          <Icon color={"white"}>
+            <MdArrowBack size={24} />
+          </Icon>
+        }
+        p={1}
+        rounded={20}
+      />
+
+      <Text
+        color="white"
+        fontSize={20}
+        fontWeight="bold"
+      >
+        {title}
+      </Text>
+
+      <Row
         alignItems="center"
-        flexDirection={"row"}
+        space={2}
       >
         <IconButton
           onPress={() => {
-            router.back()
+            setTheme(theme === "dark" ? "light" : "dark")
+            toggleColorMode()
           }}
-          icon={
-            <Icon color={"white"}>
-              <MdArrowBack size={24} />
-            </Icon>
-          }
+          icon={<Icon color={"white"}>{theme === "dark" ? <MdDarkMode size={20} /> : <MdLightMode size={20} />}</Icon>}
           p={1}
           rounded={20}
         />
+
+        <Pressable
+          alignItems="center"
+          flexDirection={"row"}
+          onPress={() => {
+            router.push("/profile")
+          }}
+          style={{ borderRadius: 50, overflow: "hidden" }}
+          borderWidth={1}
+        >
+          {userProfile?.avatar ? (
+            <Image
+              src={`${cleanAPI_URL}${userProfile.avatar}`}
+              alt="Avatar"
+              width={30}
+              height={30}
+              objectFit="cover"
+            />
+          ) : null}
+        </Pressable>
         <Text
           color="white"
-          fontSize={20}
-          fontWeight="bold"
+          fontSize={18}
         >
-          {title}
+          {userInfo?.username}
         </Text>
-        <HStack alignItems={"center"}>
-          <IconButton
-            w={10}
-            h={10}
-            onPress={() => {
-              setTheme(theme === "dark" ? "light" : "dark")
-              toggleColorMode()
-            }}
-            icon={
-              <Icon color={"white"}>{theme === "dark" ? <MdDarkMode size={20} /> : <MdLightMode size={20} />}</Icon>
-            }
-            p={1}
-            rounded={20}
-          />
-          <Pressable
-            alignItems="center"
-            justifyContent="space-between"
-            flexDirection={"row"}
-            w={140}
-            onPress={() => {
-              router.push("/profile")
-            }}
-          >
-            <Box style={{ borderRadius: 50, overflow: "hidden" }}>
-              {userProfile?.avatar ? (
-                <Image
-                  src={`${cleanAPI_URL}${userProfile.avatar}`}
-                  alt="Avatar"
-                  width={30}
-                  height={30}
-                  objectFit="cover"
-                />
-              ) : (null)}
-            </Box>
-            <Text
-              color="white"
-              fontSize={18}
-            >
-              {userInfo?.username}
-            </Text>
-          </Pressable>
-        </HStack>
-      </HStack>
-    </Box>
+      </Row>
+    </Row>
   )
 }

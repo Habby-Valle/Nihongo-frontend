@@ -4,6 +4,7 @@ import { ColorMode, NativeBaseProvider, StorageManager } from "native-base"
 import type { AppProps } from "next/app"
 import { SWRConfig } from "swr"
 
+import { LateralMenuProvider } from "../contexts/LateralMenuContext"
 import "../styles/globals.css"
 
 const colorModeManager: StorageManager = {
@@ -19,19 +20,21 @@ const colorModeManager: StorageManager = {
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <NativeBaseProvider
-      isSSR
-      colorModeManager={colorModeManager}
-    >
-      <SWRConfig
-        value={{
-          revalidateOnFocus: false,
-          revalidateOnReconnect: false,
-        }}
+    <LateralMenuProvider>
+      <NativeBaseProvider
+        isSSR
+        colorModeManager={colorModeManager}
       >
-        <Component {...pageProps} />
-      </SWRConfig>
-    </NativeBaseProvider>
+        <SWRConfig
+          value={{
+            revalidateOnFocus: false,
+            revalidateOnReconnect: false,
+          }}
+        >
+          <Component {...pageProps} />
+        </SWRConfig>
+      </NativeBaseProvider>
+    </LateralMenuProvider>
   )
 }
 

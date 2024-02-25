@@ -18,7 +18,7 @@ export function LateralMenu() {
   return (
     <VStack
       h={"100vh"}
-      w={"235px"}
+      w={"200px"}
       bg={"#D02C23"}
     >
       <VStack>
