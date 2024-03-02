@@ -19,8 +19,9 @@ export default (req, res) => {
     const authToken = cookies.get("auth-token")
 
     if (pathName === "/api/auth/logout") {
-      cookies.set("auth-token")
-      reject()
+      cookies.set("auth-token") // Remova o token ao fazer logout
+      res.status(200).json({ message: "Logout successful" }) // Responda com uma mensagem de logout bem-sucedido
+      return resolve()
     }
 
     if (authToken) {
@@ -48,16 +49,14 @@ export default (req, res) => {
 
       proxyRes.on("end", () => {
         try {
-          const { token, user } = JSON.parse(apiResponseBody)
+          const { access, user } = JSON.parse(apiResponseBody)
 
-          if (user?.is_active) {
-            const cookies = new Cookies(req, res)
-            cookies.set("auth-token", token, {
-              httpOnly: true,
-              sameSite: "lax",
-              expires: new Date(token.expiry),
-            })
-          }
+          const cookies = new Cookies(req, res)
+          cookies.set("auth-token", access, {
+            httpOnly: true,
+            sameSite: "lax",
+            expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+          })
 
           res.status(200).json({ user: user })
           resolve()

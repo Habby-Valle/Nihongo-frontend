@@ -34,7 +34,7 @@ export default function Select({ label, name, register, errors, options }: ISele
         >
           Level
         </option>
-        {options.map((option: any) => (
+        {options?.map((option: any) => (
           <option
             key={option.value}
             value={option.value}

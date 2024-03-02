@@ -105,7 +105,8 @@ export default function Register() {
         last_name: lastName,
         username,
         email,
-        password,
+        password1: password,
+        password2: confirmPassword,
       }
 
       const userRegistered = await doRegister(user)
@@ -124,6 +125,7 @@ export default function Register() {
       }
     } catch (err: any) {
       if (err instanceof AxiosError || err instanceof Error) {
+        console.log("error", err)
         toast.show({
           title: "Error",
           description: err.message,
