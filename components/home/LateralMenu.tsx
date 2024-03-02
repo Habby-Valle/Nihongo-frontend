@@ -11,6 +11,7 @@ import Logo from "../../public/images/logo.png"
 export function LateralMenu() {
   const router = useRouter()
   const logout = () => {
+    router.push("/login")
     axios.post("/api/auth/logout").catch(() => {
       router.push("/login")
     })

@@ -17,7 +17,8 @@ export interface IUserCreate {
   last_name: string
   username: string
   email: string
-  password: string
+  password1: string
+  password2: string
 }
 
 export interface IProfile {
@@ -76,12 +77,13 @@ export async function doRegister(user: IUserCreate) {
     user: IUser
   }
 
-  const response = await axios.post<IResponse>("/api/user", {
+  const response = await axios.post<IResponse>("/api/auth/register", {
     first_name: user.first_name,
     last_name: user.last_name,
     username: user.username,
     email: user.email,
-    password: user.password,
+    password1: user.password1,
+    password2: user.password2,
   })
 
   if (response.status < 200 || response.status >= 300) {
