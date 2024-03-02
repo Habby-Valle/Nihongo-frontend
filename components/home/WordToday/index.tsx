@@ -8,7 +8,7 @@ import Error from "../../Error"
 
 export default function WordToday() {
   const { data: word, isLoading: wordIsLoading, error: wordError } = useWordToday()
-
+  console.log("word", word)
   if (wordIsLoading) {
     return <Text>Carregando...</Text>
   }
@@ -29,7 +29,15 @@ export default function WordToday() {
         Palavra do dia
       </Text>
       <Divider />
-      <Column
+      { word === null ? (
+        <>
+          <Text>Nenhuma palavra para hoje</Text>
+          <Text>
+            Adicione palavras ao seu vocabulário para que possamos sugerir uma palavra do dia.
+          </Text>
+        </>
+      ) : (
+        <Column
         borderRadius={10}
         py={"20px"}
         px={"15px"}
@@ -57,7 +65,8 @@ export default function WordToday() {
           <Text fontSize="lg">{word?.meaning}</Text>
         </Row>
         <Link href={`/vocabulary/details/${word?.id}`}>Mais detalhes</Link>
-      </Column>
+        </Column>
+      )}
     </Column>
   )
 }
