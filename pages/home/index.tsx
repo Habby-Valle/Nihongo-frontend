@@ -4,6 +4,7 @@ import { GetServerSidePropsContext } from "next"
 
 import { BaseLayout } from "../../components/home/BaseLayout"
 import WordToday from "../../components/home/WordToday"
+import WordsRecents from "../../components/home/WordsRecents"
 import { redirectIfNoCredentials } from "../../utils"
 
 export async function getServerSideProps({ req, res }: GetServerSidePropsContext) {
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <BaseLayout title="Home">
       <WordToday />
+      <WordsRecents />
     </BaseLayout>
   )
 }

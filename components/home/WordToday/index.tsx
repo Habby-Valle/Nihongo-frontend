@@ -8,7 +8,6 @@ import Error from "../../Error"
 
 export default function WordToday() {
   const { data: word, isLoading: wordIsLoading, error: wordError } = useWordToday()
-  console.log("word", word)
   if (wordIsLoading) {
     return <Text>Carregando...</Text>
   }
