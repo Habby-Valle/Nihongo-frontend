@@ -66,14 +66,15 @@ export const BaseLayout: FunctionComponent<Props> = ({ children, title }) => {
           />
         )}
         <ScrollView h={"500px"}>
-          <Box
+          <Column
             flex={1}
             p={"20px"}
+            space={4}
             justifyContent={"center"}
             alignItems={"center"}
           >
             {children}
-          </Box>
+          </Column>
         </ScrollView>
       </Column>
     </Row>
