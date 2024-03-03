@@ -72,9 +72,68 @@ interface IHeaderProps {
   word: IWordList
 }
 
+interface IExample {
+  example: string;
+  translate: string;
+}
+
 function Header({ word }: IHeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [examples, setExamples] = useState<IExample[]>(); 
+  const [isLoading, setLoading] = useState(false)
+  console.log("Examples: ", examples)
+  function getInfos(content: string) {
+    const examples = content.split("\n\n")
+    const exampleList: IExample[] = [];
+    examples.forEach((e) => {
+        const [index, exampleTranslation] = e.split(".")
+        const [example, translation] = exampleTranslation?.split("\n")
+        .map(str => str.replace("Tradução: ", " ").replace("(", " ").trim())
+        
+        exampleList.push({
+            example: example.trim(),
+            translate: translation.trim()
+          });
+    })
+
+    setExamples(exampleList)
+  }
+
+  async function handleGenarateExamples() {
+    setLoading(true)
+    const prompt = `Crie 3 frases de exemplo para ${word.word} e suas traduções em português.`
+
+    fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer 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`
+      },
+      body: JSON.stringify({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        temperature: 0.20,
+        max_tokens: 500,
+        top_p: 1,
+      })
+    })
+      .then(response => response.json())
+      .then((data) => {
+        getInfos(data.choices[0].message.content)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .finally(() => {
+        setLoading(false)
+      })
+  }
   return (
     <Row
       w={"100%"}
@@ -141,6 +200,24 @@ function Header({ word }: IHeaderProps) {
           }
         >
           <Text color={"white"}>Exemplo</Text>
+
+        </Button>
+        <Button
+          bg={"#D02C23"}
+          onPress={handleGenarateExamples}
+          isLoading={isLoading}
+          _hover={{ bg: "#ae251e" }}
+          _pressed={{ bg: "#ae251e" }}
+          size={"md"}
+          w={"140px"}
+          startIcon={
+            <MdAdd
+              size={25}
+              color="white"
+            />
+          }
+        >
+          <Text color={"white"}>Gerar exemplos</Text>
         </Button>
       </Column>
 
