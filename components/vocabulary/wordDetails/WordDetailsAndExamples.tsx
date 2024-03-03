@@ -1,8 +1,9 @@
 import React, { useState } from "react"
 
-import { Button, Column, Divider, Pressable, Row, Text } from "native-base"
+import { Button, Column, Divider, Pressable, Row, Text, useToast } from "native-base"
 import { MdAdd } from "react-icons/md"
 
+import { createExample, useExamples } from "../../../utils/api/example"
 import { IWordList, useWord } from "../../../utils/api/vocabulary"
 import Error from "../../Error"
 import ConjugationList from "./ConjugationList"
@@ -73,67 +74,110 @@ interface IHeaderProps {
 }
 
 interface IExample {
-  example: string;
-  translate: string;
+  example: string
+  translate: string
 }
 
 function Header({ word }: IHeaderProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [examples, setExamples] = useState<IExample[]>(); 
   const [isLoading, setLoading] = useState(false)
-  console.log("Examples: ", examples)
-  function getInfos(content: string) {
-    const examples = content.split("\n\n")
-    const exampleList: IExample[] = [];
-    examples.forEach((e) => {
-        const [index, exampleTranslation] = e.split(".")
-        const [example, translation] = exampleTranslation?.split("\n")
-        .map(str => str.replace("Tradução: ", " ").replace("(", " ").trim())
-        
-        exampleList.push({
-            example: example.trim(),
-            translate: translation.trim()
-          });
-    })
+  const toast = useToast()
 
-    setExamples(exampleList)
+  const { mutate: examplesRevalidate } = useExamples(word.id)
+
+  async function getInfos(content: string) {
+    const examples = content.split("\n\n")
+    const exampleList: IExample[] = []
+    examples.forEach((e) => {
+      const [index, exampleTranslation] = e.split(".")
+      const [example, translation] = exampleTranslation
+        ?.split("\n")
+        .map((str) => str.replace("Tradução: ", " ").replace("(", " ").trim())
+
+      exampleList.push({
+        example: example?.trim(),
+        translate: translation?.trim(),
+      })
+    })
+    console.log(exampleList)
+    try {
+      if (!exampleList) {
+        return // Não há exemplos a serem salvos
+      }
+      const promises = exampleList.map(async (e) => {
+        await createExample(word.id, {
+          example: e.example,
+          meaning: e.translate,
+          annotation: "",
+          wordId: word.id,
+        })
+      })
+      await Promise.all(promises)
+      toast.show({
+        title: "Success",
+        description: `Exemplos adicionados com sucesso!`,
+        placement: "top",
+        duration: 2000,
+      })
+
+      examplesRevalidate()
+    } catch (error) {
+      toast.show({
+        title: "Error",
+        description: `Erro ao adicionar exemplo!`,
+        placement: "top",
+        duration: 2000,
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   async function handleGenarateExamples() {
     setLoading(true)
-    const prompt = `Crie 3 frases de exemplo para ${word.word} e suas traduções em português.`
+    const prompt = `Crie 3 frases de exemplo em japonês para ${word.word} e suas traduções em português (sem romaji).
+      Nesse formato:
+      1. frase
+      Tradução: tradução
+    `
 
-    fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer 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`
-      },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        temperature: 0.20,
-        max_tokens: 500,
-        top_p: 1,
+    try {
+      const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer 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`,
+        },
+        body: JSON.stringify({
+          model: "gpt-3.5-turbo",
+          messages: [
+            {
+              role: "user",
+              content: prompt,
+            },
+          ],
+          temperature: 0.2,
+          max_tokens: 500,
+          top_p: 1,
+        }),
       })
-    })
-      .then(response => response.json())
-      .then((data) => {
-        getInfos(data.choices[0].message.content)
+
+      const data = await response.json()
+      getInfos(data.choices[0].message.content)
+    } catch (error) {
+      console.log(error)
+      toast.show({
+        title: "Error",
+        description: `Erro ao gerar exemplos!`,
+        placement: "top",
+        duration: 2000,
       })
-      .catch((error) => {
-        console.log(error);
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+    } finally {
+      setLoading(false)
+    }
   }
+
   return (
     <Row
       w={"100%"}
@@ -200,11 +244,12 @@ function Header({ word }: IHeaderProps) {
           }
         >
           <Text color={"white"}>Exemplo</Text>
-
         </Button>
         <Button
           bg={"#D02C23"}
-          onPress={handleGenarateExamples}
+          onPress={() => {
+            handleGenarateExamples()
+          }}
           isLoading={isLoading}
           _hover={{ bg: "#ae251e" }}
           _pressed={{ bg: "#ae251e" }}
