@@ -4,6 +4,7 @@ import { Button, Modal, useToast } from "native-base"
 import { useRouter } from "next/router"
 
 import { deleteText, useTexts } from "../../../utils/api/text"
+import Toast from "../../Toast"
 
 interface IModalDeleteTextProps {
   isOpen: boolean
@@ -25,10 +26,16 @@ export default function ModalDeleteText(props: IModalDeleteTextProps) {
       await deleteText(props.textId)
 
       toast.show({
-        title: "Success",
-        description: `Texto excluído com sucesso`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Sucesso"
+              message="Texto excluído com sucesso"
+              bg="#4BB543"
+            />
+          )
+        },
       })
 
       textsRevalidate()

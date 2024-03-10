@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { Button, Modal, useToast } from "native-base"
 
 import { deleteExample, useExamples } from "../../../utils/api/example"
+import Toast from "../../Toast"
 
 interface IModalDeleteExampleProps {
   isOpen: boolean
@@ -24,10 +25,16 @@ export default function ModalDeleteExample(props: IModalDeleteExampleProps) {
       await deleteExample(props.exampleId, props.wordId)
 
       toast.show({
-        title: "Success",
-        description: `Exemplo excluído com sucesso`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Exemplo excluído"
+              message="O exemplo foi excluído com sucesso."
+              bg="#4B5563"
+            />
+          )
+        },
       })
 
       examplesRevalidate()

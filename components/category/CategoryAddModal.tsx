@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 
 import { createCategory, useCategories } from "../../utils/api/category"
 import Input from "../Input"
+import Toast from "../Toast"
 
 interface IModalAddCategoryProps {
   isOpen: boolean
@@ -44,10 +45,16 @@ export default function CategoryAddModal(props: IModalAddCategoryProps) {
 
       if (newCategory) {
         toast.show({
-          title: "Success",
-          description: `Category added`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Sucesso"
+                message="Categoria adicionada com sucesso"
+                bg="#4BB543"
+              />
+            )
+          },
         })
       }
       categoriesRevalidate()

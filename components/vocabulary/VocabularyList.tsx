@@ -1,17 +1,6 @@
 import React, { Suspense, lazy, memo, useState } from "react"
 
-import { 
-  Box, 
-  Button, 
-  Divider, 
-  FlatList, 
-  Pressable, 
-  Row, 
-  Spinner, 
-  Text, 
-  useToast,
-  Badge
-} from "native-base"
+import { Badge, Box, Button, Divider, FlatList, Pressable, Row, Spinner, Text, useToast } from "native-base"
 import { useRouter } from "next/router"
 import { MdAdd, MdFileCopy, MdList, MdOutlineFileCopy } from "react-icons/md"
 

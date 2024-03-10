@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { Button, Modal, useToast } from "native-base"
 
 import { deleteConjugation, useConjugations } from "../../../utils/api/conjugation"
+import Toast from "../../Toast"
 
 interface IModalDeleteConjugationProps {
   isOpen: boolean
@@ -24,10 +25,16 @@ export default function ModalDeleteConjugation(props: IModalDeleteConjugationPro
       await deleteConjugation(props.conjugationId, props.wordId)
 
       toast.show({
-        title: "Success",
-        description: `Conjugação excluída com sucesso`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Conjugação excluída"
+              message="A conjugação foi excluída com sucesso"
+              bg="#4B5563"
+            />
+          )
+        },
       })
 
       conjugationRevalidate()

@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { updateExample, useExample, useExamples } from "../../../utils/api/example"
 import Input from "../../Input"
 import Textarea from "../../Textarea"
+import Toast from "../../Toast"
 import { IExampleFormInput } from "./ModalAddExample"
 
 interface IModalAddExampleProps {
@@ -66,10 +67,16 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
 
       if (updatedExample) {
         toast.show({
-          title: "Success",
-          description: `Exemplo atualizado com sucesso!`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Sucesso"
+                message="Exemplo atualizado!"
+                bg="#4B5563"
+              />
+            )
+          },
         })
       }
       examplesRevalidate()
@@ -78,10 +85,16 @@ export default function ModalUpdatExample(props: IModalAddExampleProps) {
       setSaving(false)
     } catch (error) {
       toast.show({
-        title: "Error",
-        description: `Erro ao atualizar exemplo!`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Erro"
+              message="Erro ao atualizar exemplo!"
+              bg="#D02C23"
+            />
+          )
+        },
       })
       setSaving(false)
     }

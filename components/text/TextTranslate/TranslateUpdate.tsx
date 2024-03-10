@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
 
-import { Button, Column, FormControl, Input, Row, Toast } from "native-base"
+import { Button, Column, FormControl, Input, Row, useToast } from "native-base"
 import { useRouter } from "next/router"
 
 import { updateText, useText, useTexts } from "../../../utils/api/text"
+import Toast from "../../Toast"
 import TextEditor from "../TextEditor"
 
 interface ITranslateUpdateProps {
@@ -32,7 +33,7 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
 
   const [AddAnnotation, setAddAnnotation] = useState<boolean>(!!originalText?.annotation)
   const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
-
+  const toast = useToast()
   const router = useRouter()
 
   useEffect(() => {
@@ -123,11 +124,17 @@ export default function TranslateUpdate(props: ITranslateUpdateProps) {
       })
 
       if (updatedText) {
-        Toast.show({
-          title: "Success",
-          description: `Texto atualizado com sucesso!`,
+        toast.show({
           placement: "top",
-          duration: 20000,
+          render: () => {
+            return (
+              <Toast
+                title="Texto atualizado!"
+                message="O texto foi atualizado com sucesso."
+                bg="#4BB543"
+              />
+            )
+          },
         })
       }
       clearInputs()

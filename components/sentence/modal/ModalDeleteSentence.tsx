@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { Button, Modal, useToast } from "native-base"
 
 import { deleteSentence } from "../../../utils/api/sentence"
+import Toast from "../../Toast"
 
 interface IModalDeleteSentenceProps {
   isOpen: boolean
@@ -23,10 +24,16 @@ export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
       await deleteSentence(props.sentenceId)
 
       toast.show({
-        title: "Success",
-        description: `Sentença excluída com sucesso!`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Sucesso"
+              message="Sentença excluída com sucesso"
+              bg="#4BB543"
+            />
+          )
+        },
       })
 
       props.onReload()

@@ -9,6 +9,7 @@ import Head from "next/head"
 import Image from "next/image"
 import { MdRemoveRedEye } from "react-icons/md"
 
+import Toast from "../../components/Toast"
 import Logo from "../../public/images/logo.png"
 import { doLogin } from "../../utils/api/user"
 
@@ -54,25 +55,43 @@ export default function Login() {
 
         router.push("/home")
         toast.show({
-          title: "Seja Bem-Vindo!",
-          description: `Bem Vindo, ${user.first_name}`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title={`Seja bem-vindo, ${user.username}!`}
+                message="Login efetuado com sucesso!"
+                bg="emerald.500"
+              />
+            )
+          },
         })
       } catch (error) {
         if (error instanceof AxiosError || error instanceof Error) {
           toast.show({
-            title: "Error",
-            description: error.message,
             placement: "top",
-            duration: 2000,
+            render: () => {
+              return (
+                <Toast
+                  title="Error"
+                  message={error.message}
+                  bg="red.500"
+                />
+              )
+            },
           })
         } else {
           toast.show({
-            title: "Error",
-            description: "Aconteceu algum erro! Tente novamente!",
             placement: "top",
-            duration: 2000,
+            render: () => {
+              return (
+                <Toast
+                  title="Error"
+                  message="An unexpected error occurred"
+                  bg="red.500"
+                />
+              )
+            },
           })
         }
       } finally {

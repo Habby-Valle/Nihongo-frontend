@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 
 import { createConjugation, useConjugations } from "../../../utils/api/conjugation"
 import Input from "../../Input"
+import Toast from "../../Toast"
 
 interface IModalAddConjugationProps {
   isOpen: boolean
@@ -77,20 +78,32 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
 
       if (newConjugation !== undefined) {
         toast.show({
-          title: "Success",
-          description: `Conjugação adicionada com sucesso`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Conjugação adicionada com sucesso"
+                message="A conjugação foi adicionada com sucesso"
+                bg="#4BB543"
+              />
+            )
+          },
         })
       }
       await conjugationRevalidate()
       clearInputs()
     } catch (error) {
       toast.show({
-        title: "Error",
-        description: `Erro ao adicionar conjugação: ${error}`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Erro ao adicionar conjugação"
+              message="Ocorreu um erro ao adicionar a conjugação"
+              bg="#D02C23"
+            />
+          )
+        },
       })
     } finally {
       setSaving(false)

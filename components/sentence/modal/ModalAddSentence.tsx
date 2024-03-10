@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { createSentence } from "../../../utils/api/sentence"
 import Input from "../../Input"
 import Textarea from "../../Textarea"
+import Toast from "../../Toast"
 
 interface IModalAddSentenceProps {
   isOpen: boolean
@@ -52,10 +53,16 @@ export default function ModalAddSentence(props: IModalAddSentenceProps) {
       if (newSentence) {
         props.onSave()
         toast.show({
-          title: "Success",
-          description: `Sentença adicionada com sucesso!`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Sentença adicionada com sucesso!"
+                message="A sentença foi adicionada com sucesso."
+                bg="#4BB543"
+              />
+            )
+          },
         })
       }
       clearInputs()

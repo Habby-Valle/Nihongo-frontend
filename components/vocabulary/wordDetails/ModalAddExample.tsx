@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { createExample, useExamples } from "../../../utils/api/example"
 import Input from "../../Input"
 import Textarea from "../../Textarea"
+import Toast from "../../Toast"
 
 interface IModalAddExampleProps {
   isOpen: boolean
@@ -54,10 +55,16 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
 
       if (newExample) {
         toast.show({
-          title: "Success",
-          description: `Exemplo adicionado com sucesso!`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Sucesso"
+                message="Exemplo adicionado com sucesso!"
+                bg="#4BB543"
+              />
+            )
+          },
         })
       }
       examplesRevalidate()
@@ -65,10 +72,16 @@ export default function ModalAddExample(props: IModalAddExampleProps) {
       props.onClose()
     } catch (error) {
       toast.show({
-        title: "Error",
-        description: `Erro ao adicionar exemplo!`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Erro"
+              message="Erro ao adicionar exemplo!"
+              bg="#D02C23"
+            />
+          )
+        },
       })
     } finally {
       setSaving(false)
