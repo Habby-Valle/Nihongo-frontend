@@ -17,6 +17,7 @@ export interface IWordList {
   created_by: number
   created_at: string
   updated_at: string
+  examples_count: number
 }
 
 export interface IWordCreate {
