@@ -36,6 +36,7 @@
     "react-native-svg": "^12.1.1",
     "react-native-web": "^0.17.7",
     "react-native-web-linear-gradient": "^1.1.2",
+    "recharts": "^2.12.3",
     "swr": "^2.2.4"
   },
   "devDependencies": {

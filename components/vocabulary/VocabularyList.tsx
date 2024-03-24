@@ -1,6 +1,6 @@
-import React, { Suspense, lazy, memo, useMemo, useState } from "react"
+import React, { Suspense, lazy, memo, useState } from "react"
 
-import { Box, Button, Divider, FlatList, Pressable, Row, Spinner, Text, useToast } from "native-base"
+import { Badge, Box, Button, Divider, FlatList, Pressable, Row, Spinner, Text, useToast } from "native-base"
 import { useRouter } from "next/router"
 import { MdAdd, MdFileCopy, MdList, MdOutlineFileCopy } from "react-icons/md"
 
@@ -201,16 +201,31 @@ export default function WordList(props: IWordListProps) {
           >
             {item.meaning}
           </Text>
-          <Pressable
-            onPress={() => {
-              handleChangeWordId(item.id)
-            }}
-          >
-            <MdList
-              size={24}
-              color={"#D02C23"}
-            />
-          </Pressable>
+          <Row justifyContent={"space-between"}>
+            <Pressable
+              onPress={() => {
+                handleChangeWordId(item.id)
+              }}
+            >
+              <MdList
+                size={24}
+                color={"#D02C23"}
+              />
+            </Pressable>
+            <Badge
+              justifyContent={"center"}
+              alignItems={"center"}
+              w={"20px"}
+              h={"20px"}
+              backgroundColor={"#D02C23"}
+              _text={{
+                color: "white",
+                fontSize: "12px",
+              }}
+            >
+              {item.examples_count}
+            </Badge>
+          </Row>
         </Box>
       </Pressable>
     )

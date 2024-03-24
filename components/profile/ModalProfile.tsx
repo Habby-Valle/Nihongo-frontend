@@ -6,6 +6,7 @@ import { Button, Column, FormControl, Input, Modal, Row, useToast } from "native
 import { WhoIam, updateProfile, useProfile } from "../../utils/api/user"
 import { emailIsValid, nameIsValid, removePhoneFormatting, usernameIsValid } from "../../utils/validation"
 import Error from "../Error"
+import Toast from "../Toast"
 
 interface ModalProfileProps {
   isOpen: boolean
@@ -143,10 +144,16 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
 
       if (profileUpdated) {
         toast.show({
-          title: "Success",
-          description: `Perfil atualizado com sucesso`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Sucesso"
+                message="Perfil atualizado com sucesso"
+                bg="#4BB543"
+              />
+            )
+          },
         })
 
         originalProfileMutate()
@@ -156,10 +163,16 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
       onClose()
     } catch (error) {
       toast.show({
-        title: "Error",
-        description: error,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Error"
+              message="Erro ao atualizar perfil"
+              bg="#D02C23"
+            />
+          )
+        },
       })
     } finally {
       setSaving(false)

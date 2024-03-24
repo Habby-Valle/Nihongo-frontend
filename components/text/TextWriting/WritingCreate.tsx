@@ -1,8 +1,9 @@
 import React, { useRef, useState } from "react"
 
-import { Button, Column, FormControl, Input, Row, Toast } from "native-base"
+import { Button, Column, FormControl, Input, Row, useToast } from "native-base"
 
 import { createTextWriting, useTextWritings } from "../../../utils/api/text"
+import Toast from "../../Toast"
 import TextEditor from "../TextEditor"
 
 export default function WritingCreate() {
@@ -24,7 +25,7 @@ export default function WritingCreate() {
   const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
 
   const { mutate: textsRevalidate } = useTextWritings()
-
+  const toast = useToast()
   const handleTitle = (text: string) => {
     setTitle(text)
 
@@ -71,11 +72,17 @@ export default function WritingCreate() {
       })
 
       if (newText) {
-        Toast.show({
-          title: "Success",
-          description: `Texto adicionado com sucesso!`,
+        toast.show({
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Texto adicionado com sucesso!"
+                message="O texto foi adicionado com sucesso."
+                bg="#4BB543"
+              />
+            )
+          },
         })
       }
       clearInputs()

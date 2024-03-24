@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 
 import { updateConjugation, useConjugations } from "../../../utils/api/conjugation"
 import Input from "../../Input"
+import Toast from "../../Toast"
 import { IConjugationFormInput } from "./ModalAddConjugation"
 
 interface IModalUpdateConjugationProps {
@@ -84,10 +85,16 @@ export default function ModalUpdateConjugation(props: IModalUpdateConjugationPro
 
       if (updatedConjugation) {
         toast.show({
-          title: "Success",
-          description: `Conjugation updated`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Conjugação atualizada"
+                message="A conjugação foi atualizada com sucesso!"
+                bg="#4B5563"
+              />
+            )
+          },
         })
         conjugationRevalidate()
         props.onClose()

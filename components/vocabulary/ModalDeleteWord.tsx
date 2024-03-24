@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { Button, Modal, useToast } from "native-base"
 
 import { deleteWord } from "../../utils/api/vocabulary"
+import Toast from "../Toast"
 
 interface IModalDeleteWordProps {
   isOpen: boolean
@@ -23,10 +24,16 @@ export default function ModalDeleteWord(props: IModalDeleteWordProps) {
       await deleteWord(props.wordId)
 
       toast.show({
-        title: "Success",
-        description: `Palavra deletada com sucesso!`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Palavra excluída"
+              message="A palavra foi excluída com sucesso."
+              bg="#4B5563"
+            />
+          )
+        },
       })
 
       props.onReload()

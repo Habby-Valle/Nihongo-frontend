@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { Button, Modal, useToast } from "native-base"
 
 import { deleteGrammar } from "../../utils/api/grammar"
+import Toast from "../Toast"
 
 interface IModalDeleteGrammarProps {
   isOpen: boolean
@@ -24,10 +25,16 @@ export default function ModalDeleteGrammar(props: IModalDeleteGrammarProps) {
       await deleteGrammar(props.grammarId)
 
       toast.show({
-        title: "Success",
-        description: `Gramática deletada com sucesso!`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Sucesso"
+              message="Gramática excluída com sucesso"
+              bg="#4BB543"
+            />
+          )
+        },
       })
       props.onReload()
       props.onClose()

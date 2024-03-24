@@ -9,6 +9,7 @@ import { levelOptions, typeWordsOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
 import Textarea from "../Textarea"
+import Toast from "../Toast"
 import { IVocabularyFormInput } from "./ModalAddWord"
 
 interface IModalAddWordProps {
@@ -73,20 +74,32 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
       if (updatedWord) {
         props.onReload()
         toast.show({
-          title: "Success",
-          description: `Palavra updated`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Palavra atualizada!"
+                message="Palavra atualizada com sucesso!"
+                bg="#4B5563"
+              />
+            )
+          },
         })
       }
       props.onClose()
       clearInputs()
     } catch (error) {
       toast.show({
-        title: "Error",
-        description: `Error updating word`,
         placement: "top",
-        duration: 2000,
+        render: () => {
+          return (
+            <Toast
+              title="Erro ao atualizar palavra!"
+              message="Ocorreu um erro ao atualizar a palavra, tente novamente."
+              bg="#D02C23"
+            />
+          )
+        },
       })
     } finally {
       setSaving(false)

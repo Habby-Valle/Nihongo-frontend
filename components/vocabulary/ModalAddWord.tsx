@@ -10,6 +10,7 @@ import { levelOptions, typeWordsOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
 import Textarea from "../Textarea"
+import Toast from "../Toast"
 
 interface IModalAddWordProps {
   isOpen: boolean
@@ -69,10 +70,16 @@ export default function ModalAddWord(props: IModalAddWordProps) {
       if (newWord) {
         props.onSave()
         toast.show({
-          title: "Success",
-          description: `Palavra adicionada com sucesso`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Sucesso"
+                message="Palavra adicionada com sucesso!"
+                bg="#4B5563"
+              />
+            )
+          },
         })
       }
       clearInputs()

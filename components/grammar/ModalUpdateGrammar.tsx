@@ -8,6 +8,7 @@ import { levelOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
 import Textarea from "../Textarea"
+import Toast from "../Toast"
 import { IGrammarFormInput } from "./ModalAddGrammar"
 
 interface IModalUpdateGrammarProps {
@@ -57,10 +58,16 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
       if (updatedGrammar) {
         props.onReload()
         toast.show({
-          title: "Success",
-          description: `Gramática atualizada!`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Sucesso"
+                message="Gramática atualizada com sucesso"
+                bg="#4BB543"
+              />
+            )
+          },
         })
       }
       props.onClose()

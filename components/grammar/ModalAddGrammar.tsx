@@ -8,6 +8,7 @@ import { levelOptions } from "../../utils/options"
 import Input from "../Input"
 import Select from "../Select"
 import Textarea from "../Textarea"
+import Toast from "../Toast"
 
 interface IModalAddGrammarProps {
   isOpen: boolean
@@ -55,10 +56,16 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
       if (newGrammar) {
         props.onSave()
         toast.show({
-          title: "Success",
-          description: `Grammar added`,
           placement: "top",
-          duration: 2000,
+          render: () => {
+            return (
+              <Toast
+                title="Gramática adicionada"
+                message="A gramática foi adicionada com sucesso"
+                bg="#2E7D32"
+              />
+            )
+          },
         })
       }
       clearInputs()

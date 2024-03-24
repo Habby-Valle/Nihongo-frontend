@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form"
 import { updateSentence, useSentence } from "../../../utils/api/sentence"
 import Input from "../../Input"
 import Textarea from "../../Textarea"
+import Toast from "../../Toast"
 import { ISentenceFormInput } from "./ModalAddSentence"
 
 interface IModalUpdateSentenceProps {
@@ -53,10 +54,16 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
       if (updatedSentence) {
         props.onReload()
         toast.show({
-          title: "Success",
-          description: `Sentença atualizada com sucesso!`,
           placement: "top",
-          duration: 3000,
+          render: () => {
+            return (
+              <Toast
+                title="Sentença atualizada!"
+                message="A sentença foi atualizada com sucesso."
+                bg="#4BB543"
+              />
+            )
+          },
         })
         props.onClose()
       }
