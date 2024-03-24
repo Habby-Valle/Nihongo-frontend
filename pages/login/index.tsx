@@ -74,7 +74,7 @@ export default function Login() {
               return (
                 <Toast
                   title="Error"
-                  message={error.message}
+                  message="Please, verify your credentials"
                   bg="red.500"
                 />
               )
