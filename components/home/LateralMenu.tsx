@@ -1,25 +1,18 @@
 import React from "react"
 
 import axios from "axios"
-import { 
-  Box, 
-  Divider, 
-  HStack, 
-  Pressable, 
-  Text, 
-  VStack 
-} from "native-base"
+import { Box, Divider, HStack, Pressable, Text, VStack } from "native-base"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { 
-  MdAccountCircle, 
-  MdBook, 
-  MdHome, 
-  MdLogout, 
-  MdTextSnippet, 
-  MdTranslate,
+import {
+  MdAccountCircle,
   MdBarChart,
-  MdSearch
+  MdBook,
+  MdHome,
+  MdLogout,
+  MdSearch,
+  MdTextSnippet,
+  MdTranslate,
 } from "react-icons/md"
 
 import Logo from "../../public/images/logo.png"
