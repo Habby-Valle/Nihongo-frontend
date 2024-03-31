@@ -198,7 +198,7 @@ export function LateralMenu() {
                 fontWeight={"400"}
                 color={"white"}
               >
-                Dicionário
+                Dicionários
               </Text>
             </HStack>
           </Pressable>
