@@ -4,14 +4,15 @@ import axios from "axios"
 import { Box, Divider, HStack, Pressable, Text, VStack } from "native-base"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { 
-  MdAccountCircle, 
-  MdBook, 
-  MdHome, 
-  MdLogout, 
-  MdTextSnippet, 
+import {
+  MdAccountCircle,
+  MdBarChart,
+  MdBook,
+  MdHome,
+  MdLogout,
+  MdSearch,
+  MdTextSnippet,
   MdTranslate,
-  MdBarChart
 } from "react-icons/md"
 
 import Logo from "../../public/images/logo.png"
@@ -167,6 +168,30 @@ export function LateralMenu() {
                 color={"white"}
               >
                 Textos
+              </Text>
+            </HStack>
+          </Pressable>
+          <Pressable
+            mt={"10px"}
+            onPress={() => {
+              router.push("/dictionary")
+            }}
+          >
+            <HStack
+              flexDirection={"row"}
+              alignItems={"center"}
+            >
+              <MdSearch
+                size={20}
+                color={"white"}
+              />
+              <Text
+                ml={"2px"}
+                fontSize={"16px"}
+                fontWeight={"400"}
+                color={"white"}
+              >
+                Dicionários
               </Text>
             </HStack>
           </Pressable>
