@@ -89,6 +89,7 @@ export default function Dictionary() {
                     />
                     <Pressable
                         onPress={() => {
+                            setSearch("");
                             setCurrentComponent(!isCurrentComponent);
                         }}
                         _light={{

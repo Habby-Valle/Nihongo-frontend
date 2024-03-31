@@ -2,7 +2,7 @@ import useSWR from "swr"
 
 import { fetcchSimple } from "./user"
 
-interface IResultsList {
+export interface IResultsList {
     id: string
     id_term: string
     term: string
@@ -18,9 +18,8 @@ export function useResults(term: string) {
     interface ResultsResponse {
         results: IResultsList[]
     }
-
+    if (!term) return { data: null, error: null, isLoading: false }
     const { data, error, isLoading, isValidating, mutate } = useSWR<ResultsResponse>(`/api/dictionary/${term}`, fetcchSimple)
-
     return {
         data: data?.results,
         error,

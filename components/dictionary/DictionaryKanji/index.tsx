@@ -36,7 +36,7 @@ export default function DictionaryKanji({ results }: IDictionaryKanji) {
                     >
                         Exemplos
                     </Text>
-                    { (results as any)?.examples.map((example: IExample, index: number) => (
+                    { (results as any)?.examples?.map((example: IExample, index: number) => (
                         <KanjiExample 
                             key={index}
                             japanese={example.japanese} 
