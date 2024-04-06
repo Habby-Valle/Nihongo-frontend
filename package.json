@@ -18,6 +18,7 @@
     "@types/editorjs__header": "^2.6.3",
     "@types/http-proxy": "^1.17.14",
     "@types/react-icons": "^3.0.0",
+    "@types/uuid": "^9.0.8",
     "axios": "^1.6.0",
     "cookies": "^0.8.0",
     "date-fns": "^2.30.0",
@@ -37,7 +38,8 @@
     "react-native-web": "^0.17.7",
     "react-native-web-linear-gradient": "^1.1.2",
     "recharts": "^2.12.3",
-    "swr": "^2.2.4"
+    "swr": "^2.2.4",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@native-base/next-adapter": "^1.1.9",
