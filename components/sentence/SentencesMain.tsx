@@ -14,7 +14,7 @@ interface ISentenceMainProps {
 }
 
 export default function SentenceMain(props: ISentenceMainProps) {
-  const { data: grammar, error: grammarError, isLoading: grammarIsLoading } = useGrammar(props.grammarId)
+  const { data: grammar, error: grammarError, isLoading: grammarIsLoading, mutate: grammarRevalidate } = useGrammar(props.grammarId)
 
   if (grammarError) return <Error message="Error loading grammar" />
   if (grammarIsLoading) {
@@ -37,7 +37,7 @@ export default function SentenceMain(props: ISentenceMainProps) {
       space={"30px"}
       w={"100%"}
     >
-      <GrammarExplain grammar={grammar} />
+      <GrammarExplain grammar={grammar} revalidate={grammarRevalidate} />
       <SentenceList grammarId={props.grammarId} />
     </Column>
   )

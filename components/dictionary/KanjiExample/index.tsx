@@ -1,6 +1,7 @@
 import React from "react"
 
-import { Column, Text } from "native-base"
+import { Column, Text, Row, Pressable } from "native-base"
+import { MdFavorite, MdSave } from "react-icons/md"
 
 export interface IExample {
   japanese: string
@@ -28,7 +29,48 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
         borderColor: "white",
       }}
     >
+      <Row 
+        justifyContent={"flex-start"}
+        alignItems={"center"}
+      >
       <Text fontSize={"18px"}>{japanese}</Text>
+        <Pressable
+          _light={{
+            bg: "white",
+          }}
+          _dark={{
+            bg: "#262626",
+          }}
+          _pressed={{
+            opacity: 0.5,
+          }}
+          p={"10px"}
+          borderRadius={10}
+        >
+          <MdFavorite
+            size={20}
+            color="#D02C23"
+          />
+        </Pressable>
+        <Pressable
+          _light={{
+            bg: "white",
+          }}
+          _dark={{
+            bg: "#262626",
+          }}
+          _pressed={{
+            opacity: 0.5,
+          }}
+          p={"10px"}
+          borderRadius={10}
+        >
+          <MdSave
+            size={20}
+            color="#D02C23"
+          />
+        </Pressable>
+      </Row>
       <Text fontSize={"16px"}>{meaning.english}</Text>
 
       <audio
