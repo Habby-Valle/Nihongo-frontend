@@ -1,26 +1,18 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect, useState } from "react"
+import { ListRenderItemInfo } from "react-native"
 
 import format from "date-fns/format"
-import { 
-  Box, 
-  Button, 
-  Column, 
-  Row, Text, 
-  useToast, 
-  Divider, 
-  FlatList
-} from "native-base"
-import { ListRenderItemInfo } from "react-native"
+import { Box, Button, Column, Divider, FlatList, Row, Text, useToast } from "native-base"
 import Image from "next/image"
 
 import { WhoIam, updateProfileAvatar } from "../../utils/api/user"
 import { applyPhoneMask } from "../../utils/validation"
+import DataEmpty from "../DataEmpty"
 import Error from "../Error"
-import ModalProfile from "./ModalProfile"
-import ProfileSkeleton from "./ProfileSkeleton"
 import { IExample } from "../dictionary/KanjiExample"
 import KanjiExample from "../dictionary/KanjiExample"
-import DataEmpty from "../DataEmpty"
+import ModalProfile from "./ModalProfile"
+import ProfileSkeleton from "./ProfileSkeleton"
 
 export default function ProfileInfo() {
   const [modalVisible, setModalVisible] = useState(false)
@@ -32,7 +24,6 @@ export default function ProfileInfo() {
     error: userInfoError,
     mutate: userRevalidate,
   } = WhoIam()
-
 
   const [image, setImage] = useState<File>()
   const [saving, setSaving] = useState(false)
@@ -105,153 +96,151 @@ export default function ProfileInfo() {
   }
 
   return (
-      <Column
-        space="10px"
-        borderWidth={1}
-        borderRadius={10}
-        p={5}
-        _light={{
-          bg: "white",
-          borderColor: "#262626",
-        }}
-        _dark={{
-          bg: "#262626",
-          borderColor: "white",
-        }}
-      >
-        <Row justifyContent={"space-between"}>
-          <Row alignItems={"flex-end"}>
-            <Box
-              borderColor={"#D02C23"}
-              borderWidth={"3px"}
-              style={{ width: 150, height: 150, borderRadius: 10, overflow: "hidden" }}
-            >
-              {userProfile?.avatar ? (
-                <Image
-                  src={`${cleanAPI_URL}${userProfile.avatar}`}
-                  alt="Avatar"
-                  width={200}
-                  height={200}
-                  objectFit="cover"
-                />
-              ) : null}
-            </Box>
-            <Text
-              fontSize={"24px"}
-              fontWeight={"bold"}
-              ml={5}
-              mt={2}
-            >
-              {userProfile?.user.username}
-            </Text>
-          </Row>
-          <Column
-            space="10px"
+    <Column
+      space="10px"
+      borderWidth={1}
+      borderRadius={10}
+      p={5}
+      _light={{
+        bg: "white",
+        borderColor: "#262626",
+      }}
+      _dark={{
+        bg: "#262626",
+        borderColor: "white",
+      }}
+    >
+      <Row justifyContent={"space-between"}>
+        <Row alignItems={"flex-end"}>
+          <Box
+            borderColor={"#D02C23"}
+            borderWidth={"3px"}
+            style={{ width: 150, height: 150, borderRadius: 10, overflow: "hidden" }}
           >
-            <Text
-              fontSize={"16px"}
-              fontWeight={"bold"}
-            >
-              Atualizar avatar
-            </Text>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                  const selectedImage = e.target.files
-
-                  if (selectedImage) {
-                    setImage(selectedImage[0])
-                  }
-                }}
+            {userProfile?.avatar ? (
+              <Image
+                src={`${cleanAPI_URL}${userProfile.avatar}`}
+                alt="Avatar"
+                width={200}
+                height={200}
+                objectFit="cover"
               />
-              <Button
-                onPress={handleUpdateProfileAvatar}
-                bg={"#D02C23"}
-                _hover={{ bg: "#ae251e" }}
-                _pressed={{ bg: "#ae251e" }}
-                isLoading={saving}
-              >
-                Salvar
-              </Button>
-              <Button
-                bg={"#D02C23"}
-                _hover={{ bg: "#ae251e" }}
-                _pressed={{ bg: "#ae251e" }}
-                onPress={() => {
-                  setModalVisible(true)
-                }}
-              >
-              Atualizar perfil
-            </Button>
-          </Column>
+            ) : null}
+          </Box>
+          <Text
+            fontSize={"24px"}
+            fontWeight={"bold"}
+            ml={5}
+            mt={2}
+          >
+            {userProfile?.user.username}
+          </Text>
         </Row>
-        <Divider my={5} />
-        <Column>
+        <Column space="10px">
           <Text
             fontSize={"16px"}
             fontWeight={"bold"}
           >
-            Informações:
+            Atualizar avatar
           </Text>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => {
+              const selectedImage = e.target.files
 
-          <Text
-            fontSize={"16px"}
-            fontWeight={"600"}
-          >
-            Nome: {`${userProfile?.user.first_name} ${userProfile?.user.last_name}`}
-          </Text>
-          <Text
-            fontSize={"16px"}
-            fontWeight={"600"}
-          >
-            Email: {userProfile?.user.email ?? "Email não disponível"}
-          </Text>
-          <Text
-            fontSize={"16px"}
-            fontWeight={"600"}
-          >
-            Telefone: {applyPhoneMask(userProfile?.phone) ?? "Telefone não disponível"}
-          </Text>
-          <Text
-            fontSize={"16px"}
-            fontWeight={"600"}
-          >
-            Data de nascimento:   {userProfile?.date_of_birth
-              ? format(new Date(userProfile.date_of_birth), "dd-MM-yyyy")
-              : "Data não disponível"
+              if (selectedImage) {
+                setImage(selectedImage[0])
               }
-          </Text>
-        </Column>
-        <Divider my={5} />
-        <Column>
-        <Text
-            fontSize={"16px"}
-            fontWeight={"bold"}
-            mb={2}
-          >
-            Palavras favoritas(Kanjilive):
-          </Text>
-          <FlatList
-            data={favoritesKanjiLive}
-            renderItem={itemKanjiLive}
-            keyExtractor={(item, index) => index.toString()}
-            ListEmptyComponent={<DataEmpty message="Não há favoritos" />}
-            ItemSeparatorComponent={() => (
-              <Divider
-                bg={"none"}
-                mt={4}
-              />
-            )}
+            }}
           />
+          <Button
+            onPress={handleUpdateProfileAvatar}
+            bg={"#D02C23"}
+            _hover={{ bg: "#ae251e" }}
+            _pressed={{ bg: "#ae251e" }}
+            isLoading={saving}
+          >
+            Salvar
+          </Button>
+          <Button
+            bg={"#D02C23"}
+            _hover={{ bg: "#ae251e" }}
+            _pressed={{ bg: "#ae251e" }}
+            onPress={() => {
+              setModalVisible(true)
+            }}
+          >
+            Atualizar perfil
+          </Button>
         </Column>
+      </Row>
+      <Divider my={5} />
+      <Column>
+        <Text
+          fontSize={"16px"}
+          fontWeight={"bold"}
+        >
+          Informações:
+        </Text>
 
-        <ModalProfile
-          isOpen={modalVisible}
-          onClose={() => {
-            setModalVisible(false)
-          }}
+        <Text
+          fontSize={"16px"}
+          fontWeight={"600"}
+        >
+          Nome: {`${userProfile?.user.first_name} ${userProfile?.user.last_name}`}
+        </Text>
+        <Text
+          fontSize={"16px"}
+          fontWeight={"600"}
+        >
+          Email: {userProfile?.user.email ?? "Email não disponível"}
+        </Text>
+        <Text
+          fontSize={"16px"}
+          fontWeight={"600"}
+        >
+          Telefone: {applyPhoneMask(userProfile?.phone) ?? "Telefone não disponível"}
+        </Text>
+        <Text
+          fontSize={"16px"}
+          fontWeight={"600"}
+        >
+          Data de nascimento:{" "}
+          {userProfile?.date_of_birth
+            ? format(new Date(userProfile.date_of_birth), "dd-MM-yyyy")
+            : "Data não disponível"}
+        </Text>
+      </Column>
+      <Divider my={5} />
+      <Column>
+        <Text
+          fontSize={"16px"}
+          fontWeight={"bold"}
+          mb={2}
+        >
+          Palavras favoritas(Kanjilive):
+        </Text>
+        <FlatList
+          data={favoritesKanjiLive}
+          renderItem={itemKanjiLive}
+          keyExtractor={(item, index) => index.toString()}
+          ListEmptyComponent={<DataEmpty message="Não há favoritos" />}
+          ItemSeparatorComponent={() => (
+            <Divider
+              bg={"none"}
+              mt={4}
+            />
+          )}
         />
       </Column>
+
+      <ModalProfile
+        isOpen={modalVisible}
+        onClose={() => {
+          setModalVisible(false)
+        }}
+      />
+    </Column>
   )
 }

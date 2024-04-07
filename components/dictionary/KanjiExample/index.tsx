@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
-import { Column, Text, Row, Pressable } from "native-base"
+import { Column, Pressable, Row, Text } from "native-base"
 import { MdFavorite, MdSave } from "react-icons/md"
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid"
 
 export interface IExample {
   japanese: string
@@ -61,7 +61,7 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
       if (favorites) {
         const favoritesObject = JSON.parse(favorites)
         const favorite = favoritesObject.findIndex((favorite: IExample) => favorite.japanese === example.japanese)
-        
+
         if (favorite !== -1) {
           favoritesObject.splice(favorite, 1)
           localStorage.setItem("favorites", JSON.stringify(favoritesObject))
@@ -85,11 +85,11 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
         borderColor: "white",
       }}
     >
-      <Row 
+      <Row
         justifyContent={"flex-start"}
         alignItems={"center"}
       >
-      <Text fontSize={"18px"}>{japanese}</Text>
+        <Text fontSize={"18px"}>{japanese}</Text>
         <Pressable
           _light={{
             bg: "white",
@@ -108,7 +108,7 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
         >
           <MdFavorite
             size={20}
-            color= { isFavorite ? "#D02C23" : "#000"}
+            color={isFavorite ? "#D02C23" : "#000"}
           />
         </Pressable>
         <Pressable

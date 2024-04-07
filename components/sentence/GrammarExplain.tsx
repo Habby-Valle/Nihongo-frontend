@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 
-import { Column, Text, Row, Pressable } from "native-base"
+import { Column, Pressable, Row, Text } from "native-base"
+import { MdDelete, MdEdit } from "react-icons/md"
 
 import { IGrammarList } from "../../utils/api/grammar"
-import ModalUpdateGrammar from "../grammar/ModalUpdateGrammar"
 import ModalDeleteGrammar from "../grammar/ModalDeleteGrammar"
-import { MdDelete, MdEdit } from "react-icons/md"
+import ModalUpdateGrammar from "../grammar/ModalUpdateGrammar"
 
 interface IGrammarExplainProps {
   grammar: IGrammarList | undefined
@@ -13,7 +13,6 @@ interface IGrammarExplainProps {
 }
 
 export default function GrammarExplain(props: IGrammarExplainProps) {
-
   const [grammarId, setGrammarId] = useState<number | null>(null)
   const [modalVisible, setModalVisible] = useState(false)
   const [modalDeleteVisible, setModalDeleteVisible] = useState(false)
@@ -43,15 +42,17 @@ export default function GrammarExplain(props: IGrammarExplainProps) {
           alignItems={"center"}
           space={2}
         >
-          <Pressable
-            onPress={() => handleChangeGrammarId(props.grammar?.id || 0)}
-          >
-            <MdEdit size={20} color={'#D02C23'} />
+          <Pressable onPress={() => handleChangeGrammarId(props.grammar?.id || 0)}>
+            <MdEdit
+              size={20}
+              color={"#D02C23"}
+            />
           </Pressable>
-          <Pressable
-            onPress={() => handleChangeDeleteGrammarId(props.grammar?.id || 0)}
-          >
-            <MdDelete size={20} color={'#D02C23'} />
+          <Pressable onPress={() => handleChangeDeleteGrammarId(props.grammar?.id || 0)}>
+            <MdDelete
+              size={20}
+              color={"#D02C23"}
+            />
           </Pressable>
         </Row>
       </Row>

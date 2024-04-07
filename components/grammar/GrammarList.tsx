@@ -115,7 +115,6 @@ export default function GrammarList(props: IGrammarListProps) {
         <Column w={"150px"}>
           <Text>{item.structure}</Text>
         </Column>
-       
       </Row>
     )
   }
