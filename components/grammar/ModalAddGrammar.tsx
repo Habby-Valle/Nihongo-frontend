@@ -32,7 +32,7 @@ export default function ModalAddGrammar(props: IModalAddGrammarProps) {
   } = useForm<IGrammarFormInput>()
 
   const [saving, setSaving] = useState(false)
-  const japaneseRegex = /^$|^[\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.]+$/
+  const japaneseRegex = /^$|^[\u0020\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF\u002B\u002A\u007E\u002F.~~]+$/;
 
   const toast = useToast()
 
