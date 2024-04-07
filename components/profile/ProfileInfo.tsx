@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, memo } from "react"
 import { ListRenderItemInfo } from "react-native"
 
 import format from "date-fns/format"
@@ -13,10 +13,14 @@ import { IExample } from "../dictionary/KanjiExample"
 import KanjiExample from "../dictionary/KanjiExample"
 import ModalProfile from "./ModalProfile"
 import ProfileSkeleton from "./ProfileSkeleton"
+import ResultCard from "../dictionary/ResultCard"
+import { IResultsList } from "../../utils/api/dictionary"
 
 export default function ProfileInfo() {
   const [modalVisible, setModalVisible] = useState(false)
   const [favoritesKanjiLive, setFavoritesKanjiLive] = useState<IExample[]>([])
+  const [favoritesDictionary, setFavoritesDictionary] = useState<IResultsList[]>([])
+  console.log(favoritesDictionary)
   const {
     data: userInfo,
     profile: userProfile,
@@ -34,12 +38,26 @@ export default function ProfileInfo() {
 
   useEffect(() => {
     const favoritesWordsKL = localStorage.getItem("favorites")
+    const favoritesWordsNG = localStorage.getItem("favorites_dictionary")
     if (favoritesWordsKL) {
       setFavoritesKanjiLive(JSON.parse(favoritesWordsKL))
     } else {
       setFavoritesKanjiLive([])
     }
+
+    if (favoritesWordsNG) {
+      setFavoritesDictionary(JSON.parse(favoritesWordsNG))
+    } else {
+      setFavoritesDictionary([])
+    }
+
   }, [])
+
+  const RenderItem = memo(({ item }: { item: IResultsList }) => {
+    return <ResultCard item={item} />
+  })
+
+  RenderItem.displayName = "ResultItem"
 
   async function handleUpdateProfileAvatar() {
     setSaving(true)
@@ -234,7 +252,23 @@ export default function ProfileInfo() {
           )}
         />
       </Column>
-
+      <Divider my={5} />
+      <Column>
+        <Text
+          fontSize={"16px"}
+          fontWeight={"bold"}
+          mb={2}
+        >
+          Palavras favoritas(Nihogo Gaido):
+        </Text>
+        <FlatList
+          data={favoritesDictionary}
+          renderItem={({ item }) => <RenderItem item={item} />}
+          keyExtractor={(item, index) => index.toString()}
+          ListEmptyComponent={<DataEmpty message="Não há favoritos" />}
+          ItemSeparatorComponent={() => <Divider mt={2} />}
+        />
+      </Column>
       <ModalProfile
         isOpen={modalVisible}
         onClose={() => {
