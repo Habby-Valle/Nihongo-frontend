@@ -169,7 +169,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
             <Toast
               title="Error"
               message="Erro ao atualizar perfil"
-              bg="#D02C23"
+              bg="#39B59F"
             />
           )
         },
@@ -196,7 +196,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Atualizar perfil</Modal.Header>
+        <Modal.Header _text={{ color: "#39B59F" }}>Atualizar perfil</Modal.Header>
         <Modal.Body>
           <Row
             justifyContent={"space-between"}
@@ -210,15 +210,15 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 isRequired
                 isInvalid={!isFirstNameValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Nome</FormControl.Label>
+                <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Nome</FormControl.Label>
                 <Input
                   value={firstName}
                   onChangeText={handleNameChange}
                   placeholder="Nome"
                   shadow={1}
-                  _focus={{ borderColor: "#D02C23" }}
-                  _hover={{ borderColor: "#D02C23" }}
-                  focusOutlineColor={"#D02C23"}
+                  _focus={{ borderColor: "#39B59F" }}
+                  _hover={{ borderColor: "#39B59F" }}
+                  focusOutlineColor={"#39B59F"}
                   _light={{
                     bg: "white",
                   }}
@@ -232,15 +232,15 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 isRequired
                 isInvalid={!isLastNameValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Sobrenome</FormControl.Label>
+                <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Sobrenome</FormControl.Label>
                 <Input
                   value={lastName}
                   onChangeText={handleLastNameChange}
                   placeholder="Sobrenome"
                   shadow={1}
-                  _focus={{ borderColor: "#D02C23" }}
-                  _hover={{ borderColor: "#D02C23" }}
-                  focusOutlineColor={"#D02C23"}
+                  _focus={{ borderColor: "#39B59F" }}
+                  _hover={{ borderColor: "#39B59F" }}
+                  focusOutlineColor={"#39B59F"}
                   _light={{
                     bg: "white",
                   }}
@@ -254,15 +254,15 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 isRequired
                 isInvalid={!isUsernameValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Username</FormControl.Label>
+                <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Username</FormControl.Label>
                 <Input
                   value={username}
                   onChangeText={handleUsernameChange}
                   placeholder="Username"
                   shadow={1}
-                  _focus={{ borderColor: "#D02C23" }}
-                  _hover={{ borderColor: "#D02C23" }}
-                  focusOutlineColor={"#D02C23"}
+                  _focus={{ borderColor: "#39B59F" }}
+                  _hover={{ borderColor: "#39B59F" }}
+                  focusOutlineColor={"#39B59F"}
                   _light={{
                     bg: "white",
                   }}
@@ -281,15 +281,15 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 isRequired
                 isInvalid={!isEmailValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Email</FormControl.Label>
+                <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Email</FormControl.Label>
                 <Input
                   value={email}
                   onChangeText={handleEmailChange}
                   placeholder="Email"
                   shadow={1}
-                  _focus={{ borderColor: "#D02C23" }}
-                  _hover={{ borderColor: "#D02C23" }}
-                  focusOutlineColor={"#D02C23"}
+                  _focus={{ borderColor: "#39B59F" }}
+                  _hover={{ borderColor: "#39B59F" }}
+                  focusOutlineColor={"#39B59F"}
                   _light={{
                     bg: "white",
                   }}
@@ -303,16 +303,16 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 isRequired
                 isInvalid={!isPhoneValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Telefone</FormControl.Label>
+                <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Telefone</FormControl.Label>
                 <Input
                   value={phone}
                   onChangeText={handlePhoneChange}
                   mask="+55 (99) 99999-9999"
                   placeholder="Telefone"
                   shadow={1}
-                  _focus={{ borderColor: "#D02C23" }}
-                  _hover={{ borderColor: "#D02C23" }}
-                  focusOutlineColor={"#D02C23"}
+                  _focus={{ borderColor: "#39B59F" }}
+                  _hover={{ borderColor: "#39B59F" }}
+                  focusOutlineColor={"#39B59F"}
                   _light={{
                     bg: "white",
                   }}
@@ -326,7 +326,7 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                 isRequired
                 isInvalid={!isDateBirthValid}
               >
-                <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>
+                <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>
                   Data de nascimento
                 </FormControl.Label>
                 <Input
@@ -336,9 +336,9 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
                   }}
                   placeholder="Data de nascimento"
                   shadow={1}
-                  _focus={{ borderColor: "#D02C23" }}
-                  _hover={{ borderColor: "#D02C23" }}
-                  focusOutlineColor={"#D02C23"}
+                  _focus={{ borderColor: "#39B59F" }}
+                  _hover={{ borderColor: "#39B59F" }}
+                  focusOutlineColor={"#39B59F"}
                   _light={{
                     bg: "white",
                   }}
@@ -364,9 +364,9 @@ export default function ModalProfile({ isOpen, onClose }: ModalProfileProps) {
               Cancelar
             </Button>
             <Button
-              bg={"#D02C23"}
-              _hover={{ bg: "#ae251e" }}
-              _pressed={{ bg: "#ae251e" }}
+              bg={"#39B59F"}
+              _hover={{ bg: "#1ca088" }}
+              _pressed={{ bg: "#1ca088" }}
               onPress={save}
               isLoading={saving}
               isDisabled={

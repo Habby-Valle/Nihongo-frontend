@@ -36,7 +36,7 @@ export default function SearchGrammar(props: ISearchGrammarProps) {
           InputRightElement={
             <MdSearch
               size={25}
-              color="#D02C23"
+              color="#39B59F"
             />
           }
         />
@@ -46,12 +46,12 @@ export default function SearchGrammar(props: ISearchGrammarProps) {
         alignItems={"flex-end"}
       >
         <Button
-          bg={"#D02C23"}
+          bg={"#39B59F"}
           onPress={() => {
             setModalVisible(true)
           }}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           w={"140px"}
           startIcon={

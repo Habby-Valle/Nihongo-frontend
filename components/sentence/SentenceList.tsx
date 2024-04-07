@@ -107,9 +107,9 @@ export default function SentenceList(props: ISentenceListProps) {
         </Text>
         <Button
           onPress={handleAddSentence}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           startIcon={
             <MdAdd

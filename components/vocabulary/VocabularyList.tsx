@@ -56,9 +56,9 @@ export default function WordList(props: IWordListProps) {
             onPress={() => {
               setIsModalAddWordOpen(true)
             }}
-            bg={"#D02C23"}
-            _hover={{ bg: "#ae251e" }}
-            _pressed={{ bg: "#ae251e" }}
+            bg={"#39B59F"}
+            _hover={{ bg: "#1ca088" }}
+            _pressed={{ bg: "#1ca088" }}
             size={"md"}
             startIcon={
               <MdAdd
@@ -73,9 +73,9 @@ export default function WordList(props: IWordListProps) {
             onPress={() => {
               setIsModalAddCategoryOpen(true)
             }}
-            bg={"#D02C23"}
-            _hover={{ bg: "#ae251e" }}
-            _pressed={{ bg: "#ae251e" }}
+            bg={"#39B59F"}
+            _hover={{ bg: "#1ca088" }}
+            _pressed={{ bg: "#1ca088" }}
             size={"md"}
             startIcon={
               <MdAdd
@@ -100,9 +100,9 @@ export default function WordList(props: IWordListProps) {
         p={"10px"}
       >
         <Button
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           onPress={() => {
             props.setPage(props.page - 1)
@@ -119,9 +119,9 @@ export default function WordList(props: IWordListProps) {
           }}
         />
         <Button
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           onPress={() => {
             props.setPage(props.page + 1)
@@ -190,7 +190,7 @@ export default function WordList(props: IWordListProps) {
             >
               <CopyIcon
                 size={24}
-                color={"#D02C23"}
+                color={"#39B59F"}
               />
             </Pressable>
           </Row>
@@ -209,7 +209,7 @@ export default function WordList(props: IWordListProps) {
             >
               <MdList
                 size={24}
-                color={"#D02C23"}
+                color={"#39B59F"}
               />
             </Pressable>
             <Badge
@@ -217,7 +217,7 @@ export default function WordList(props: IWordListProps) {
               alignItems={"center"}
               w={"20px"}
               h={"20px"}
-              backgroundColor={"#D02C23"}
+              backgroundColor={"#39B59F"}
               _text={{
                 color: "white",
                 fontSize: "12px",

@@ -23,7 +23,7 @@ export default function GrammarList(props: IGrammarListProps) {
       <Row
         justifyContent={"space-around"}
         p={5}
-        bg={"#D02C23"}
+        bg={"#39B59F"}
       >
         <Heading
           size={"sm"}
@@ -52,9 +52,9 @@ export default function GrammarList(props: IGrammarListProps) {
         py={"10px"}
       >
         <Button
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           onPress={() => {
             props.setPage(props.page - 1)
@@ -71,9 +71,9 @@ export default function GrammarList(props: IGrammarListProps) {
           }}
         />
         <Button
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           onPress={() => {
             props.setPage(props.page + 1)
@@ -128,7 +128,7 @@ export default function GrammarList(props: IGrammarListProps) {
         data={props.grammars}
         ListHeaderComponent={header}
         ListFooterComponent={footer}
-        ItemSeparatorComponent={() => <Divider bg={"#D02C23"} />}
+        ItemSeparatorComponent={() => <Divider bg={"#39B59F"} />}
         ListEmptyComponent={() => <DataEmpty message={"No grammar found"} />}
         renderItem={items}
         keyExtractor={(item) => item.id.toString()}

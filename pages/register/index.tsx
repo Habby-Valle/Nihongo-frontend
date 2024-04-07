@@ -167,7 +167,7 @@ export default function Register() {
         w={"60%"}
         justifyContent={"center"}
         alignItems={"center"}
-        borderColor={"#D02C23"}
+        borderColor={"#39B59F"}
         _light={{
           bg: "white",
         }}
@@ -190,7 +190,7 @@ export default function Register() {
           <Text
             fontSize={"18px"}
             fontWeight={"600"}
-            color={"#D02C23"}
+            color={"#39B59F"}
           >
             Nihongo Gaido
           </Text>
@@ -207,15 +207,15 @@ export default function Register() {
               isRequired
               isInvalid={!isFirstNameValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Nome</FormControl.Label>
+              <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Nome</FormControl.Label>
               <Input
                 value={firstName}
                 onChangeText={handleChangeName}
                 placeholder="Nome"
                 shadow={1}
-                _focus={{ borderColor: "#D02C23" }}
-                _hover={{ borderColor: "#D02C23" }}
-                focusOutlineColor={"#D02C23"}
+                _focus={{ borderColor: "#39B59F" }}
+                _hover={{ borderColor: "#39B59F" }}
+                focusOutlineColor={"#39B59F"}
               />
               <FormControl.ErrorMessage>Nome inválido</FormControl.ErrorMessage>
             </FormControl>
@@ -223,15 +223,15 @@ export default function Register() {
               isRequired
               isInvalid={!isLastNameValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Sobrenome</FormControl.Label>
+              <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Sobrenome</FormControl.Label>
               <Input
                 value={lastName}
                 onChangeText={handleChangeLastName}
                 placeholder="Sobrenome"
                 shadow={1}
-                _focus={{ borderColor: "#D02C23" }}
-                _hover={{ borderColor: "#D02C23" }}
-                focusOutlineColor={"#D02C23"}
+                _focus={{ borderColor: "#39B59F" }}
+                _hover={{ borderColor: "#39B59F" }}
+                focusOutlineColor={"#39B59F"}
               />
               <FormControl.ErrorMessage>Sobrenome inválido</FormControl.ErrorMessage>
             </FormControl>
@@ -239,15 +239,15 @@ export default function Register() {
               isRequired
               isInvalid={!isUsernameValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Username</FormControl.Label>
+              <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Username</FormControl.Label>
               <Input
                 value={username}
                 onChangeText={handleChangeUsername}
                 placeholder="Username"
                 shadow={1}
-                _focus={{ borderColor: "#D02C23" }}
-                _hover={{ borderColor: "#D02C23" }}
-                focusOutlineColor={"#D02C23"}
+                _focus={{ borderColor: "#39B59F" }}
+                _hover={{ borderColor: "#39B59F" }}
+                focusOutlineColor={"#39B59F"}
               />
               <FormControl.ErrorMessage>Username inválido</FormControl.ErrorMessage>
             </FormControl>
@@ -260,15 +260,15 @@ export default function Register() {
               isRequired
               isInvalid={!isEmailValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Email</FormControl.Label>
+              <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Email</FormControl.Label>
               <Input
                 value={email}
                 onChangeText={handleChangeEmail}
                 placeholder="Email"
                 shadow={1}
-                _focus={{ borderColor: "#D02C23" }}
-                _hover={{ borderColor: "#D02C23" }}
-                focusOutlineColor={"#D02C23"}
+                _focus={{ borderColor: "#39B59F" }}
+                _hover={{ borderColor: "#39B59F" }}
+                focusOutlineColor={"#39B59F"}
               />
               <FormControl.ErrorMessage>Email inválido</FormControl.ErrorMessage>
             </FormControl>
@@ -276,21 +276,21 @@ export default function Register() {
               isRequired
               isInvalid={!isPasswordValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Senha</FormControl.Label>
+              <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Senha</FormControl.Label>
               <Input
                 value={password}
                 onChangeText={handleChangeSenha}
                 type={showPassword ? "text" : "password"}
                 placeholder="Senha"
                 shadow={1}
-                _focus={{ borderColor: "#D02C23" }}
-                _hover={{ borderColor: "#D02C23" }}
-                focusOutlineColor={"#D02C23"}
+                _focus={{ borderColor: "#39B59F" }}
+                _hover={{ borderColor: "#39B59F" }}
+                focusOutlineColor={"#39B59F"}
                 InputRightElement={
                   <Pressable onPress={handleState}>
                     <MdRemoveRedEye
                       size={20}
-                      color="#D02C23"
+                      color="#39B59F"
                     />
                   </Pressable>
                 }
@@ -301,21 +301,21 @@ export default function Register() {
               isRequired
               isInvalid={!isConfirmPasswordValid}
             >
-              <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Confirmar senha</FormControl.Label>
+              <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Confirmar senha</FormControl.Label>
               <Input
                 value={confirmPassword}
                 onChangeText={handleChangeConfirmarSenha}
                 type={showPassword ? "text" : "password"}
                 placeholder="Confirm password"
                 shadow={1}
-                _focus={{ borderColor: "#D02C23" }}
-                _hover={{ borderColor: "#D02C23" }}
-                focusOutlineColor={"#D02C23"}
+                _focus={{ borderColor: "#39B59F" }}
+                _hover={{ borderColor: "#39B59F" }}
+                focusOutlineColor={"#39B59F"}
                 InputRightElement={
                   <Pressable onPress={handleState}>
                     <MdRemoveRedEye
                       size={20}
-                      color="#D02C23"
+                      color="#39B59F"
                     />
                   </Pressable>
                 }
@@ -339,7 +339,7 @@ export default function Register() {
               >
                 <Text
                   fontWeight={"600"}
-                  color={"#D02C23"}
+                  color={"#39B59F"}
                   onPress={() => {
                     router.push("/login")
                   }}
@@ -358,8 +358,8 @@ export default function Register() {
         >
           <Button
             w={"90px"}
-            bg={"#D02C23"}
-            _hover={{ bg: "#ae251e" }}
+            bg={"#39B59F"}
+            _hover={{ bg: "#1ca088" }}
             onPress={register}
             isLoading={saving}
             isDisabled={

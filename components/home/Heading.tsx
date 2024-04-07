@@ -22,7 +22,7 @@ export function Heading({ title }: IHeadingProps) {
   const router = useRouter()
   return (
     <Row
-      bg="#D02C23"
+      bg="#39B59F"
       w={"100%"}
       px={9}
       py={"10px"}

@@ -74,7 +74,7 @@ export default function ExampleList(props: IExampleListProps) {
               >
                 <MdEdit
                   size={25}
-                  color="#D02C23"
+                  color="#39B59F"
                 />
               </Pressable>
               <Pressable
@@ -84,7 +84,7 @@ export default function ExampleList(props: IExampleListProps) {
               >
                 <MdDelete
                   size={25}
-                  color="#D02C23"
+                  color="#39B59F"
                 />
               </Pressable>
               <Pressable
@@ -95,12 +95,12 @@ export default function ExampleList(props: IExampleListProps) {
                 {isExpanded[index] ? (
                   <MdArrowDropUp
                     size={25}
-                    color="#D02C23"
+                    color="#39B59F"
                   />
                 ) : (
                   <MdArrowDropDown
                     size={25}
-                    color="#D02C23"
+                    color="#39B59F"
                   />
                 )}
               </Pressable>

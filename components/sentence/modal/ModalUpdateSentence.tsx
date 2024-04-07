@@ -89,7 +89,7 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Atualizar sentença</Modal.Header>
+        <Modal.Header _text={{ color: "#39B59F" }}>Atualizar sentença</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
@@ -131,9 +131,9 @@ export default function ModalUpdateSentence(props: IModalUpdateSentenceProps) {
               Cancelar
             </Button>
             <Button
-              bg={"#D02C23"}
-              _hover={{ bg: "#ae251e" }}
-              _pressed={{ bg: "#ae251e" }}
+              bg={"#39B59F"}
+              _hover={{ bg: "#1ca088" }}
+              _pressed={{ bg: "#1ca088" }}
               isLoading={saving}
               onPress={() => {
                 handleSubmit(onSubmit)()
