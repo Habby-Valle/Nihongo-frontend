@@ -7,8 +7,6 @@ import { useRouter } from "next/router"
 import { IGrammarList } from "../../utils/api/grammar"
 import DataEmpty from "../DataEmpty"
 import PageNumbers from "../PageNumbers"
-import ModalDeleteGrammar from "./ModalDeleteGrammar"
-import ModalUpdateGrammar from "./ModalUpdateGrammar"
 
 interface IGrammarListProps {
   grammars: IGrammarList[]
@@ -19,21 +17,7 @@ interface IGrammarListProps {
 }
 
 export default function GrammarList(props: IGrammarListProps) {
-  const [grammarId, setGrammarId] = useState<number | null>(null)
-  const [modalVisible, setModalVisible] = useState(false)
-  const [modalDeleteVisible, setModalDeleteVisible] = useState(false)
   const router = useRouter()
-
-  const handleChangeGrammarId = (id: number) => {
-    setGrammarId(id)
-    setModalVisible(true)
-  }
-
-  const handleChangeDeleteGrammarId = (id: number) => {
-    setGrammarId(id)
-    setModalDeleteVisible(true)
-  }
-
   function header() {
     return (
       <Row
@@ -44,7 +28,7 @@ export default function GrammarList(props: IGrammarListProps) {
         <Heading
           size={"sm"}
           color={"#f2f2f2"}
-          w={"150px"}
+          w={"300px"}
         >
           Gramática
         </Heading>
@@ -54,20 +38,6 @@ export default function GrammarList(props: IGrammarListProps) {
           w={"150px"}
         >
           Estrutura
-        </Heading>
-        <Heading
-          size={"sm"}
-          color={"#f2f2f2"}
-          w={"150px"}
-        >
-          Nível
-        </Heading>
-        <Heading
-          size={"sm"}
-          color={"#f2f2f2"}
-          w={"110px"}
-        >
-          Ação
         </Heading>
       </Row>
     )
@@ -128,10 +98,15 @@ export default function GrammarList(props: IGrammarListProps) {
           bg: "#262626",
         }}
       >
-        <Column w={"150px"}>
+        <Column w={"300px"}>
           <Pressable
             onPress={() => {
               router.push(`/grammar/sentences/${item.id}`)
+            }}
+            _hover={{
+              textDecoration: "underline",
+              _light: { color: "#262626" },
+              _dark: { color: "#f2f2f2f2" },
             }}
           >
             <Text>{item.grammar}</Text>
@@ -140,50 +115,6 @@ export default function GrammarList(props: IGrammarListProps) {
         <Column w={"150px"}>
           <Text>{item.structure}</Text>
         </Column>
-        <Column w={"150px"}>
-          <Text>{item.level}</Text>
-        </Column>
-        <Row
-          justifyContent={"space-around"}
-          w={"110px"}
-        >
-          <Pressable
-            onPress={() => {
-              handleChangeGrammarId(item.id)
-            }}
-            _light={{
-              bg: "#F2F2F2",
-            }}
-            _dark={{
-              bg: "#333333",
-            }}
-            w={"40px"}
-            h={"20px"}
-            alignItems={"center"}
-            rounded={"md"}
-            shadow={1}
-          >
-            <Text color={"#D02C23"}>Editar</Text>
-          </Pressable>
-          <Pressable
-            onPress={() => {
-              handleChangeDeleteGrammarId(item.id)
-            }}
-            _light={{
-              bg: "#F2F2F2",
-            }}
-            _dark={{
-              bg: "#333333",
-            }}
-            w={"60px"}
-            h={"20px"}
-            alignItems={"center"}
-            rounded={"md"}
-            shadow={1}
-          >
-            <Text>Excluir</Text>
-          </Pressable>
-        </Row>
       </Row>
     )
   }
@@ -201,26 +132,6 @@ export default function GrammarList(props: IGrammarListProps) {
         ListEmptyComponent={() => <DataEmpty message={"No grammar found"} />}
         renderItem={items}
         keyExtractor={(item) => item.id.toString()}
-      />
-      <ModalUpdateGrammar
-        isOpen={modalVisible}
-        onReload={async () => {
-          await props.revalidate()
-        }}
-        onClose={() => {
-          setModalVisible(false)
-        }}
-        grammarId={grammarId}
-      />
-      <ModalDeleteGrammar
-        isOpen={modalDeleteVisible}
-        onReload={async () => {
-          await props.revalidate()
-        }}
-        onClose={() => {
-          setModalDeleteVisible(false)
-        }}
-        grammarId={grammarId}
       />
     </Box>
   )
