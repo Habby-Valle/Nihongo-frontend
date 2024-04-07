@@ -10,7 +10,7 @@ export default function GrammarSkeleton() {
     >
       <Skeleton
         height={30}
-        startColor={"#D02C23"}
+        startColor={"#39B59F"}
         endColor={"#F2F2F2"}
       />
       <Skeleton height={30} />

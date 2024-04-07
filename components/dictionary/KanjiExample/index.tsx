@@ -108,7 +108,7 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
         >
           <MdFavorite
             size={20}
-            color={isFavorite ? "#D02C23" : "#000"}
+            color={isFavorite ? "#39B59F" : "#000"}
           />
         </Pressable>
         <Pressable
@@ -126,7 +126,7 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
         >
           <MdSave
             size={20}
-            color="#D02C23"
+            color="#39B59F"
           />
         </Pressable>
       </Row>

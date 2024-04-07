@@ -99,7 +99,7 @@ function ButtonMenuLateral({ toggleMenu, Icon, left }: ButtonMenuLateralProps) {
       borderColor={"#ffff"}
       onPress={toggleMenu}
       _hover={{
-        bg: "#a1211a",
+        bg: "#1ca088",
       }}
       zIndex={99990}
     >

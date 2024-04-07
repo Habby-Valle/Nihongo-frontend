@@ -131,7 +131,7 @@ export default function ProfileInfo() {
       <Row justifyContent={"space-between"}>
         <Row alignItems={"flex-end"}>
           <Box
-            borderColor={"#D02C23"}
+            borderColor={"#39B59F"}
             borderWidth={"3px"}
             style={{ width: 150, height: 150, borderRadius: 10, overflow: "hidden" }}
           >
@@ -174,17 +174,17 @@ export default function ProfileInfo() {
           />
           <Button
             onPress={handleUpdateProfileAvatar}
-            bg={"#D02C23"}
-            _hover={{ bg: "#ae251e" }}
-            _pressed={{ bg: "#ae251e" }}
+            bg={"#39B59F"}
+            _hover={{ bg: "#1ca088" }}
+            _pressed={{ bg: "#1ca088" }}
             isLoading={saving}
           >
             Salvar
           </Button>
           <Button
-            bg={"#D02C23"}
-            _hover={{ bg: "#ae251e" }}
-            _pressed={{ bg: "#ae251e" }}
+            bg={"#39B59F"}
+            _hover={{ bg: "#1ca088" }}
+            _pressed={{ bg: "#1ca088" }}
             onPress={() => {
               setModalVisible(true)
             }}

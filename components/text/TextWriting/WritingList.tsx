@@ -75,7 +75,7 @@ export default function TranslateList() {
         keyExtractor={(item) => item.id.toString()}
         ListHeaderComponent={headers}
         ListEmptyComponent={<DataEmpty message={"Nenhum texto encontrado"} />}
-        ItemSeparatorComponent={() => <Divider bg={"#D02C23"} />}
+        ItemSeparatorComponent={() => <Divider bg={"#39B59F"} />}
       />
     </Box>
   )

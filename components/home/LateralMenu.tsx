@@ -29,7 +29,7 @@ export function LateralMenu() {
     <VStack
       h={"100vh"}
       w={"200px"}
-      bg={"#D02C23"}
+      bg={"#39B59F"}
     >
       <VStack>
         <Box

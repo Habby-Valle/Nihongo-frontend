@@ -122,9 +122,9 @@ export default function WritingCreate() {
           <Input
             placeholder={"Title"}
             shadow={1}
-            _focus={{ borderColor: "#D02C23" }}
-            _hover={{ borderColor: "#D02C23" }}
-            focusOutlineColor={"#D02C23"}
+            _focus={{ borderColor: "#39B59F" }}
+            _hover={{ borderColor: "#39B59F" }}
+            focusOutlineColor={"#39B59F"}
             _light={{
               bg: "white",
             }}
@@ -196,9 +196,9 @@ export default function WritingCreate() {
         <Button
           onPress={save}
           w={"40%"}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           isDisabled={!isTitleValid || !isTextValid}
           isLoading={saving}
         >
@@ -213,9 +213,9 @@ export default function WritingCreate() {
             }
           }}
           w={"40%"}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
         >
           {AddAnnotation ? "Esconder anotação" : "Add anotação"}
         </Button>

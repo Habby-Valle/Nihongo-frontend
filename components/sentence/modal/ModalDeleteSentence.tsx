@@ -52,7 +52,7 @@ export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
     >
       <Modal.Content maxWidth="400px">
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Excluir sentença</Modal.Header>
+        <Modal.Header _text={{ color: "#39B59F" }}>Excluir sentença</Modal.Header>
         <Modal.Body>Tem certeza que deseja excluir esta sentença?</Modal.Body>
         <Modal.Footer>
           <Button.Group
@@ -67,9 +67,9 @@ export default function ModalDeleteSentence(props: IModalDeleteSentenceProps) {
               Cancelar
             </Button>
             <Button
-              bg={"#D02C23"}
-              _hover={{ bg: "#ae251e" }}
-              _pressed={{ bg: "#ae251e" }}
+              bg={"#39B59F"}
+              _hover={{ bg: "#1ca088" }}
+              _pressed={{ bg: "#1ca088" }}
               onPress={deleteSentenceFunc}
               isLoading={saving}
               _text={{ color: "white" }}

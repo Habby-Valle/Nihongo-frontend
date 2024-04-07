@@ -22,7 +22,7 @@ export default function ModalVocabulary(props: ModalVocabularyProps) {
     >
       <Modal.Content>
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Opções da palavra</Modal.Header>
+        <Modal.Header _text={{ color: "#39B59F" }}>Opções da palavra</Modal.Header>
         <Modal.Body>
           <Box>
             <Column space={"10px"}>

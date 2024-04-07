@@ -98,7 +98,7 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Atualizar gramática</Modal.Header>
+        <Modal.Header _text={{ color: "#39B59F" }}>Atualizar gramática</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
@@ -147,9 +147,9 @@ export default function ModalUpdateGrammar(props: IModalUpdateGrammarProps) {
               Cancelar
             </Button>
             <Button
-              bg={"#D02C23"}
-              _hover={{ bg: "#ae251e" }}
-              _pressed={{ bg: "#ae251e" }}
+              bg={"#39B59F"}
+              _hover={{ bg: "#1ca088" }}
+              _pressed={{ bg: "#1ca088" }}
               isLoading={saving}
               onPress={() => {
                 handleSubmit(onSubmit)()

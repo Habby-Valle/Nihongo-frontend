@@ -13,9 +13,9 @@ export default function LoadMore({ setCnt, cnt, numPages }: ILoadMoreProps) {
     <Row py={"10px"}>
       <Button
         width={"100%"}
-        bg={"#D02C23"}
-        _hover={{ bg: "#ae251e" }}
-        _pressed={{ bg: "#ae251e" }}
+        bg={"#39B59F"}
+        _hover={{ bg: "#1ca088" }}
+        _pressed={{ bg: "#1ca088" }}
         size={"md"}
         onPress={() => {
           setCnt(cnt + 1)

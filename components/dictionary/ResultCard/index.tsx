@@ -103,7 +103,7 @@ export default function ResultCard({ item }: IResultCard) {
               handleFavorite(item)
             }}
           >
-            <MdFavorite color={isFavorite ? "#D02C23" : "#000"} />
+            <MdFavorite color={isFavorite ? "#39B59F" : "#000"} />
           </Pressable>
           <Pressable
             _light={{
