@@ -83,7 +83,6 @@ function Header({ word }: IHeaderProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setLoading] = useState(false)
   const toast = useToast()
-
   const { mutate: examplesRevalidate } = useExamples(word.id)
 
   async function getInfos(content: string) {
@@ -147,7 +146,7 @@ function Header({ word }: IHeaderProps) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
@@ -157,7 +156,7 @@ function Header({ word }: IHeaderProps) {
               content: prompt,
             },
           ],
-          temperature: 0.2,
+          temperature: 1,
           max_tokens: 500,
           top_p: 1,
         }),
