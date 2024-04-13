@@ -29,7 +29,7 @@ export default function SentenceCard(item: ISentenceCardProps) {
         <Pressable onPress={() => item.handleChangeSentenceId(item.sentence.id)}>
           <MdList
             size={24}
-            color={"#D02C23"}
+            color={"#39B59F"}
           />
         </Pressable>
       </Row>

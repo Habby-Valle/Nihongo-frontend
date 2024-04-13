@@ -54,9 +54,9 @@ export default function PageNumbers(props: IPageNumbersProps) {
           h={"24px"}
           w={"24px"}
           isDisabled={pageNumber === "..."}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           onPress={() => handlePageChange(pageNumber)}
           isPressed={pageNumber === props.currentPage}
         >

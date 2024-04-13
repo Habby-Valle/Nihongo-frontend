@@ -96,7 +96,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
             <Toast
               title="Erro ao atualizar palavra!"
               message="Ocorreu um erro ao atualizar a palavra, tente novamente."
-              bg="#D02C23"
+              bg="#39B59F"
             />
           )
         },
@@ -121,7 +121,7 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}> Atualizar palavra</Modal.Header>
+        <Modal.Header _text={{ color: "#39B59F" }}> Atualizar palavra</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
@@ -207,9 +207,9 @@ export default function ModalUpdateWord(props: IModalAddWordProps) {
               Cancelar
             </Button>
             <Button
-              bg={"#D02C23"}
-              _hover={{ bg: "#ae251e" }}
-              _pressed={{ bg: "#ae251e" }}
+              bg={"#39B59F"}
+              _hover={{ bg: "#1ca088" }}
+              _pressed={{ bg: "#1ca088" }}
               isLoading={saving}
               onPress={() => {
                 handleSubmit(onSubmit)()

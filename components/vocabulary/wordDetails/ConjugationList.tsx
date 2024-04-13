@@ -53,7 +53,7 @@ export default function ConjugationList(props: IConjugationListProps) {
         >
           <MdEdit
             size={25}
-            color="#D02C23"
+            color="#39B59F"
           />
         </Pressable>
         <Pressable
@@ -63,7 +63,7 @@ export default function ConjugationList(props: IConjugationListProps) {
         >
           <MdDelete
             size={25}
-            color="#D02C23"
+            color="#39B59F"
           />
         </Pressable>
       </Row>

@@ -122,7 +122,7 @@ export default function Login() {
         w={"60%"}
         justifyContent={"center"}
         alignItems={"center"}
-        borderColor={"#D02C23"}
+        borderColor={"#39B59F"}
         _light={{
           bg: "white",
         }}
@@ -144,7 +144,7 @@ export default function Login() {
           <Text
             fontSize={"18px"}
             fontWeight={"600"}
-            color={"#D02C23"}
+            color={"#39B59F"}
           >
             Nihongo Gaido
           </Text>
@@ -154,7 +154,7 @@ export default function Login() {
           space={"8px"}
         >
           <FormControl>
-            <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Username</FormControl.Label>
+            <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Username</FormControl.Label>
             <Input
               value={userName}
               onChangeText={(text) => {
@@ -162,9 +162,9 @@ export default function Login() {
               }}
               placeholder="Username"
               shadow={1}
-              _focus={{ borderColor: "#D02C23" }}
-              _hover={{ borderColor: "#D02C23" }}
-              focusOutlineColor={"#D02C23"}
+              _focus={{ borderColor: "#39B59F" }}
+              _hover={{ borderColor: "#39B59F" }}
+              focusOutlineColor={"#39B59F"}
               _light={{
                 bg: "white",
               }}
@@ -174,7 +174,7 @@ export default function Login() {
             />
           </FormControl>
           <FormControl>
-            <FormControl.Label _text={{ color: "#D02C23", fontWeight: "600" }}>Senha</FormControl.Label>
+            <FormControl.Label _text={{ color: "#39B59F", fontWeight: "600" }}>Senha</FormControl.Label>
             <Input
               value={password}
               onChangeText={(text) => {
@@ -183,9 +183,9 @@ export default function Login() {
               type={showPassword ? "text" : "password"}
               placeholder="Senha"
               shadow={1}
-              _focus={{ borderColor: "#D02C23" }}
-              _hover={{ borderColor: "#D02C23" }}
-              focusOutlineColor={"#D02C23"}
+              _focus={{ borderColor: "#39B59F" }}
+              _hover={{ borderColor: "#39B59F" }}
+              focusOutlineColor={"#39B59F"}
               _light={{
                 bg: "white",
               }}
@@ -196,7 +196,7 @@ export default function Login() {
                 <Pressable onPress={handleState}>
                   <MdRemoveRedEye
                     size={20}
-                    color="#D02C23"
+                    color="#39B59F"
                   />
                 </Pressable>
               }
@@ -218,7 +218,7 @@ export default function Login() {
               >
                 <Text
                   fontWeight={"600"}
-                  color={"#D02C23"}
+                  color={"#39B59F"}
                   onPress={() => {
                     router.push("/register")
                   }}
@@ -233,7 +233,7 @@ export default function Login() {
               <Text mr={"6px"}>Esqueceu sua senha?</Text>
               <Text
                 fontWeight={"600"}
-                color={"#D02C23"}
+                color={"#39B59F"}
                 onPress={() => {
                   router.push("/forgot-password")
                 }}
@@ -250,9 +250,9 @@ export default function Login() {
         >
           <Button
             w={"90px"}
-            bg={"#D02C23"}
-            _hover={{ bg: "#ae251e" }}
-            _pressed={{ bg: "#ae251e" }}
+            bg={"#39B59F"}
+            _hover={{ bg: "#1ca088" }}
+            _pressed={{ bg: "#1ca088" }}
             onPress={login}
             isLoading={sendingLogin}
           >

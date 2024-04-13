@@ -122,9 +122,9 @@ export default function Translate(props: ITextDetailProps) {
             mt={"10px"}
           >
             <Button
-              bg={"#D02C23"}
-              _hover={{ bg: "#ae251e" }}
-              _pressed={{ bg: "#ae251e" }}
+              bg={"#39B59F"}
+              _hover={{ bg: "#1ca088" }}
+              _pressed={{ bg: "#1ca088" }}
               onPress={props.onEdit}
             >
               Atualizar texto

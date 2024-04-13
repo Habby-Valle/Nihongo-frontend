@@ -80,7 +80,7 @@ export default function Dictionary() {
               <Box p={"10px"}>
                 <MdSearch
                   size={20}
-                  color="#D02C23"
+                  color="#39B59F"
                 />
               </Box>
             }
@@ -105,7 +105,7 @@ export default function Dictionary() {
           >
             <MdChangeCircle
               size={20}
-              color="#D02C23"
+              color="#39B59F"
             />
           </Pressable>
         </Row>

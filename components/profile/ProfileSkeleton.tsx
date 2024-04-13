@@ -12,7 +12,7 @@ export default function ProfileSkeleton() {
       <Skeleton
         w={"600px"}
         h={"400px"}
-        startColor={"#D02C23"}
+        startColor={"#39B59F"}
         endColor={"#F2F2F2"}
       />
     </Column>

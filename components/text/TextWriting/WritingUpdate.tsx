@@ -151,9 +151,9 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
           <Input
             placeholder={"Title"}
             shadow={1}
-            _focus={{ borderColor: "#D02C23" }}
-            _hover={{ borderColor: "#D02C23" }}
-            focusOutlineColor={"#D02C23"}
+            _focus={{ borderColor: "#39B59F" }}
+            _hover={{ borderColor: "#39B59F" }}
+            focusOutlineColor={"#39B59F"}
             _light={{
               bg: "white",
             }}
@@ -224,9 +224,9 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
         <Button
           onPress={save}
           w={"20%"}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           isDisabled={!isTitleValid || !isTextValid}
           isLoading={saving}
         >
@@ -238,9 +238,9 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
             setAddAnnotation((prevState) => !prevState)
           }}
           w={"20%"}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
         >
           {AddAnnotation ? "Esconder anotação" : "Mostrar anotação"}
         </Button>
@@ -248,9 +248,9 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
         <Button
           onPress={setOriginalValues}
           w={"20%"}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           isDisabled={!someInfoChanged || !isTitleValid || !isTextValid}
         >
           Cancelar
@@ -259,9 +259,9 @@ export default function WritingUpdate(props: ITranslateUpdateProps) {
         <Button
           onPress={props.onBack}
           w={"20%"}
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
         >
           Voltar
         </Button>

@@ -83,7 +83,6 @@ function Header({ word }: IHeaderProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLoading, setLoading] = useState(false)
   const toast = useToast()
-
   const { mutate: examplesRevalidate } = useExamples(word.id)
 
   async function getInfos(content: string) {
@@ -147,7 +146,7 @@ function Header({ word }: IHeaderProps) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
         },
         body: JSON.stringify({
           model: "gpt-3.5-turbo",
@@ -157,7 +156,7 @@ function Header({ word }: IHeaderProps) {
               content: prompt,
             },
           ],
-          temperature: 0.2,
+          temperature: 1,
           max_tokens: 500,
           top_p: 1,
         }),
@@ -207,9 +206,9 @@ function Header({ word }: IHeaderProps) {
       </Column>
       <Column justifyContent={"space-between"}>
         <Button
-          bg={"#D02C23"}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          bg={"#39B59F"}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           w={"140px"}
           startIcon={
@@ -228,12 +227,12 @@ function Header({ word }: IHeaderProps) {
         </Button>
 
         <Button
-          bg={"#D02C23"}
+          bg={"#39B59F"}
           onPress={() => {
             setIsModalOpen(true)
           }}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           w={"140px"}
           startIcon={
@@ -246,13 +245,13 @@ function Header({ word }: IHeaderProps) {
           <Text color={"white"}>Exemplo</Text>
         </Button>
         <Button
-          bg={"#D02C23"}
+          bg={"#39B59F"}
           onPress={() => {
             handleGenarateExamples()
           }}
           isLoading={isLoading}
-          _hover={{ bg: "#ae251e" }}
-          _pressed={{ bg: "#ae251e" }}
+          _hover={{ bg: "#1ca088" }}
+          _pressed={{ bg: "#1ca088" }}
           size={"md"}
           w={"140px"}
           startIcon={

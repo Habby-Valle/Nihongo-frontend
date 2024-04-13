@@ -45,13 +45,13 @@ export default function GrammarExplain(props: IGrammarExplainProps) {
           <Pressable onPress={() => handleChangeGrammarId(props.grammar?.id || 0)}>
             <MdEdit
               size={20}
-              color={"#D02C23"}
+              color={"#39B59F"}
             />
           </Pressable>
           <Pressable onPress={() => handleChangeDeleteGrammarId(props.grammar?.id || 0)}>
             <MdDelete
               size={20}
-              color={"#D02C23"}
+              color={"#39B59F"}
             />
           </Pressable>
         </Row>

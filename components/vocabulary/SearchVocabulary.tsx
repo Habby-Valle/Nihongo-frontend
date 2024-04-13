@@ -34,7 +34,7 @@ export default function SearchVocabulary(props: ISearchVocabularyProps) {
           InputRightElement={
             <MdSearch
               size={25}
-              color="#D02C23"
+              color="#39B59F"
             />
           }
         />

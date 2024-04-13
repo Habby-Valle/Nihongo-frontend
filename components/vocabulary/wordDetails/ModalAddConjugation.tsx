@@ -100,7 +100,7 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
             <Toast
               title="Erro ao adicionar conjugação"
               message="Ocorreu um erro ao adicionar a conjugação"
-              bg="#D02C23"
+              bg="#39B59F"
             />
           )
         },
@@ -126,7 +126,7 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
         }}
       >
         <Modal.CloseButton />
-        <Modal.Header _text={{ color: "#D02C23" }}>Add conjugation</Modal.Header>
+        <Modal.Header _text={{ color: "#39B59F" }}>Add conjugation</Modal.Header>
         <Modal.Body>
           <Column>
             <Input
@@ -254,9 +254,9 @@ export default function ModalAddConjugation(props: IModalAddConjugationProps): J
               Cancelar
             </Button>
             <Button
-              bg={"#D02C23"}
-              _hover={{ bg: "#ae251e" }}
-              _pressed={{ bg: "#ae251e" }}
+              bg={"#39B59F"}
+              _hover={{ bg: "#1ca088" }}
+              _pressed={{ bg: "#1ca088" }}
               isLoading={saving}
               onPress={() => {
                 void handleSubmit(onSubmit)()

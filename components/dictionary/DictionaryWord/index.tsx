@@ -41,7 +41,7 @@ export default function DictionaryWord({ search }: { search: string }) {
         >
           <Spinner
             size={80}
-            color={"#D02C23"}
+            color={"#39B59F"}
           />
           <Text
             fontSize="md"
