@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react"
 import { Column, Pressable, Row, Text } from "native-base"
 import { MdFavorite, MdSave } from "react-icons/md"
 import { v4 as uuidv4 } from "uuid"
+import { translateWord } from "../../../utils/translate_word"
 
 export interface IExample {
   japanese: string
@@ -16,7 +17,8 @@ export interface IExample {
 
 export default function KanjiExample({ japanese, meaning, audio }: IExample) {
   const [isFavorite, setIsFavorite] = useState(false)
-
+  const [meaningTransleted, setMeaningTransleted] = useState()
+  
   const verifyInFavorites = (japanese: string) => {
     const localFavorites = localStorage.getItem("favorites")
     if (localFavorites === null) return false
@@ -35,6 +37,14 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
     }
   }, [])
 
+  useEffect(() => {
+    async function fetchTranslation() {
+        const translated = await translateWord(meaning.english);
+        setMeaningTransleted(translated);
+    }
+
+    fetchTranslation();
+}, [meaning.english]);
   const handleFavorite = (example: IExample) => {
     setIsFavorite(!isFavorite)
     if (!isFavorite) {
@@ -130,8 +140,7 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
           />
         </Pressable>
       </Row>
-      <Text fontSize={"16px"}>{meaning.english}</Text>
-
+      <Text fontSize={"16px"}>{meaningTransleted}</Text>
       <audio
         src={audio.mp3}
         controls

@@ -25,7 +25,7 @@ export default function Dictionary() {
       method: "GET",
       url: `https://kanjialive-api.p.rapidapi.com/api/public/kanji/${search}`,
       headers: {
-        "X-RapidAPI-Key": "586932d73amshb48bfa47a9cae7ep1b66ebjsn552f0a56a7f3",
+        "X-RapidAPI-Key": `${process.env.NEXT_PUBLIC_RAPIDAPI_KEY}`,
         "X-RapidAPI-Host": "kanjialive-api.p.rapidapi.com",
       },
     }
