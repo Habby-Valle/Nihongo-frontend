@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react"
 
-import { Column, Row, Text, Pressable } from "native-base"
+import { Column, Row, Text, Pressable, useToast, Spinner } from "native-base"
 import { MdFavorite, MdSave } from "react-icons/md"
-import { translateWord } from "../../../utils/translate_word"
+import { createWord } from "../../../utils/api/vocabulary"
 
 import { IResultsList } from "../../../utils/api/dictionary"
+import Toast from "../../Toast"
 
 interface IResultCard {
   item: IResultsList
@@ -12,7 +13,9 @@ interface IResultCard {
 
 export default function ResultCard({ item }: IResultCard) {
   const [isFavorite, setIsFavorite] = useState(false)
-  const [meaningTransleted, setMeaningTransleted] = useState<any[]>([])
+  const [saving, setSaving] = useState(false)
+  const toast = useToast()
+  // const [meaningTransleted, setMeaningTransleted] = useState<any[]>([])
 
 
   const verifyInFavorites = (termId: string) => {
@@ -33,19 +36,19 @@ export default function ResultCard({ item }: IResultCard) {
     }
   }, [])
 
-  useEffect(() => {
-    async function fetchTranslation() {
-      const translates = item.translates.map(async (translate) => {
-        const translated = await translateWord(translate);
-        return translated;
-      });
+  // useEffect(() => {
+  //   async function fetchTranslation() {
+  //     const translates = item.translates.map(async (translate) => {
+  //       const translated = await translateWord(translate);
+  //       return translated;
+  //     });
 
-      const translated = await Promise.all(translates);
-      setMeaningTransleted(translated);
-    }
+  //     const translated = await Promise.all(translates);
+  //     setMeaningTransleted(translated);
+  //   }
 
-    fetchTranslation();
-  },[item.translates])
+  //   fetchTranslation();
+  // },[item.translates])
 
   const handleFavorite = (word: IResultsList) => {
     setIsFavorite(!isFavorite)
@@ -82,6 +85,36 @@ export default function ResultCard({ item }: IResultCard) {
           localStorage.setItem("favorites_dictionary", JSON.stringify(favoritesObject))
         }
       }
+    }
+  }
+
+  const handleSaveWord = async (word: IResultsList) => {
+    setSaving(true)
+    try {
+      const newWord = await createWord({
+        word: word.term,
+        reading: word.reading,
+        meaning: word.translates.join(", "),
+      })
+
+      if (newWord) {
+        toast.show({
+          placement: "top",
+          render: () => {
+            return (
+              <Toast
+                title="Sucesso"
+                message="Palavra adicionada com sucesso!"
+                bg="#4B5563"
+              />
+            )
+          },
+        })
+      }
+    } catch (error) {
+      alert(error)
+    } finally {
+      setSaving(false)
     }
   }
 
@@ -134,8 +167,11 @@ export default function ResultCard({ item }: IResultCard) {
             }}
             p={"10px"}
             borderRadius={10}
+            onPress={() => {
+              handleSaveWord(item)
+            }}
           >
-            <MdSave />
+            {saving ? <Spinner size="sm" /> : <MdSave color="#39B59F"/>}
           </Pressable>
         </Row>
       </Row>
@@ -147,7 +183,7 @@ export default function ResultCard({ item }: IResultCard) {
           fontSize={"15px"}
           fontWeight={500}
         >
-          {meaningTransleted.join(", ")}
+          {item.translates.join(", ")}
         </Text>
       </Row>
     </Column>

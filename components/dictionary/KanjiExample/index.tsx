@@ -20,7 +20,7 @@ export interface IExample {
 
 export default function KanjiExample({ japanese, meaning, audio }: IExample) {
   const [isFavorite, setIsFavorite] = useState(false)
-  const [meaningTransleted, setMeaningTransleted] = useState()
+  // const [meaningTransleted, setMeaningTransleted] = useState()
   const [saving, setSaving] = useState(false)
   const toast = useToast()
 
@@ -42,14 +42,14 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
     }
   }, [])
 
-  useEffect(() => {
-    async function fetchTranslation() {
-        const translated = await translateWord(meaning.english);
-        setMeaningTransleted(translated);
-    }
+//   useEffect(() => {
+//     async function fetchTranslation() {
+//         const translated = await translateWord(meaning.english);
+//         setMeaningTransleted(translated);
+//     }
 
-    fetchTranslation();
-}, [meaning.english]);
+//     fetchTranslation();
+// }, [meaning.english]);
   const handleFavorite = (example: IExample) => {
     setIsFavorite(!isFavorite)
     if (!isFavorite) {
@@ -95,7 +95,7 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
       const newWord = await createWord({
         word: word,
         reading: reading ? reading : word,
-        meaning:example.meaningTransleted ? example.meaningTransleted : example.meaning.english,
+        meaning: example.meaning.english,
       })
 
       if (newWord) {
@@ -173,13 +173,13 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
           p={"10px"}
           borderRadius={10}
           onPress={() => {
-            handleSaveWord({ japanese, meaning, meaningTransleted, audio })
+            handleSaveWord({ japanese, meaning, audio })
           }}
         >
           {saving ? <Spinner /> : <MdSave size={20} color="#39B59F"/>}
         </Pressable>
       </Row>
-      <Text fontSize={"16px"}>{meaningTransleted}</Text>
+      <Text fontSize={"16px"}>{meaning.english}</Text>
       <audio
         src={audio.mp3}
         controls
