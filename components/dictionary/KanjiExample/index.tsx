@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react"
 
-import { Column, Pressable, Row, Text } from "native-base"
+import { Column, Pressable, Row, Text, useToast, Spinner } from "native-base"
 import { MdFavorite, MdSave } from "react-icons/md"
 import { v4 as uuidv4 } from "uuid"
+import { translateWord } from "../../../utils/translate_word"
+import { createWord } from "../../../utils/api/vocabulary"
+import Toast from "../../Toast"
 
 export interface IExample {
   japanese: string
+  meaningTransleted?: string
   meaning: {
     english: string
   }
@@ -16,6 +20,9 @@ export interface IExample {
 
 export default function KanjiExample({ japanese, meaning, audio }: IExample) {
   const [isFavorite, setIsFavorite] = useState(false)
+  // const [meaningTransleted, setMeaningTransleted] = useState()
+  const [saving, setSaving] = useState(false)
+  const toast = useToast()
 
   const verifyInFavorites = (japanese: string) => {
     const localFavorites = localStorage.getItem("favorites")
@@ -35,6 +42,14 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
     }
   }, [])
 
+//   useEffect(() => {
+//     async function fetchTranslation() {
+//         const translated = await translateWord(meaning.english);
+//         setMeaningTransleted(translated);
+//     }
+
+//     fetchTranslation();
+// }, [meaning.english]);
   const handleFavorite = (example: IExample) => {
     setIsFavorite(!isFavorite)
     if (!isFavorite) {
@@ -67,6 +82,40 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
           localStorage.setItem("favorites", JSON.stringify(favoritesObject))
         }
       }
+    }
+  }
+
+  const handleSaveWord = async (example: IExample) => {
+    const word = example.japanese.split('（')[0]
+    const readingMatch = example.japanese.match(/（([^）]+)）/)
+    const reading = readingMatch ? readingMatch[1] : null
+
+    setSaving(true)
+    try {
+      const newWord = await createWord({
+        word: word,
+        reading: reading ? reading : word,
+        meaning: example.meaning.english,
+      })
+
+      if (newWord) {
+        toast.show({
+          placement: "top",
+          render: () => {
+            return (
+              <Toast
+                title="Sucesso"
+                message="Palavra adicionada com sucesso!"
+                bg="#4B5563"
+              />
+            )
+          },
+        })
+      }
+    } catch (error) {
+      alert(error)
+    } finally {
+      setSaving(false)
     }
   }
 
@@ -123,15 +172,14 @@ export default function KanjiExample({ japanese, meaning, audio }: IExample) {
           }}
           p={"10px"}
           borderRadius={10}
+          onPress={() => {
+            handleSaveWord({ japanese, meaning, audio })
+          }}
         >
-          <MdSave
-            size={20}
-            color="#39B59F"
-          />
+          {saving ? <Spinner /> : <MdSave size={20} color="#39B59F"/>}
         </Pressable>
       </Row>
       <Text fontSize={"16px"}>{meaning.english}</Text>
-
       <audio
         src={audio.mp3}
         controls

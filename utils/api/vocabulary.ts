@@ -24,9 +24,9 @@ export interface IWordCreate {
   word: string
   reading: string
   meaning: string
-  type: TypeWord
-  level: TypeLevel
-  category: number
+  type?: TypeWord
+  level?: TypeLevel
+  category?: number
   annotation?: string
   created_by?: number
 }
